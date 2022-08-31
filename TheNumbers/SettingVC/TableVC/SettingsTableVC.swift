@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsTableTableViewController: UITableViewController {
+class SettingTableVC: UITableViewController {
 
     @IBOutlet weak var SecondsChangeOut: UILabel!
     @IBOutlet weak var outlet2: UISwitch!
@@ -35,7 +35,7 @@ class SettingsTableTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { ///Задача-передать массив с числами, которые являются вариантами таймеров (все эти варианты выбора времени, будет массив интеджеров) из VC settings в VC time settings. Для этого подходит метод prepare. Задаем для segue двух VC индификатор SegueTimeSelect
         switch segue.identifier{  /// Фильтр по индификатору перехода
         case "SegueTimeSelect":   /// Указываем нужный segue identifier (мы его сами задали в переходах между VC
-            if let segueTimeSelectVC = segue.destination as? TimeSettingsViewController{  ///Создаем константу с методом destination для перехода segue и проверяем, что это переход на TimeSettingsViewController
+            if let segueTimeSelectVC = segue.destination as? SettingVC{  ///Создаем константу с методом destination для перехода segue и проверяем, что это переход на TimeSettingsViewController
                 segueTimeSelectVC.dataTimersArray = [10,20,30,40,50,60,70,80,90,100,110,120] /// В TimeSettingsViewController создан пустой массив dataTimersArray. Здесь же мы добавляем в него массив чисел (секунды для таймера)
             }
         default:

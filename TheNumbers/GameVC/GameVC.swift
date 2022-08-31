@@ -42,11 +42,17 @@ class GameViewController:UIViewController {
         updateUI()
         
     }
+    
+    //MARK: Func for button NewGame
     @IBAction func NewGameAction(_ sender: UIButton) {
+        
         game.newGame() ///Привязывем к кнопке функцию newGame
         sender.isHidden = true ///Свойство кнопки по умолчанию: Скрытая
         setUpScreen() /// Вызываем эту функцию чтобы отобразить экран полностью готовый к игре.
+        
     }
+    
+    //MARK: SetUP screen func
     private func setUpScreen() {  ///Это функция настройки экрана. Задача данной функции пройти по массиву itemArray из "Game" и присвоить каждому элементу свои свойства, а именно тайтл - то есть название каждой кнопки и второе - видимость.
         if SettingsClass.shared.currentSettings.timerOn != true {
             TimerLabel.isHidden = true  ///Если таймер выключен - скрываем его лейбл.
