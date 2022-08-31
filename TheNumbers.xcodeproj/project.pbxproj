@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED1812172762455200EC233D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1812162762455200EC233D /* Game.swift */; };
+		ED1812172762455200EC233D /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1812162762455200EC233D /* GameVM.swift */; };
 		ED1D969127DF252100D24852 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1D969027DF252100D24852 /* RecordViewController.swift */; };
-		ED251BF3275FE2C10000A1FE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED251BF2275FE2C10000A1FE /* GameViewController.swift */; };
+		ED251BF3275FE2C10000A1FE /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED251BF2275FE2C10000A1FE /* GameVC.swift */; };
 		EDA3B699275FB8D6008E17C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */; };
 		EDA3B69D275FB8D6008E17C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3B69C275FB8D6008E17C7 /* ViewController.swift */; };
 		EDA3B6A0275FB8D6008E17C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B69E275FB8D6008E17C7 /* Main.storyboard */; };
@@ -21,9 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED1812162762455200EC233D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		ED1812162762455200EC233D /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		ED1D969027DF252100D24852 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
-		ED251BF2275FE2C10000A1FE /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		ED251BF2275FE2C10000A1FE /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		EDA3B695275FB8D6008E17C7 /* TheNumbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNumbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDA3B69C275FB8D6008E17C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED790E6428BF9E1A00772CE7 /* GameVC */ = {
+			isa = PBXGroup;
+			children = (
+				ED251BF2275FE2C10000A1FE /* GameVC.swift */,
+				ED1812162762455200EC233D /* GameVM.swift */,
+			);
+			path = GameVC;
+			sourceTree = "<group>";
+		};
 		EDA3B68C275FB8D6008E17C7 = {
 			isa = PBXGroup;
 			children = (
@@ -66,12 +75,11 @@
 		EDA3B697275FB8D6008E17C7 /* TheNumbers */ = {
 			isa = PBXGroup;
 			children = (
+				ED790E6428BF9E1A00772CE7 /* GameVC */,
 				EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */,
 				EDA3B69E275FB8D6008E17C7 /* Main.storyboard */,
 				EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */,
 				EDA3B69C275FB8D6008E17C7 /* ViewController.swift */,
-				ED1812162762455200EC233D /* Game.swift */,
-				ED251BF2275FE2C10000A1FE /* GameViewController.swift */,
 				EDC1EC5F27D0CB9300E957E8 /* TimeSettingsViewController.swift */,
 				EDC1EC6127D0CC6100E957E8 /* SettingsTableTableViewController.swift */,
 				ED1D969027DF252100D24852 /* RecordViewController.swift */,
@@ -154,10 +162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA3B69D275FB8D6008E17C7 /* ViewController.swift in Sources */,
-				ED251BF3275FE2C10000A1FE /* GameViewController.swift in Sources */,
+				ED251BF3275FE2C10000A1FE /* GameVC.swift in Sources */,
 				EDC1EC6027D0CB9300E957E8 /* TimeSettingsViewController.swift in Sources */,
 				EDA3B699275FB8D6008E17C7 /* AppDelegate.swift in Sources */,
-				ED1812172762455200EC233D /* Game.swift in Sources */,
+				ED1812172762455200EC233D /* GameVM.swift in Sources */,
 				ED1D969127DF252100D24852 /* RecordViewController.swift in Sources */,
 				EDC1EC6227D0CC6100E957E8 /* SettingsTableTableViewController.swift in Sources */,
 				EDE5FDEE27D76E55004FB3A2 /* SettingsStruct.swift in Sources */,

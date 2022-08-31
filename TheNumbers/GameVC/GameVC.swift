@@ -6,17 +6,22 @@
 //
 
 import UIKit
-//MARK: - PROPIRTIES
+
+
 class GameViewController:UIViewController {
+    
+    //MARK: Outlets
     @IBOutlet weak var NextDigit: UILabel!
     @IBOutlet weak var StatusLabel: UILabel!
-    @IBOutlet var buttons: [UIButton]!
     @IBOutlet weak var TimerLabel: UILabel!
+    
+    //MARK: Buttons
+    @IBOutlet var buttons: [UIButton]!
     @IBOutlet weak var NewGameOutlet: UIButton!
     
-    //MARK: -
-    lazy var game = Game(countItems: buttons.count) { [weak self] (status, seconds) in      /// Для того чтобы программа сама могла считать -во кнопок которое нужно выводить, создаем экзепляр класса игры и прописываем ему buttons.count (количество кнопок), timeForGame(время на раунд) + updateTime(обновление времени). Код будет сам брать кол-во buttons которое внесено в IBOutlet. Из-за того, что на момент написания кода IBOutlet уще не завершен, приходится ставить свойство Lazy для это экземпляра гейм т.к. икс код ргается на buttons)
-        guard let self = self else {return} ///Используем "гард" для селф т.к. из-за weak self - self становится optional. Данная проверка избавляет от нужды ставить вопросы после self в коде ниже.
+    //MARK:
+    lazy var game = Game(countItems: buttons.count) { [weak self] (status, seconds) in      /// Для того чтобы программа сама могла считать -во кнопок которое нужно выводить, создаем экзепляр класса игры и прописываем ему buttons.count (количество кнопок), timeForGame(время на раунд) + updateTime(обновление времени). Код будет сам брать кол-во buttons которое внесено в IBOutlet. Из-за того, что на момент написания кода IBOutlet уще не завершен, приходится ставить свойство Lazy для это экземпляра гейм т.к. икс код ругается на buttons)
+        guard let self = self else { return } ///Используем "гард" для селф т.к. из-за weak self - self становится optional. Данная проверка избавляет от нужды ставить вопросы после self в коде ниже.
         self.TimerLabel.text = seconds.newFormatTime() ///Заносим отображение секунд в клоуджер. Формат отображения времени берем из расширения newFormatTime()
         self.globalStatus(status: status)  ///Заносим актуальный статус в параметр status клоуджера
     }
@@ -27,22 +32,12 @@ class GameViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let x = 10
-//        let y = 0
-//       let summa = sum(x: x, y: y)
-//        assert(summa != 10, "Sum is qualy 10")
-//        print("LoG: \(summa)")
-        setUpScreen()  ///Помещаем функцию которая регулирует настройки отображения во viewDidLoad. Помещаем в этот раздел т.к. здесь записываются данные, как должны выглядеть элементы которые не подвергались никаким действиям.
-        
+        setUpScreen()  ///Помещаем функцию которая регулирует настройки отображения экрана во viewDidLoad.
     }
               
-  
-//    @discardableResult func sum(x:Int,y:Int) -> Int{
-//        return x + y
-//    }
   // MARK: -
     @IBAction func pressButton(_ sender: UIButton) {
-        guard let buttonIndex = buttons.firstIndex(of: sender) else {return} ///Проверяем через guard индекс, который записали из buttons
+        guard let buttonIndex = buttons.firstIndex(of: sender) else { return } ///Если в баттон индекс получаем buttons.firstIndex 
         game.check(index: buttonIndex) ///Gосле того как мы получили через гуард buttonIndex - проверяем его через функцию чек в модели игры
         updateUI()
         
@@ -65,10 +60,10 @@ class GameViewController:UIViewController {
             NextDigit.text = game.nextDigits?.title //Прописываем полученное число из nextDigits модели игры в NextDigit OUtlet который отображает число, которое нужно найти следующим.
         
         }
-    func updateUI(){ //Пишем функцию которая будет обновлять дисплей когда мы будем находить кнопку
-    for indexUI in game.itemArray.indices{ // Заносим все индексы массива itemArray в index
+    func updateUI() { //Пишем функцию которая будет обновлять дисплей когда мы будем находить кнопку
+    for indexUI in game.itemArray.indices { // Заносим все индексы массива itemArray в index
     buttons[indexUI].alpha = game.itemArray[indexUI].isFound ? 0 : 1 //Альфа - прозрачность, используется вместо свойства isHidden т.к. при верстке мы использовали stack view для адаптации размеров под любой дисплей. Из -за этого, при угадывании кнопки в игре, остающиеся на дисплее кнопки занимают пространство исчезнувшей. Чтобы это не происходило, мы используем прозрачность/Альфа.Если кнопка = найдена (true) - она равна 0(true). Если нет, она = 1 false.
-        buttons[indexUI].isEnabled = !game.itemArray[indexUI].isFound//Также, альфа имеет свойство быть нажатой, даже в статусе прозрачности. Поэтому, чтобы в игре пользователь не мог на нее нажимать(на пустое место), необходимо ее отключить. То есть наша кнопка будет включена пока !game.itemArray[indexUI].isFound не равно тру.
+        buttons[indexUI].isEnabled = !game.itemArray[indexUI].isFound //Также, альфа имеет свойство быть нажатой, даже в статусе прозрачности. Поэтому, чтобы в игре пользователь не мог на нее нажимать(на пустое место), необходимо ее отключить. То есть наша кнопка будет включена пока !game.itemArray[indexUI].isFound не равно тру.
     //buttons[indexUI].isHidden = game.itemArray[indexUI].isFound //Скрываем индекс buttons (цепляемся за индекс чтобы скрыть саму кнопку) когда этот индекс = индексу из массива itemArray
         if game.itemArray[indexUI].isError{ //А если нажата неверная кнопка (индекс кнопки имеет свойство isError)
             UIView.animate(withDuration: 0.3) { [weak self] in //Прописываем анимацию. withDuration - это время которое будет длиться анимация
