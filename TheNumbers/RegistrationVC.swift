@@ -10,7 +10,10 @@ import UIKit
 
 final class RegistrationVC: UIViewController {
     
-    @IBOutlet private weak var enterEmail: UITextField!
+    @IBOutlet private weak var enterEmail: UITextField! {
+        didSet { enterEmail.borderStyle = .line }
+    }
+    
     @IBOutlet private weak var enterPassword: UITextField!
     
     @IBOutlet private weak var signButton: UIButton!
