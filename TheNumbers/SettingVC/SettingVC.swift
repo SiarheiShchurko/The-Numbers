@@ -9,8 +9,8 @@ import UIKit
 
 class SettingVC: UIViewController {
     var dataTimersArray:[Int] = [] //Массив dataTimersArray - это масив с вариантами доступных таймеров для игры.
-    @IBOutlet weak var TimeSet: UITableView!{
-        didSet{    //Для того чтобы динамический VC начал заполняться самостоятельно строчками, VC TimeSettingsViewController должен использовать протокол dataSource. У данного протокола есть несколько обязательных методов.
+    @IBOutlet weak var TimeSet: UITableView! {
+        didSet {    //Для того чтобы динамический VC начал заполняться самостоятельно строчками, VC TimeSettingsViewController должен использовать протокол dataSource. У данного протокола есть несколько обязательных методов.
             TimeSet?.dataSource = self // С помощью методов протокола dataSource будет передаваться кол-во строк и секций в таблице, а также их вид и свойства. Этот код говорит, что VC TimeSettingsViewController является dataSource для таблички TimeSet(оутлет которой мы прописали здесь)
             TimeSet?.delegate = self // delegate позволяет взаимодействовать со строками таблички. Отслеживать действия, например выбор ячейки.
         }
@@ -21,7 +21,7 @@ class SettingVC: UIViewController {
      
     }
 
-extension SettingVC:UITableViewDataSource, UITableViewDelegate { //Добавляем протокол DataSource для VC TimeSettingsViewController через extension
+extension SettingVC: UITableViewDataSource, UITableViewDelegate { //Добавляем протокол DataSource для VC TimeSettingsViewController через extension
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataTimersArray.count  //Икс Код сам предлагает добавить два обязательных метода и первый из них: numberOfRowsInSection в который мы записываем кол-во строк которые будут созданы в таблице. Указано, что строк нам нужно столько, сколько есть элементов в массиве dataTimersArray
     }
