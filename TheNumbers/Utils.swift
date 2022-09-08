@@ -10,6 +10,9 @@ import UIKit
 
 //MARK: Func transition between displays
 
+
+
+
 func cornerRadius(_ object: AnyObject) {
 
     object.layer?.cornerRadius = 10.0
