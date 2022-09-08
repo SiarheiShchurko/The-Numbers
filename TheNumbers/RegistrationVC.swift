@@ -10,6 +10,13 @@ import UIKit
 
 final class RegistrationVC: UIViewController {
     
+    var signUp: Bool = true {
+        willSet {
+            newValue == true ? (titleLabel.text = "Registration") : (titleLabel.text = "Enter")
+        }
+    }
+    
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var enterEmail: UITextField! {
         didSet { enterEmail.backgroundColor = .white
         }
