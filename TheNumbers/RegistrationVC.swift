@@ -12,11 +12,21 @@ final class RegistrationVC: UIViewController {
     
     var signUp: Bool = true {
         willSet {
-            newValue == true ? (titleLabel.text = "Registration") : (titleLabel.text = "Enter")
-        }
+            if newValue == true {
+                titleLabel.text = "Registration"
+                enterName.isHidden = false
+            } else {
+                titleLabel.text = "Enter"
+                enterName.isHidden = true
+            }
+    }
     }
     
-    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UITextField!
+    
+    @IBOutlet private weak var enterName: UITextField!
+        
+    
     @IBOutlet private weak var enterEmail: UITextField! {
         didSet { enterEmail.backgroundColor = .white
         }
@@ -36,7 +46,7 @@ final class RegistrationVC: UIViewController {
     }
     
     @IBAction private func SignInAction() {
-        
+        signUp = !signUp
         
     }
     
