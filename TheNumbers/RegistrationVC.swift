@@ -11,20 +11,7 @@ import UIKit
 final class RegistrationVC: UIViewController {
     
     var signUp: Bool = true {
-        willSet {
-            if newValue == true {
-                titleLabel.text = "Registration"
-                enterName.isHidden = false
-                UIView.animate(withDuration: 0.20, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.0, options: .allowAnimatedContent) {
-                    self.stackView.frame.origin.y = self.enterName.frame.maxY + 20 }
-            } else {
-                titleLabel.text = "Enter"
-                enterName.isHidden = true
-                UIView.animate(withDuration: 0.2, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.0, options: .allowAnimatedContent) {
-                    self.view.translatesAutoresizingMaskIntoConstraints = true
-                    self.stackView.frame.origin.y = self.titleLabel.frame.maxY + 20 }
-            }
-    }
+        willSet { newValue ? registrationScreen() : loginInScreen() }
     }
     
     @IBOutlet private weak var stackView: UIStackView!
@@ -42,6 +29,7 @@ final class RegistrationVC: UIViewController {
     }
     
     @IBOutlet private weak var signButton: UIButton!
+    
     @IBOutlet private weak var registerButton: UIButton! {
         didSet { cornerRadius(registerButton) }
     }
@@ -49,14 +37,32 @@ final class RegistrationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
         }
 
-    
-    
     @IBAction private func SignInAction() {
         signUp = !signUp
     }
     
+    //MARK: Registration screen
+    private func registrationScreen() {
+        
+        titleLabel.text = "Registration"
+        signButton.setTitle("Sign In", for: .normal)
+        registerButton.setTitle("REGISTR", for: .normal)
+        enterName.isHidden = false
+        UIView.animate(withDuration: 0.20, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.0, options: .allowAnimatedContent) {
+            self.stackView.frame.origin.y = self.enterName.frame.maxY + 20 }
+    }
+    
+    //MARK: LogIn screen
+    private func loginInScreen() {
+        
+        titleLabel.text = "Log In"
+        signButton.setTitle("Register", for: .normal)
+        registerButton.setTitle("ENTER", for: .normal)
+        enterName.isHidden = true
+        UIView.animate(withDuration: 0.2, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.0, options: .allowAnimatedContent) {
+            self.view.translatesAutoresizingMaskIntoConstraints = true
+            self.stackView.frame.origin.y = self.titleLabel.frame.maxY + 20 }
+    }
 }
