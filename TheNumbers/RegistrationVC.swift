@@ -7,12 +7,15 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 final class RegistrationVC: UIViewController {
     
-    var signUp: Bool = true {
+    private var signUp: Bool = true {
         willSet { newValue ? registrationScreen() : loginInScreen() }
     }
+    
+    private var isSelected: Bool = false
     
     @IBOutlet private weak var stackView: UIStackView!
     
@@ -35,12 +38,14 @@ final class RegistrationVC: UIViewController {
     @IBOutlet private weak var signButton: UIButton!
     
     @IBOutlet private weak var registerButton: UIButton! {
-        didSet { cornerRadius(registerButton) }
+        didSet { cornerRadius(registerButton)
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        checkTextField()
     }
     
     //MARK: KeyboardHide
@@ -48,9 +53,7 @@ final class RegistrationVC: UIViewController {
         view.endEditing(true)
     }
 
-    @IBAction private func SignInAction() {
-        signUp = !signUp
-    }
+    
     
     //MARK: Registration screen
     private func registrationScreen() {
@@ -58,6 +61,7 @@ final class RegistrationVC: UIViewController {
         titleLabel.text = "Registration"
         signButton.setTitle("Sign In", for: .normal)
         registerButton.setTitle("REGISTR", for: .normal)
+        registerButton.setTitle("REGISTR", for: .selected)
         enterName.isHidden = false
         UIView.animate(withDuration: 0.20, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.0, options: .allowAnimatedContent) {
             self.stackView.frame.origin.y = self.enterName.frame.maxY + 20 }
@@ -69,16 +73,68 @@ final class RegistrationVC: UIViewController {
         titleLabel.text = "Log In"
         signButton.setTitle("Register", for: .normal)
         registerButton.setTitle("ENTER", for: .normal)
+        registerButton.setTitle("ENTER", for: .selected)
         enterName.isHidden = true
         UIView.animate(withDuration: 0.2, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.0, options: .allowAnimatedContent) {
             self.view.translatesAutoresizingMaskIntoConstraints = true
             self.stackView.frame.origin.y = self.titleLabel.frame.maxY + 20 }
     }
+    
+    private func checkTextField() {
+        if signUp {
+        let isEmpty = (enterName.text?.isEmpty ?? true || enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
+            registerButton.isSelected = isEmpty
+            //registerButton.isEnabled = !isEmpty
+            
+            
+        } else {
+            let isEmpty = (enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
+            registerButton.isSelected = isEmpty
+               // registerButton.isEnabled = !isEmpty
+        }
+    }
+    
+    @IBAction private func textFieldActon(_ sender: UITextField) {
+        
+            switch sender {
+            case enterName:
+                enterName.text = sender.text
+            case enterEmail:
+                enterEmail.text = sender.text
+            case enterPassword:
+                enterPassword.text = sender.text
+            default: break
+            }
+            
+        checkTextField()
+        print(enterName ?? "nil")
+        }
+    
+    @IBAction private func SignInAction() {
+        signUp = !signUp
+        checkTextField()
+    }
+    @IBAction private func registrationOrEnter() {
+      
+        if signUp {
+           if !registerButton.isSelected {
+               Auth.auth().createUser(withEmail: enterEmail.text ?? "", password: enterPassword.text ?? "") { result, error in
+                    if let error = error {
+                        print(error)
+                    }
+                    guard let result = result else { return }
+                    print(result.user.uid)
+                    
+               }
+            }
+        }
+    }
 }
-
 extension RegistrationVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //FirstResponder
         if enterName == textField {
             enterEmail.becomeFirstResponder()
         } else if enterEmail == textField {
@@ -86,8 +142,7 @@ extension RegistrationVC: UITextFieldDelegate {
         } else {
             enterPassword.resignFirstResponder()
         }
+        
         return true
     }
-    
-    
 }
