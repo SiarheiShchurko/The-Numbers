@@ -18,14 +18,18 @@ final class RegistrationVC: UIViewController {
     
     @IBOutlet private weak var titleLabel: UITextField!
     
-    @IBOutlet private weak var enterName: UITextField!
+    @IBOutlet private weak var enterName: UITextField!{
+        didSet { enterName.delegate = self }
+    }
         
     @IBOutlet private weak var enterEmail: UITextField! {
-        didSet { enterEmail.backgroundColor = .white }
+        didSet { enterEmail.backgroundColor = .white
+                 enterEmail.delegate = self }
     }
     
     @IBOutlet private weak var enterPassword: UITextField! {
-        didSet { enterPassword.backgroundColor = .white }
+        didSet { enterPassword.backgroundColor = .white
+                 enterPassword.delegate = self }
     }
     
     @IBOutlet private weak var signButton: UIButton!
@@ -34,10 +38,15 @@ final class RegistrationVC: UIViewController {
         didSet { cornerRadius(registerButton) }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        }
+        
+    }
+    
+    //MARK: KeyboardHide
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
     @IBAction private func SignInAction() {
         signUp = !signUp
@@ -65,4 +74,20 @@ final class RegistrationVC: UIViewController {
             self.view.translatesAutoresizingMaskIntoConstraints = true
             self.stackView.frame.origin.y = self.titleLabel.frame.maxY + 20 }
     }
+}
+
+extension RegistrationVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if enterName == textField {
+            enterEmail.becomeFirstResponder()
+        } else if enterEmail == textField {
+            enterPassword.becomeFirstResponder()
+        } else {
+            enterPassword.resignFirstResponder()
+        }
+        return true
+    }
+    
+    
 }
