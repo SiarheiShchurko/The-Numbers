@@ -99,6 +99,7 @@ final class RegistrationVC: UIViewController {
     //MARK: registration func
     func registration(_ email: String?, _ pass: String?) {
         //Optional delete
+        guard let name = enterName.text else { return }
         guard let email = email else { return }
         guard let pass = pass else { return }
         
@@ -106,9 +107,12 @@ final class RegistrationVC: UIViewController {
         Auth.auth().createUser(withEmail: email, password: pass) { result, error in
             if error == nil {
                 self.dismiss(animated: true)
+                guard let result = result else { return }
+                let userStruct = Database.database().reference().child("users")
+                userStruct.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
+                print(result.user.uid)
             }
-            guard let result = result else { return }
-            print(result.user.uid)
+            
             
         }
     }
