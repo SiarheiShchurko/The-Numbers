@@ -11,16 +11,17 @@ import UIKit
 class GameViewController: UIViewController {
     
     //MARK: Outlets
-    @IBOutlet weak var NextDigit: UILabel!
-    @IBOutlet weak var StatusLabel: UILabel!
-    @IBOutlet weak var TimerLabel: UILabel!
+    @IBOutlet private weak var NextDigit: UILabel!
+    @IBOutlet private weak var StatusLabel: UILabel!
+    @IBOutlet private weak var TimerLabel: UILabel!
     
     //MARK: Buttons
     @IBOutlet var buttons: [UIButton]!
-    @IBOutlet weak var NewGameOutlet: UIButton!
+    @IBOutlet private weak var NewGameOutlet: UIButton!
+  
     
     //MARK: VM var
-    lazy var game = Game(countItems: buttons.count) { [ weak self ] (status, seconds) in      /// Для того чтобы программа сама могла считать -во кнопок которое нужно выводить, создаем экзепляр класса игры и прописываем ему buttons.count (количество кнопок), timeForGame(время на раунд) + updateTime(обновление времени). Код будет сам брать кол-во buttons которое внесено в IBOutlet. Из-за того, что на момент написания кода IBOutlet уще не завершен, приходится ставить свойство Lazy для это экземпляра гейм т.к. икс код ругается на buttons)
+    lazy private var game = Game(countItems: buttons.count) { [ weak self ] (status, seconds) in      /// Для того чтобы программа сама могла считать -во кнопок которое нужно выводить, создаем экзепляр класса игры и прописываем ему buttons.count (количество кнопок), timeForGame(время на раунд) + updateTime(обновление времени). Код будет сам брать кол-во buttons которое внесено в IBOutlet. Из-за того, что на момент написания кода IBOutlet уще не завершен, приходится ставить свойство Lazy для это экземпляра гейм т.к. икс код ругается на buttons)
         guard let self = self else { return } ///Используем "гард" для селф т.к. из-за weak self - self становится optional. Данная проверка избавляет от нужды ставить вопросы после self в коде ниже.
         self.TimerLabel.text = seconds.newFormatTime() ///Заносим отображение секунд в клоуджер. Формат отображения времени берем из расширения newFormatTime()
         self.globalStatus(status: status)  ///Заносим актуальный статус в параметр status клоуджера
@@ -38,18 +39,21 @@ class GameViewController: UIViewController {
     }
               
   // MARK: Press button func
-    @IBAction func pressButton(_ sender: UIButton) {
+    @IBAction private func pressButton(_ sender: UIButton) {
         guard let buttonIndex = buttons.firstIndex(of: sender) else { return } ///Если в баттон индекс получаем buttons.firstIndex 
         game.check(index: buttonIndex) ///Gосле того как мы получили через гуард buttonIndex - проверяем его через функцию чек в модели игры
         updateUI()
     }
     
     //MARK: Func for button NewGame
-    @IBAction func NewGameAction(_ sender: UIButton) {
+    @IBAction private func NewGameAction(_ sender: UIButton) {
         game.newGame() ///Привязывем к кнопке функцию newGame
         sender.isHidden = true ///Свойство кнопки по умолчанию: Скрытая
         setUpScreen() /// Вызываем эту функцию чтобы отобразить экран полностью готовый к игре.
     }
+    
+    //MARK: LogOut func
+   
     
     //MARK: SetUP screen func
     private func setUpScreen() {  ///Это функция настройки экрана. Задача данной функции пройти по массиву itemArray из "Game" и присвоить каждому элементу свои свойства, а именно тайтл - то есть название каждой кнопки и второе - видимость.
@@ -66,13 +70,13 @@ class GameViewController: UIViewController {
         }
     
     //MARK: Func update UI when user press true button
-    func updateUI() {
+    private func updateUI() {
     for indexUI in game.itemArray.indices { // Заносим все индексы массива itemArray в index
     buttons[indexUI].alpha = game.itemArray[indexUI].isFound ? 0 : 1 //Альфа - прозрачность, используется вместо свойства isHidden т.к. при верстке мы использовали stack view для адаптации размеров под любой дисплей. Из -за этого, при угадывании кнопки в игре, остающиеся на дисплее кнопки занимают пространство исчезнувшей. Чтобы это не происходило, мы используем прозрачность/Альфа.Если кнопка = найдена (true) - она равна 0(true). Если нет, она = 1 false.
         buttons[indexUI].isEnabled = !game.itemArray[indexUI].isFound //Также, альфа имеет свойство быть нажатой, даже в статусе прозрачности. Поэтому, чтобы в игре пользователь не мог на нее нажимать(на пустое место), необходимо ее отключить. То есть наша кнопка будет включена пока !game.itemArray[indexUI].isFound не равно тру.
     //buttons[indexUI].isHidden = game.itemArray[indexUI].isFound //Скрываем индекс buttons (цепляемся за индекс чтобы скрыть саму кнопку) когда этот индекс = индексу из массива itemArray
         if game.itemArray[indexUI].isError { //А если нажата неверная кнопка (индекс кнопки имеет свойство isError)
-            UIView.animate(withDuration: 0.3) { [weak self] in //Прописываем анимацию. withDuration - это время которое будет длиться анимация
+            UIView.animate(withDuration: 0.3) { [ weak self ] in //Прописываем анимацию. withDuration - это время которое будет длиться анимация
                 self?.buttons[indexUI].backgroundColor = .red //Далее, указывается, сама анимация. То есть мы берем саму кнопку "buttons[indexUI]" обращаясь к ней через self и указываем для нее красный цвет заднего плана.
             } completion: { [weak self] (_) in   //В completion мы указываем то, что происходит после завершения анимации.
                 self?.buttons[indexUI].backgroundColor = .white //Возвращаем кнопке белый цвет
@@ -90,7 +94,6 @@ class GameViewController: UIViewController {
                                                //Проверяем статус по следующим кейсам...
         case .start:                           //Если статус старт
             StatusLabel.text = "Game was started" //Пишем "Игра началась"
-            StatusLabel.textColor = .black     //Цвет надписи черный
             NewGameOutlet.isHidden = true      //При статусе игры "Старт" - кнопка скрыта
             
         case .win:                             //Если статус "Вин"
