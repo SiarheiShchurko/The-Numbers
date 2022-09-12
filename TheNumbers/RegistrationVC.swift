@@ -11,6 +11,8 @@ import Firebase
 
 final class RegistrationVC: UIViewController {
     
+    private var registrationVM: RegistrationProtocol = RegistrationVM()
+    
     private var signUp: Bool = true {
         willSet { newValue ? registrationScreen() : loginInScreen() }
     }
@@ -110,26 +112,24 @@ final class RegistrationVC: UIViewController {
         print(enterName ?? "nil")
         }
     
+  
+    
     @IBAction private func SignInAction() {
         signUp = !signUp
         checkTextField()
     }
+    
+    //MARK:
     @IBAction private func registrationOrEnter() {
-      
-        if signUp {
-           if !registerButton.isSelected {
-               Auth.auth().createUser(withEmail: enterEmail.text ?? "", password: enterPassword.text ?? "") { result, error in
-                    if let error = error {
-                        print(error)
-                    }
-                    guard let result = result else { return }
-                    print(result.user.uid)
-                    
-               }
-            }
-        }
+        
+        let eMail = enterEmail.text
+        let pass = enterPassword.text
+        
+        signUp ? registrationVM.registration(eMail, pass) : registrationVM.signIn(eMail, pass)
     }
 }
+
+
 extension RegistrationVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -142,7 +142,6 @@ extension RegistrationVC: UITextFieldDelegate {
         } else {
             enterPassword.resignFirstResponder()
         }
-        
         return true
     }
 }
