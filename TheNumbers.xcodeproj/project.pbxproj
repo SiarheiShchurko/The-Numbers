@@ -22,6 +22,7 @@
 		ED35FCAF28C0E42D009BFB78 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ED35FCAE28C0E42D009BFB78 /* FirebaseStorageCombine-Community */; };
 		ED35FCB128C10301009BFB78 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35FCB028C10301009BFB78 /* RegistrationVC.swift */; };
 		ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35FCB228C1177A009BFB78 /* Utils.swift */; };
+		ED4028D428CF3449003EAF00 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4028D328CF3449003EAF00 /* RegistrationVM.swift */; };
 		EDA3B699275FB8D6008E17C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */; };
 		EDA3B69D275FB8D6008E17C7 /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3B69C275FB8D6008E17C7 /* StartPage.swift */; };
 		EDA3B6A0275FB8D6008E17C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B69E275FB8D6008E17C7 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		ED35FC9B28C0E143009BFB78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED35FCB028C10301009BFB78 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		ED35FCB228C1177A009BFB78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		ED4028D328CF3449003EAF00 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
 		EDA3B695275FB8D6008E17C7 /* TheNumbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNumbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDA3B69C275FB8D6008E17C7 /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				ED790E6528BFA75200772CE7 /* SettingVC */,
 				ED790E6428BF9E1A00772CE7 /* GameVC */,
 				EDE5FDED27D76E55004FB3A2 /* SettingsStruct.swift */,
+				ED4028D328CF3449003EAF00 /* RegistrationVM.swift */,
 				ED35FCB028C10301009BFB78 /* RegistrationVC.swift */,
 				EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */,
 				EDA3B69E275FB8D6008E17C7 /* Main.storyboard */,
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA3B69D275FB8D6008E17C7 /* StartPage.swift in Sources */,
+				ED4028D428CF3449003EAF00 /* RegistrationVM.swift in Sources */,
 				ED251BF3275FE2C10000A1FE /* GameVC.swift in Sources */,
 				EDC1EC6027D0CB9300E957E8 /* SettingVC.swift in Sources */,
 				EDA3B699275FB8D6008E17C7 /* AppDelegate.swift in Sources */,
