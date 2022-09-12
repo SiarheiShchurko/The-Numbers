@@ -11,7 +11,7 @@ import Firebase
 
 final class RegistrationVC: UIViewController {
     
-    private var registrationVM: RegistrationProtocol = RegistrationVM()
+    //private var registrationVM: RegistrationProtocol = RegistrationVM()
     
     private var signUp: Bool = true {
         willSet { newValue ? registrationScreen() : loginInScreen() }
@@ -96,6 +96,38 @@ final class RegistrationVC: UIViewController {
         }
     }
     
+    //MARK: registration func
+    func registration(_ email: String?, _ pass: String?) {
+        //Optional delete
+        guard let email = email else { return }
+        guard let pass = pass else { return }
+        
+        //Registration
+        Auth.auth().createUser(withEmail: email, password: pass) { result, error in
+            if error == nil {
+                self.dismiss(animated: true)
+            }
+            guard let result = result else { return }
+            print(result.user.uid)
+            
+        }
+    }
+    
+    //MARK: SignIn func
+    func signIn(_ email: String?, _ pass: String?) {
+        //Optional delete
+        guard let email = email else { return }
+        guard let pass = pass else { return }
+        
+        //Enter
+        Auth.auth().signIn(withEmail: email, password: pass) { result, error in
+            if error == nil {
+                self.dismiss(animated: true)
+            }
+           
+        }
+    }
+    
     @IBAction private func textFieldActon(_ sender: UITextField) {
         
             switch sender {
@@ -125,7 +157,7 @@ final class RegistrationVC: UIViewController {
         let eMail = enterEmail.text
         let pass = enterPassword.text
         
-        signUp ? registrationVM.registration(eMail, pass) : registrationVM.signIn(eMail, pass)
+        signUp ? registration(eMail, pass) : signIn(eMail, pass)
     }
 }
 
