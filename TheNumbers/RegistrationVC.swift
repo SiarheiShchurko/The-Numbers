@@ -104,14 +104,18 @@ final class RegistrationVC: UIViewController {
         //Registration
         Auth.auth().createUser(withEmail: email, password: pass) { result, error in
             if error == nil {
+               
                 guard let result = result else { return }
                 let userStruct = Database.database().reference().child("users")
                 userStruct.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
                 print(result.user.uid)
                 self.dismiss(animated: true)
-               
             }
+            print(error)
+          
+            
         }
+       
     }
     
     //MARK: SignIn func
@@ -127,6 +131,7 @@ final class RegistrationVC: UIViewController {
             }
         }
     }
+    
     
     @IBAction private func textFieldActon(_ sender: UITextField) {
         

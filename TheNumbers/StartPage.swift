@@ -9,15 +9,13 @@ import UIKit
 import Firebase
 
 class StartPageVC: UIViewController {
-    @IBOutlet private weak var nameUser: UILabel! {
-        didSet { nameUser.text =  }
-    }
+    @IBOutlet private weak var nameUser: UILabel! 
     @IBOutlet private weak var logOutButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nameUser.text = Auth.auth().currentUser?.email
     }
     
     @IBAction private func logOutAction() {
