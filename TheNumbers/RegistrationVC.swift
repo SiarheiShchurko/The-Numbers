@@ -63,7 +63,7 @@ final class RegistrationVC: UIViewController {
         titleLabel.text = "Registration"
         signButton.setTitle("Sign In", for: .normal)
         registerButton.setTitle("REGISTR", for: .normal)
-        registerButton.setTitle("REGISTR", for: .selected)
+        registerButton.setTitle("REGISTR", for: .disabled)
         enterName.isHidden = false
         UIView.animate(withDuration: 0.20, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.0, options: .allowAnimatedContent) {
             self.stackView.frame.origin.y = self.enterName.frame.maxY + 20 }
@@ -75,7 +75,7 @@ final class RegistrationVC: UIViewController {
         titleLabel.text = "Log In"
         signButton.setTitle("Register", for: .normal)
         registerButton.setTitle("ENTER", for: .normal)
-        registerButton.setTitle("ENTER", for: .selected)
+        registerButton.setTitle("ENTER", for: .disabled)
         enterName.isHidden = true
         UIView.animate(withDuration: 0.2, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.0, options: .allowAnimatedContent) {
             self.view.translatesAutoresizingMaskIntoConstraints = true
@@ -85,14 +85,12 @@ final class RegistrationVC: UIViewController {
     private func checkTextField() {
         if signUp {
         let isEmpty = (enterName.text?.isEmpty ?? true || enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
-            registerButton.isSelected = isEmpty
-            //registerButton.isEnabled = !isEmpty
+            registerButton.isEnabled = !isEmpty
             
             
         } else {
             let isEmpty = (enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
-            registerButton.isSelected = isEmpty
-               // registerButton.isEnabled = !isEmpty
+            registerButton.isEnabled = !isEmpty
         }
     }
     
@@ -106,14 +104,13 @@ final class RegistrationVC: UIViewController {
         //Registration
         Auth.auth().createUser(withEmail: email, password: pass) { result, error in
             if error == nil {
-                self.dismiss(animated: true)
                 guard let result = result else { return }
                 let userStruct = Database.database().reference().child("users")
                 userStruct.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
                 print(result.user.uid)
+                self.dismiss(animated: true)
+               
             }
-            
-            
         }
     }
     
@@ -128,7 +125,6 @@ final class RegistrationVC: UIViewController {
             if error == nil {
                 self.dismiss(animated: true)
             }
-           
         }
     }
     
