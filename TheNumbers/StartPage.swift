@@ -11,13 +11,13 @@ import Firebase
 class StartPageVC: UIViewController {
     @IBOutlet private weak var logOutButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
       
     }
     
     @IBAction private func logOutAction() {
+        
         do {
             try Auth.auth().signOut()
         } catch {
