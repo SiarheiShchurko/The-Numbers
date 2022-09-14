@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0A8BB428D215ED00231C77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A8BB328D215ED00231C77 /* User.swift */; };
 		ED1812172762455200EC233D /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1812162762455200EC233D /* GameVM.swift */; };
 		ED1D969127DF252100D24852 /* RecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1D969027DF252100D24852 /* RecordVC.swift */; };
 		ED251BF3275FE2C10000A1FE /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED251BF2275FE2C10000A1FE /* GameVC.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED0A8BB328D215ED00231C77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ED1812162762455200EC233D /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		ED1D969027DF252100D24852 /* RecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVC.swift; sourceTree = "<group>"; };
 		ED251BF2275FE2C10000A1FE /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				EDA3B6A6275FB8D7008E17C7 /* Info.plist */,
 				ED35FC9B28C0E143009BFB78 /* GoogleService-Info.plist */,
 				ED35FCB228C1177A009BFB78 /* Utils.swift */,
+				ED0A8BB328D215ED00231C77 /* User.swift */,
 			);
 			path = TheNumbers;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				ED35FCB128C10301009BFB78 /* RegistrationVC.swift in Sources */,
 				ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */,
 				ED1812172762455200EC233D /* GameVM.swift in Sources */,
+				ED0A8BB428D215ED00231C77 /* User.swift in Sources */,
 				ED1D969127DF252100D24852 /* RecordVC.swift in Sources */,
 				EDC1EC6227D0CC6100E957E8 /* SettingsTableVC.swift in Sources */,
 				EDE5FDEE27D76E55004FB3A2 /* SettingsStruct.swift in Sources */,
