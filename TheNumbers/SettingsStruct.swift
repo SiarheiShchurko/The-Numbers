@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 enum KeysUserDefaults {
     static var actualSettingsGame = "actualSettingsGame" ///Чтобы не запутаться с ключами, создан этот enum. Мы записали, что ключ "actualSettingsGame" = переменной actualSettingsGame в enum. Теперь когда необходимо обратиться к к значению по ключу, указываем название enum и через точку ставим переменную необходимого значения.
     static let enumRecordKey = "RecordGame"

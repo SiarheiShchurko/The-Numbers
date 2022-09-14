@@ -9,9 +9,16 @@ import Foundation
 import UIKit
 import Firebase
 
+protocol UserLabelDelegate: AnyObject {
+    func getInf(_ inf: User)
+}
+
 final class RegistrationVC: UIViewController {
     
     //private var registrationVM: RegistrationProtocol = RegistrationVM()
+    
+    weak var delegate: UserLabelDelegate?
+    //var model: User = User()
     
     private var signUp: Bool = true {
         willSet { newValue ? registrationScreen() : loginInScreen() }
@@ -86,8 +93,7 @@ final class RegistrationVC: UIViewController {
         if signUp {
         let isEmpty = (enterName.text?.isEmpty ?? true || enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
             registerButton.isEnabled = !isEmpty
-            
-            
+        
         } else {
             let isEmpty = (enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
             registerButton.isEnabled = !isEmpty
@@ -95,47 +101,48 @@ final class RegistrationVC: UIViewController {
     }
     
     //MARK: registration func
-    func registration(_ email: String?, _ pass: String?) {
+    func registration() {
+        
         //Optional delete
         guard let name = enterName.text else { return }
-        guard let email = email else { return }
-        guard let pass = pass else { return }
+        guard let email = enterEmail.text else { return }
+        guard let pass = enterPassword.text else { return }
         
         //Registration
         Auth.auth().createUser(withEmail: email, password: pass) { result, error in
             if error == nil {
+                
+                self.signIn()
                
                 guard let result = result else { return }
                 let userStruct = Database.database().reference().child("users")
                 userStruct.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
                 print(result.user.uid)
-                self.dismiss(animated: true)
-            }
+                }
             print(error)
-          
-            
         }
-       
     }
     
     //MARK: SignIn func
-    func signIn(_ email: String?, _ pass: String?) {
+    func signIn() {
         //Optional delete
-        guard let email = email else { return }
-        guard let pass = pass else { return }
+        guard let name = enterName.text else { return }
+        guard let email = enterEmail.text else { return }
+        guard let pass = enterPassword.text else { return }
+        
         
         //Enter
         Auth.auth().signIn(withEmail: email, password: pass) { result, error in
             if error == nil {
-                self.dismiss(animated: true)
+            self.delegate?.getInf(User(email: email, name: name))
+            self.dismiss(animated: true)
             }
         }
     }
     
     
     @IBAction private func textFieldActon(_ sender: UITextField) {
-        
-            switch sender {
+        switch sender {
             case enterName:
                 enterName.text = sender.text
             case enterEmail:
@@ -149,24 +156,18 @@ final class RegistrationVC: UIViewController {
         print(enterName ?? "nil")
         }
     
-  
-    
     @IBAction private func SignInAction() {
         signUp = !signUp
         checkTextField()
     }
     
-    //MARK:
+    //MARK: Registrated or enter in account func
     @IBAction private func registrationOrEnter() {
-        
-        let eMail = enterEmail.text
-        let pass = enterPassword.text
-        
-        signUp ? registration(eMail, pass) : signIn(eMail, pass)
+        signUp ? registration() : signIn()
     }
 }
 
-
+//MARK: Delegate for all TF
 extension RegistrationVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -182,3 +183,6 @@ extension RegistrationVC: UITextFieldDelegate {
         return true
     }
 }
+
+
+
