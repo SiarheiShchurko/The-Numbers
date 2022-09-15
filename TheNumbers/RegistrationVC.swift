@@ -128,11 +128,7 @@ final class RegistrationVC: UIViewController {
     func signIn() {
         guard let email = enterEmail.text else { return }
         guard let pass = enterPassword.text else { return }
-        for (key, value) in registrationVM.userDataBase.enumerated() {
-            print(key)
-            print(value)
-        }
-        
+    
         //Enter
         Auth.auth().signIn(withEmail: email, password: pass) { result, error in
             if error == nil {
@@ -142,13 +138,7 @@ final class RegistrationVC: UIViewController {
         }
     }
     
-//    func removeAllFromTF() {
-//        enterName.text?.removeAll()
-//        enterEmail.text?.removeAll()
-//        enterPassword.text?.removeAll()
-//    }
-    
-    
+    //MARK: TF Action
     @IBAction private func textFieldActon(_ sender: UITextField) {
         switch sender {
             case enterName:

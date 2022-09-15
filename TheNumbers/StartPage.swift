@@ -16,7 +16,7 @@ class StartPageVC: UIViewController {
     @IBOutlet private weak var nameUser: UILabel! {
         didSet {
             let defaults = UserDefaults.standard
-            guard let email = eMailUser.text else { return }
+            guard let email = Auth.auth().currentUser?.email else { return }
             nameUser.text = defaults.string(forKey: email)
             
         }
@@ -74,6 +74,7 @@ extension StartPageVC: UserLabelDelegate {
     func getInf(_ inf: User ) {
         guard let email = inf.email else { return }
         let defaults = UserDefaults.standard
+        nameUser.text = inf.name
         nameUser.text = defaults.string(forKey: email)
         eMailUser.text = inf.email
             }
