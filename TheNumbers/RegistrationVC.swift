@@ -15,10 +15,10 @@ protocol UserLabelDelegate: AnyObject {
 
 final class RegistrationVC: UIViewController {
     
-    //private var registrationVM: RegistrationProtocol = RegistrationVM()
+    private var registrationVM: RegistrationProtocol = RegistrationVM()
     
     weak var delegate: UserLabelDelegate?
-    //var model: User = User()
+    
     
     private var signUp: Bool = true {
         willSet { newValue ? registrationScreen() : loginInScreen() }
@@ -109,9 +109,10 @@ final class RegistrationVC: UIViewController {
         guard let pass = enterPassword.text else { return }
         
         //Registration
+      
         Auth.auth().createUser(withEmail: email, password: pass) { result, error in
             if error == nil {
-                
+                UserDefaults.standard.set(name, forKey: email)
                 self.signIn()
                
                 guard let result = result else { return }
@@ -125,20 +126,27 @@ final class RegistrationVC: UIViewController {
     
     //MARK: SignIn func
     func signIn() {
-        //Optional delete
-        guard let name = enterName.text else { return }
         guard let email = enterEmail.text else { return }
         guard let pass = enterPassword.text else { return }
-        
+        for (key, value) in registrationVM.userDataBase.enumerated() {
+            print(key)
+            print(value)
+        }
         
         //Enter
         Auth.auth().signIn(withEmail: email, password: pass) { result, error in
             if error == nil {
-            self.delegate?.getInf(User(email: email, name: name))
-            self.dismiss(animated: true)
+                self.delegate?.getInf(User(email: email))
+                self.dismiss(animated: true)
             }
         }
     }
+    
+//    func removeAllFromTF() {
+//        enterName.text?.removeAll()
+//        enterEmail.text?.removeAll()
+//        enterPassword.text?.removeAll()
+//    }
     
     
     @IBAction private func textFieldActon(_ sender: UITextField) {

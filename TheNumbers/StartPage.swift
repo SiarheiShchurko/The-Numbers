@@ -10,16 +10,25 @@ import Foundation
 import Firebase
 
 class StartPageVC: UIViewController {
+    var registrationVM: RegistrationProtocol = RegistrationVM()
     
     //MARK: Labels outlet
-    @IBOutlet private weak var nameUser: UILabel!
+    @IBOutlet private weak var nameUser: UILabel! {
+        didSet {
+            let defaults = UserDefaults.standard
+            guard let email = eMailUser.text else { return }
+            nameUser.text = defaults.string(forKey: email)
+            
+        }
+    }
+    
+    //MARK: EmailOut label
     @IBOutlet private weak var eMailUser: UILabel! {
         didSet { eMailUser.text = Auth.auth().currentUser?.email }
     }
     
     //MARK: Buttons outlet
     @IBOutlet private weak var logOutButton: UIButton!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         Auth.auth().addStateDidChangeListener { auth, user in
@@ -56,13 +65,18 @@ class StartPageVC: UIViewController {
         present(nextVC, animated: true)
         
     }
+    
+   
 }
 
 //MARK: Delegate for showed name and e-mail user
 extension StartPageVC: UserLabelDelegate {
     func getInf(_ inf: User ) {
-        nameUser.text = inf.name
+        guard let email = inf.email else { return }
+        let defaults = UserDefaults.standard
+        nameUser.text = defaults.string(forKey: email)
         eMailUser.text = inf.email
-    }
-}
+            }
+        }
+
 
