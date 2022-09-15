@@ -89,6 +89,7 @@ final class RegistrationVC: UIViewController {
             self.stackView.frame.origin.y = self.titleLabel.frame.maxY + 20 }
     }
     
+    //MARK: CheckTF for enabled registration button
     private func checkTextField() {
         if signUp {
         let isEmpty = (enterName.text?.isEmpty ?? true || enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
