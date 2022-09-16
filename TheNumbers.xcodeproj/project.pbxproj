@@ -31,7 +31,7 @@
 		EDA3B6A5275FB8D7008E17C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */; };
 		EDC1EC6027D0CB9300E957E8 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1EC5F27D0CB9300E957E8 /* SettingVC.swift */; };
 		EDC1EC6227D0CC6100E957E8 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1EC6127D0CC6100E957E8 /* SettingsTableVC.swift */; };
-		EDE5FDEE27D76E55004FB3A2 /* SettingsStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5FDED27D76E55004FB3A2 /* SettingsStruct.swift */; };
+		EDE5FDEE27D76E55004FB3A2 /* SettingsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5FDED27D76E55004FB3A2 /* SettingsClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +52,7 @@
 		EDA3B6A6275FB8D7008E17C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDC1EC5F27D0CB9300E957E8 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		EDC1EC6127D0CC6100E957E8 /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
-		EDE5FDED27D76E55004FB3A2 /* SettingsStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStruct.swift; sourceTree = "<group>"; };
+		EDE5FDED27D76E55004FB3A2 /* SettingsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +141,8 @@
 				ED790E6728BFA78600772CE7 /* RecordVC */,
 				ED790E6528BFA75200772CE7 /* SettingVC */,
 				ED790E6428BF9E1A00772CE7 /* GameVC */,
-				EDE5FDED27D76E55004FB3A2 /* SettingsStruct.swift */,
 				EDA3B69C275FB8D6008E17C7 /* StartPage.swift */,
+				EDE5FDED27D76E55004FB3A2 /* SettingsClass.swift */,
 				EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */,
 				EDA3B69E275FB8D6008E17C7 /* Main.storyboard */,
 				EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */,
@@ -252,7 +252,7 @@
 				ED0A8BB428D215ED00231C77 /* User.swift in Sources */,
 				ED1D969127DF252100D24852 /* RecordVC.swift in Sources */,
 				EDC1EC6227D0CC6100E957E8 /* SettingsTableVC.swift in Sources */,
-				EDE5FDEE27D76E55004FB3A2 /* SettingsStruct.swift in Sources */,
+				EDE5FDEE27D76E55004FB3A2 /* SettingsClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

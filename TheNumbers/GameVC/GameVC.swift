@@ -115,35 +115,35 @@ class GameViewController: UIViewController {
     }
     
     //MARK: Func for new record
-    func showAlert() {  //Для того чтобы прописать всплывающее окно в рекорде, прописываем функцию алерт.
-        let alert = UIAlertController(title: "Congratilate", message: "It's New Record", preferredStyle: .alert) /// Помещаем в переменную alert UIAlertController с текстом который выводится в сплывающем сообщении. title - Заголовок. message - само сообщение. preferredStyle - стиль алерта (.alert или .actionTable)
-        let alertButtonOk = UIAlertAction(title: "Ok", style: .default, handler: nil) ///В переменную alertButtonOk добавляем UIAlertAction который поможет отреагировать на всплывающее сообщение нажатием на кнопку.  title - это то что написано в кнопке. style - оформление кнопки (есть три вида: .default / .cancel / .distraction. handler - это фуекция которая выполняется при нажатии на кнопку ок. Поскольку дополнительных действий не требуется, оставляем nill.
-        alert.addAction(alertButtonOk) ///Добавляем кнопку "ок" в алерт через addAction.
-        present(alert, animated: true, completion: nil) ///Функция present отражает алерт
+    func showAlert() {
+        let alert = UIAlertController(title: "Congratilate", message: "It's New Record", preferredStyle: .alert)
+        let alertButtonOk = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(alertButtonOk)
+        present(alert, animated: true, completion: nil)
     }
     
     //MARK: Alert for when game is over
-    func showAlertActionSheet() {  /// Для примера прописываем функцию для алерта в стиле .actionSheet.
-        let alert = UIAlertController(title: "What you want do?", message: nil, preferredStyle: .actionSheet) ///Также создаем алерт UIAlertController и прописываем ему настройки
+    func showAlertActionSheet() {
+        let alert = UIAlertController(title: "What you want do?", message: nil, preferredStyle: .actionSheet)
         
         let newGameAction = UIAlertAction(title: "Start New Game", style: .default) { [ weak self ] (_) in
-            self?.game.newGame() ///Привязывем к кнопке функцию newGame.
-            self?.setUpScreen() /// Вызываем  функцию setUpScreen чтобы отобразить экран полностью готовый к игре.
+            self?.game.newGame()
+            self?.setUpScreen()
         }
         
         let showRecord = UIAlertAction(title: "Looked Record", style: .default) { [ weak self ] (_) in
             self?.performSegue(withIdentifier: "AlertRecordSeague", sender: nil)
-            }  ///Для перехода к модальному VC выполняется переход performSegue по Identifier
+            }
  
-        let returnMenu = UIAlertAction(title: "Back to Menu", style: .destructive) { [ weak self ] (_) in  ///Функция возврата в главное меню
-            self?.navigationController?.popToRootViewController(animated: true) ///Через navigationController, методом "pop" возвращаемся на главный контроллер - главное меню.
+        let returnMenu = UIAlertAction(title: "Back to Menu", style: .destructive) { [ weak self ] (_) in
+            self?.navigationController?.popToRootViewController(animated: true)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)  ///Кнопка cancel которая оставляет пользователя на текущем экране.
-        alert.addAction(newGameAction) ///Добавляем кнопку "Start New Game"
-        alert.addAction(showRecord) ///Добавляем кнопку "Looked Record"
-        alert.addAction(returnMenu) ///Добавляем кнопку "Back to Menu"
-        alert.addAction(cancel) ///Добавляем кнопку "Cancel"
-        if let popover = alert.popoverPresentationController { ///Из-за того что iPad не отображают алерты стиля .actionSheet так как айфон. Из-за это нужно прописывать для iPad точку привязки popopver'a (popover - это и есть само окно). Создаем константу поповер и если alert.popoverPresentationController не nill, то мы перейдем в код ниже:
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(newGameAction)
+        alert.addAction(showRecord)
+        alert.addAction(returnMenu)
+        alert.addAction(cancel)
+        if let popover = alert.popoverPresentationController { ///Из-за того что iPad не отображают алерты стиля .actionSheet так как айфон. Из-за это нужно прописывать для iPad точку привязки popopver'a (popover - это и есть само окно). 
            popover.sourceView = self.view ///sourceView - это вью к которой привязывается поповер. В данном примере, мы привязываем поповер к основной вью self.view.
           popover.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0) ///  Для того чтобы разместить поповер по центру используем метод sourceRect и указываем параметры CGRect "х" и "у" - middle x и middle y. Высота и ширина не важны.
           popover.permittedArrowDirections = UIPopoverArrowDirection.init(rawValue: 0) ///По умолчанию, при привязке поповера у него есть стрелочка. В случае если мы не привязывем поповер к какому то сообщению/лейблу итд, эта стрелочка выглядит неуместно. Ее можно отлючить подобным методом.

@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 import Firebase
 
-class StartPageVC: UIViewController {
+final class StartPageVC: UIViewController {
     var registrationVM: RegistrationProtocol = RegistrationVM()
     
     //MARK: Labels outlet
