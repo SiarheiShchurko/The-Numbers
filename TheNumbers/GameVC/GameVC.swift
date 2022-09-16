@@ -93,29 +93,25 @@ class GameViewController: UIViewController {
             }
     
     //MARK: Check StatusGame
-    func globalStatus(status: StatusGame) {     //Пишем функцию для обновления статусов игры. Присваеваем для status значения StatusGame
+    func globalStatus(status: StatusGame) {
+        
         switch status {
-                                               //Проверяем статус по следующим кейсам...
-        case .start:                           //Если статус старт
-            StatusLabel.text = "Game was started" //Пишем "Игра началась"
-            NewGameOutlet.isHidden = true      //При статусе игры "Старт" - кнопка скрыта
-            
-        case .win:                             //Если статус "Вин"
-            StatusLabel.text = "You win"   //Пишем "Вы победили"
-            StatusLabel.textColor = .green     //Цвет надписи зеленый
-            NewGameOutlet.isHidden = false     //При статусе игры "Победа" - кнопка отображена
-            if game.isNewRecord{ 
-                showAlert()
-            } else {
-                showAlertActionSheet()
-            }
-            
-        case .lose:                            //Если статус "Луз"
-            StatusLabel.text = "You lose"  //Пишем, что мы проиграли
-            StatusLabel.textColor = .red       //Зеленым цветом
-            NewGameOutlet.isHidden = false     //При статусе игры "Поражение" - кнопка отображена
+        
+        case .win:
+            StatusLabel.text = "You win"
+            StatusLabel.textColor = .green
+            game.isNewRecord ? showAlert() : showAlertActionSheet()
+                
+           
+        case .lose:
+            StatusLabel.text = "You lose"
+            StatusLabel.textColor = .red
             showAlertActionSheet()
-            }
+            
+        default: break
+      
+        }
+   
     }
     
     //MARK: Func for new record
