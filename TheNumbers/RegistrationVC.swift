@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Firebase
 
+//MARK: Delegate protocol
 protocol UserLabelDelegate: AnyObject {
     func getInf(_ inf: User)
 }
@@ -19,12 +20,13 @@ final class RegistrationVC: UIViewController {
     
     weak var delegate: UserLabelDelegate?
     
-    
+    //MARK: Registr or sign?
     private var signUp: Bool = true {
         willSet { newValue ? registrationScreen() : loginInScreen() }
     }
     
-    private var isSelected: Bool = false
+    //private var isSelected: Bool = false
+    
     
     @IBOutlet private weak var stackView: UIStackView!
     
@@ -143,7 +145,8 @@ final class RegistrationVC: UIViewController {
                     }
                 }
             }
-                           
+    
+    //MARK: Limit char for password
     private func charCountForPass() -> Bool {
                 if let pass = enterPassword.text  {
                 if pass.count <= 5 {
@@ -166,9 +169,9 @@ final class RegistrationVC: UIViewController {
             }
             
         checkTextField()
-        print(enterName ?? "nil")
+       
         }
-    
+    //MARK: Reg disp or sign disp
     @IBAction private func SignInAction() {
         signUp = !signUp
         checkTextField()
