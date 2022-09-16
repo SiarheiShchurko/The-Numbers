@@ -16,7 +16,11 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var TimerLabel: UILabel!
     
     //MARK: Buttons
-    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var buttons: [UIButton]! {
+        didSet { buttons.forEach({ button in
+            cornerRadius(button)
+        })}
+    }
     @IBOutlet private weak var NewGameOutlet: UIButton!
   
     
