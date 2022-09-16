@@ -18,7 +18,6 @@ class StartPageVC: UIViewController {
             let defaults = UserDefaults.standard
             guard let email = Auth.auth().currentUser?.email else { return }
             nameUser.text = defaults.string(forKey: email)
-            
         }
     }
     
@@ -29,13 +28,11 @@ class StartPageVC: UIViewController {
     
     //MARK: Buttons outlet
     @IBOutlet private weak var logOutButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user == nil {
-                self.transitionBetweenDisp()
-            }
-        }
+        checkAutorization()
     }
     
     //MARK: LogOut func
@@ -65,8 +62,14 @@ class StartPageVC: UIViewController {
         present(nextVC, animated: true)
         
     }
-    
-   
+    //MARK: Check auth() func
+    private func checkAutorization() {
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user == nil {
+                self.transitionBetweenDisp()
+            }
+        }
+    }
 }
 
 //MARK: Delegate for showed name and e-mail user

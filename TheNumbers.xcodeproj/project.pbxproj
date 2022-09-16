@@ -75,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED1C799028D47EEB00FEA36D /* RegistrationVC */ = {
+			isa = PBXGroup;
+			children = (
+				ED4028D328CF3449003EAF00 /* RegistrationVM.swift */,
+				ED35FCB028C10301009BFB78 /* RegistrationVC.swift */,
+			);
+			path = RegistrationVC;
+			sourceTree = "<group>";
+		};
 		ED790E6428BF9E1A00772CE7 /* GameVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,12 +137,11 @@
 		EDA3B697275FB8D6008E17C7 /* TheNumbers */ = {
 			isa = PBXGroup;
 			children = (
+				ED1C799028D47EEB00FEA36D /* RegistrationVC */,
 				ED790E6728BFA78600772CE7 /* RecordVC */,
 				ED790E6528BFA75200772CE7 /* SettingVC */,
 				ED790E6428BF9E1A00772CE7 /* GameVC */,
 				EDE5FDED27D76E55004FB3A2 /* SettingsStruct.swift */,
-				ED4028D328CF3449003EAF00 /* RegistrationVM.swift */,
-				ED35FCB028C10301009BFB78 /* RegistrationVC.swift */,
 				EDA3B69C275FB8D6008E17C7 /* StartPage.swift */,
 				EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */,
 				EDA3B69E275FB8D6008E17C7 /* Main.storyboard */,
