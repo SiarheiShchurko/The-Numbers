@@ -52,6 +52,7 @@ final class RegistrationVC: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkTextField()
@@ -92,15 +93,19 @@ final class RegistrationVC: UIViewController {
     //MARK: CheckTF for enabled registration button
     private func checkTextField() {
         if signUp {
-        let isEmpty = (enterName.text?.isEmpty ?? true || enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
+            let isEmpty = (enterName.text?.isEmpty ?? true || enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true || charCountForPass())
+                           
+                           
             registerButton.isEnabled = !isEmpty
         
         } else {
-            let isEmpty = (enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true)
+            let isEmpty = (enterEmail.text?.isEmpty ?? true || charCountForPass())
             registerButton.isEnabled = !isEmpty
         }
     }
     
+                           
+                           
     //MARK: registration func
     func registration() {
         
@@ -126,19 +131,28 @@ final class RegistrationVC: UIViewController {
     }
     
     //MARK: SignIn func
-    func signIn() {
-        guard let email = enterEmail.text else { return }
-        guard let pass = enterPassword.text else { return }
-    
-        //Enter
-        Auth.auth().signIn(withEmail: email, password: pass) { result, error in
-            if error == nil {
-                self.delegate?.getInf(User(email: email))
-                self.dismiss(animated: true)
+        private func signIn() {
+                guard let email = enterEmail.text else { return }
+                guard let pass = enterPassword.text else { return }
+                
+                //Enter
+                Auth.auth().signIn(withEmail: email, password: pass) { result, error in
+                    if error == nil {
+                        self.delegate?.getInf(User(email: email))
+                        self.dismiss(animated: true)
+                    }
+                }
             }
-        }
-    }
-    
+                           
+    private func charCountForPass() -> Bool {
+                if let pass = enterPassword.text  {
+                if pass.count <= 5 {
+                    return true
+                }
+            }
+        return false
+            }
+                           
     //MARK: TF Action
     @IBAction private func textFieldActon(_ sender: UITextField) {
         switch sender {
