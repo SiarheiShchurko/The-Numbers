@@ -113,10 +113,9 @@ class Game {
 
 //MARK: Update time formet
 extension Int {
-    
     func newFormatTime() -> String {
         let minutes = self / 60
         let seconds = self % 60
-        return String(format: "%d:%02d", minutes, seconds) 
+        return String(format: "%d:%02d", minutes, seconds)
     }
 }
