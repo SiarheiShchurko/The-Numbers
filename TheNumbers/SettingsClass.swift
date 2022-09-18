@@ -24,10 +24,9 @@ class SettingsClass {
     
     
     var currentSettings: SettingsStruct {
-        
         get {
-            if let data = UserDefaults.standard.object(forKey: KeysUserDefaults.actualSettingsGame) as? Data { // Если  UserDefaults.standard.object  Data не пустая...
-                return try! PropertyListDecoder().decode(SettingsStruct.self, from: data) //Получаю настройки
+            if let data = UserDefaults.standard.object(forKey: KeysUserDefaults.actualSettingsGame) as? Data { /// Если  UserDefaults.standard.object  Data не пустая...
+                return try! PropertyListDecoder().decode(SettingsStruct.self, from: data) ///Получаю настройки
             } else {
                 if ( try? PropertyListEncoder().encode(defaultSettings) ) != nil {
                     UserDefaults.standard.object(forKey: KeysUserDefaults.actualSettingsGame)
@@ -37,10 +36,12 @@ class SettingsClass {
         }
         set { if let data = try? PropertyListEncoder().encode(newValue) {  /// Если пришло новое значение
             UserDefaults.standard.setValue(data, forKey: KeysUserDefaults.actualSettingsGame) ///сохраняю измененные настройки в хранилище UserDefaults.standard. по ключу enum
+            
         }
         }
     }
-    func defaultSettingsReset(){
+    
+    func defaultSettingsReset() {
         currentSettings = defaultSettings
     }
 }

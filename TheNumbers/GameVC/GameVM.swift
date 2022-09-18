@@ -7,55 +7,53 @@
 
 import Foundation
 
-enum StatusGame{  ///Энумы созданы для отражения статуса игры
-    case start  ///Начало игры
-    case win     /// Победа
-    case lose    /// Поражение
+enum StatusGame {  ///StatusGame отражает статус игры
+    case start
+    case win
+    case lose
 }
 
 class Game {
     
-    struct Item {   ///Вложенная в класс структура. С ней сможет работать исключительно класс "гейм". Эта структура будет отвечать за кнопки в нашей игре.
-        var title: String     ///Создаем свойство тайтл (у нас это номер кнопки)
-        var isFound: Bool = false  ///Также создаем свойство которое спрашивает "Найдена ли кнопка?". По умолчанию данное свойство будет = false
-        var isError: Bool = false ///Это свойство используем для для того, чтобы подсвечивать цветом неправильно нажатую кнопку. Менять данное свойство на true будем в функции сheck
+    struct Item {   ///Структура Item  отвечает за кнопки в  игре.
+        var title: String     ///Тайтл кнопки
+        var isFound: Bool = false  ///Найдена ?
+        var isError: Bool = false ///Нажата не та кнопка
     }
     
-    private let data = Array(1...99) ///Создаем массив чисел от 0 до 99. Этот массив будет служить базой данных для чисел из которого мы и будем брать те самые числа
-    var itemArray: [Item] = [] ///Создаем пустой массив в который будут попадать 16 рандомных чисел из массива data.
+    private let data = Array(1...99) ///Массив который хранит весь объем возможных чисел
+    var itemArray: [Item] = [] ///Массив в который закидываю отобранные числа из массива data.
 
-    private var countItems:Int /// Для того чтобы игра понимала кол-во нужных кнопок, создаем свойство countItems. При создании экземпляра класса, введенное кол-во будет передоваться в игру и она будет понимать кол-во кнопок которое нужно разместить на экране
-    var nextDigits:Item? ///Создаем свойство nextDigits типа Item. Используем optional т.к. вконце игры чисел не будет и код не должен возвращать какое-то число для поска/ Должен вернуться nil.
+    private var countItems: Int ///Кол-во кнопок
+    
+    var nextDigits: Item? ///Оptional т.к. вконце игры чисел не будет и код не должен возвращать какое-то число для поска/ Должен вернуться nil.
     var isTimerOff = false
     var isNewRecord = false
-    var statusGame: StatusGame = .start { /// Создаем переменную для того чтобы отображать статусы игры. По умолчанию статус игры = старт
-        didSet {
-            if statusGame != .start {
-                if statusGame == .win {
-                    let newRecord = timeForGame - roundTimeForGame ///Для подсчета затраченного времени на прохождения раунда, для рекорда, от времени раунда отнимаем время которое осталось на момент завершения игры
-                    let record = UserDefaults.standard.integer(forKey: KeysUserDefaults.enumRecordKey ) /// Сохраняем рекорд в юзер дефаултс. Подтягиваем его также по стасичному ключу
-                    if record == 0 || newRecord < record {   ///Если в рекорд нет сохраненных рекордов (играем в первый раз в игру) или новый рекорд меньше записанного рекорда
-                        UserDefaults.standard.setValue(newRecord, forKey: KeysUserDefaults.enumRecordKey)///Записываем результат timeForGame-roundTimeForGame в Record
-                        isNewRecord = true ///Если новый рекорд записан в юзер дефаултс, меняем статус переменной isNewRecord на тру.
-                    }
+    var statusGame: StatusGame = .start {
+        didSet { if statusGame != .start {
+            if statusGame == .win {
+                let newRecord = timeForGame - roundTimeForGame
+                let record = UserDefaults.standard.integer(forKey: KeysUserDefaults.enumRecordKey ) /// Сохраняем рекорд в юзер дефаултс. Подтягиваем его также по стасичному ключу
+                if record == 0 || newRecord < record {   ///Если в рекорд нет сохраненных рекордов (играем в первый раз в игру) или новый рекорд меньше записанного рекорда
+                    UserDefaults.standard.setValue(newRecord, forKey: KeysUserDefaults.enumRecordKey)///Записываем результат timeForGame-roundTimeForGame в Record
+                    isNewRecord = true ///Если новый рекорд записан в юзер дефаултс, меняем статус переменной isNewRecord на тру.
                 }
-                stopGame() ///Останавливаем таймер
             }
+            stopGame() ///Останавливаем таймер
+        }
         }
     }
     
-    var timeForGame: Int                   ///Свойство timeForGame - статично. Мы его берем, чтобы игра, перед новым раундом давала кол-во секунд которое дано на раунд. Это настройка которая не изменяется. Записываем ее в функцию newGame
-    private var roundTimeForGame: Int {    ///Добавляем свойство для времени раунда
-        didSet {                      /// Прописываем didset для того чтобы понимать когда заканчивается время и определять статус игры
-            ///
-            if roundTimeForGame == 0 {     /// Если timeForGame = 0
-                statusGame = .lose   /// Мы проиграли
-            }
+    var timeForGame: Int                   ///Свойство timeForGame - статично. Содержит в себе полный объем времени который выбран для прохождения раунда в настройках
+    private var roundTimeForGame: Int {    ///Вычисляемое свойство
+        didSet { if roundTimeForGame == 0 {     /// Если timeForGame = 0
+            statusGame = .lose   /// Проигрыш
+        }
             updateTimer(statusGame, roundTimeForGame) ///Статус игры и время на раунд обнулятся
         }
     }
     
-    private var timer:Timer?   ///Создаем переменную таймер с типом данных опшинал
+    private var timer: Timer?
     
     private var updateTimer:(( StatusGame, Int ) -> Void) /// свойства модели
     
@@ -74,9 +72,9 @@ class Game {
         while itemArray.count < countItems {
             let item = Item(title: String(digits.removeFirst()))
             itemArray.append(item) }
-        updateTimer(statusGame,roundTimeForGame) ///Прописываем обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
+        updateTimer(statusGame,roundTimeForGame) ///Прописал обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
         
-        if SettingsClass.shared.currentSettings.timerOn{
+        if SettingsClass.shared.currentSettings.timerOn {
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [ weak self ] (_) in
                 self?.roundTimeForGame -= 1})
         }
@@ -84,42 +82,41 @@ class Game {
     }
     
     //MARK: Func CheckStatusGame
-    func check(index: Int) { ///Создаем функцию которая проверяет число которое нужно найти и число которое мы нажали
+    func check(index: Int) {
         guard statusGame == .start else { return }
-        if itemArray[index].title == nextDigits?.title { ///Если название индекса числа из массива будет равно тайтлу числа на которое идет нажатие
-            itemArray[index].isFound = true /// Тогда мы меняем свойство isFound структуры Item на true. Если isFound = true - кнопка исчезает
+        if itemArray[index].title == nextDigits?.title { ///Если тайтлы совпадают
+            itemArray[index].isFound = true ///статус кнопки - найдена
         } else {
-            itemArray[index].isError = true ///Меняем свойство isError на true. Это означает, что нажата неверная кнопка.
+            itemArray[index].isError = true ///В обратном случае ошибка
         }
         nextDigits = itemArray.shuffled().first(where: { ( itemNext ) -> Bool in
             itemNext.isFound == false /// Следующее число == первому числу перемешанного массива, с условием того, что оно проверяется с найденными числами. Если .isFound == false - этот item еще не уавствовал в игре и будет предложен к поиску
         }
         )
-        if nextDigits == nil { ///Если в nextDigits не осталось чисел
-            statusGame = .win ///Печатаем статус "Победа"
+        if nextDigits == nil {
+            statusGame = .win
         }
     }
     
     //MARK: Func stopGame if timer out.
-    func stopGame() { ///Для того чтобы программа понимала условия при которой нужно останавливать игру, мы прописываем данную функцию
-        timer?.invalidate() ///Данная функция останавливает таймер
-        
+    func stopGame() {
+        timer?.invalidate()
     }
     
     //MARK: Func newGame
-    func newGame() {          ///Эта функция для того, чтобы после окончания игры, мы могли запустить новую игру.
-        statusGame = .start  ///При вызове этой функции, сразу же поменяется статус игры
-        self.roundTimeForGame = self.timeForGame ///Восстанавливаем время на раунд. После завершения раунда в roundTimeForGame остается 0 секунд. Мы указываем, что roundTimeForGame = timeForGame который содержит в себе стандартыне 30 секунд.
-        setupGame()          ///Затем, с помощью функции сетапгейм, произойдет ее настройка
+    func newGame() {
+        statusGame = .start
+        self.roundTimeForGame = self.timeForGame
+        setupGame()
     }
 }
 
-//MARK: 
-extension Int {  ///Для того, чтобы время выглядело в формате времени "минуты/секунды" создаем функцию с помощью расширения
+//MARK: Update time formet
+extension Int {
     
-    func newFormatTime() -> String { /// Функция ничего не принимает, а возвращает строку
-        let minutes = self / 60 ///Введенное в расширение число делим на 60 чтобы понять кол-во минут
-        let seconds = self % 60 ///Все что менее 60 идет в секунды
-        return String(format: "%d:%02d", minutes, seconds) /// формат отображения минут и секунд.
+    func newFormatTime() -> String {
+        let minutes = self / 60
+        let seconds = self % 60
+        return String(format: "%d:%02d", minutes, seconds) 
     }
 }

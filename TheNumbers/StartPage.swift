@@ -29,7 +29,6 @@ final class StartPageVC: UIViewController {
     //MARK: Buttons outlet
     @IBOutlet private weak var logOutButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkAutorization()
