@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum StatusGame {  ///StatusGame отражает статус игры
+enum StatusGame {
     case start
     case win
     case lose
@@ -15,7 +15,7 @@ enum StatusGame {  ///StatusGame отражает статус игры
 
 class Game {
     
-    struct Item {   ///Структура Item  отвечает за кнопки в  игре.
+    struct Item {
         var title: String     ///Тайтл кнопки
         var isFound: Bool = false  ///Найдена ?
         var isError: Bool = false ///Нажата не та кнопка
@@ -33,19 +33,21 @@ class Game {
         didSet { if statusGame != .start {
             if statusGame == .win {
                 let newRecord = timeForGame - roundTimeForGame
-                let record = UserDefaults.standard.integer(forKey: KeysUserDefaults.enumRecordKey ) /// Сохраняем рекорд в юзер дефаултс. Подтягиваем его также по стасичному ключу
-                if record == 0 || newRecord < record {   ///Если в рекорд нет сохраненных рекордов (играем в первый раз в игру) или новый рекорд меньше записанного рекорда
-                    UserDefaults.standard.setValue(newRecord, forKey: KeysUserDefaults.enumRecordKey)///Записываем результат timeForGame-roundTimeForGame в Record
-                    isNewRecord = true ///Если новый рекорд записан в юзер дефаултс, меняем статус переменной isNewRecord на тру.
+                let record = UserDefaults.standard.integer(forKey: KeysUserDefaults.enumRecordKey ) ///Хранение рекорда
+                if record == 0 || newRecord < record {
+                    UserDefaults.standard.setValue(newRecord, forKey: KeysUserDefaults.enumRecordKey)
+                    isNewRecord = true
                 }
             }
-            stopGame() ///Останавливаем таймер
+            stopGame() ///Стоп таймер
         }
         }
     }
     
     var timeForGame: Int                   ///Свойство timeForGame - статично. Содержит в себе полный объем времени который выбран для прохождения раунда в настройках
-    private var roundTimeForGame: Int {    ///Вычисляемое свойство
+    
+    //MARK: Compu
+    private var roundTimeForGame: Int {
         didSet { if roundTimeForGame == 0 {     /// Если timeForGame = 0
             statusGame = .lose   /// Проигрыш
         }
@@ -55,7 +57,7 @@ class Game {
     
     private var timer: Timer?
     
-    private var updateTimer:(( StatusGame, Int ) -> Void) /// свойства модели
+    private var updateTimer:(( StatusGame, Int ) -> Void) /// Свойства модели
     
     init( countItems: Int, updateTimer: @escaping (_ status: StatusGame, _ seconds: Int ) -> Void) { ///Через эскейпинг обновляется UI на VC
         self.countItems = countItems
@@ -65,7 +67,7 @@ class Game {
         setupGame() ///Чтобы создались кнопки, прописываем в инит функцию setupGame
     }
     
-    func setupGame() {  ///Для того чтобы начать создавать items прописываем функцию. Задача этой функции создать неповторяющиеся items в количестве которое будет = countitems
+    func setupGame() {
         isNewRecord = false
         itemArray.removeAll()
         var digits = data.shuffled()
