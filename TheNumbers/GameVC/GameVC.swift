@@ -23,29 +23,27 @@ class GameViewController: UIViewController {
     }
     @IBOutlet private weak var NewGameOutlet: UIButton!
   
-    
-    
     //MARK: VM var
-    lazy private var game = Game(countItems: buttons.count) { [ weak self ] (status, seconds) in      /// Для того чтобы программа сама могла считать -во кнопок которое нужно выводить, создаем экзепляр класса игры и прописываем ему buttons.count (количество кнопок), timeForGame(время на раунд) + updateTime(обновление времени). Код будет сам брать кол-во buttons которое внесено в IBOutlet. Из-за того, что на момент написания кода IBOutlet уще не завершен, приходится ставить свойство Lazy для это экземпляра гейм т.к. икс код ругается на buttons)
-        guard let self = self else { return } ///Используем "гард" для селф т.к. из-за weak self - self становится optional. Данная проверка избавляет от нужды ставить вопросы после self в коде ниже.
-        self.TimerLabel.text = seconds.newFormatTime() ///Заносим отображение секунд в клоуджер. Формат отображения времени берем из расширения newFormatTime()
-        self.globalStatus(status: status)  ///Заносим актуальный статус в параметр status клоуджера
+     lazy private var game = Game(countItems: buttons.count) { [ weak self ] (status, seconds) in
+        guard let self = self else { return } 
+        self.TimerLabel.text = seconds.newFormatTime() ///Настройка отображения времени в лейбле
+        self.globalStatus(status: status)  ///Закидываю статус из функции globalStatus (в ней выполняю чек свитчем)
     }
     
     //MARK: - LIFECYCLE
     override func viewWillDisappear(_ animated: Bool) {
-        game.stopGame()  ///останавливаем таймер когда закрываем экран с игрой.
+        game.stopGame()
     }
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpScreen()  ///Помещаем функцию которая регулирует настройки отображения экрана во viewDidLoad.
+        setUpScreen()
     }
               
   // MARK: Press button func
     @IBAction private func pressButton(_ sender: UIButton) {
-        guard let buttonIndex = buttons.firstIndex(of: sender) else { return } ///Если в баттон индекс получаем buttons.firstIndex 
+        guard let buttonIndex = buttons.firstIndex(of: sender) else { return }
         game.check(index: buttonIndex) ///Gосле того как мы получили через гуард buttonIndex - проверяем его через функцию чек в модели игры
         updateUI()
     }
@@ -61,12 +59,12 @@ class GameViewController: UIViewController {
    
     
     //MARK: SetUP screen func
-    private func setUpScreen() {  ///Это функция настройки экрана. Задача данной функции пройти по массиву itemArray из "Game" и присвоить каждому элементу свои свойства, а именно тайтл - то есть название каждой кнопки и второе - видимость.
+    private func setUpScreen() {
         if SettingsClass.shared.currentSettings.timerOn != true {
             TimerLabel.isHidden = true  ///Если таймер выключен - скрываем его лейбл.
         }
-            for index in game.itemArray.indices { ///Поскольку мы будем находить item по их индексам в array, добавляем .indices
-                buttons[index].setTitle(game.itemArray[index].title, for: .normal) ///Внутри цикла берем индекс кнопки, и закрепляем за ней title, который найдется в массиве itemArray также по индексу + через точку добавляем .title чтобы title присвоился). Прописывем .normal для for
+            for index in game.itemArray.indices {
+                buttons[index].setTitle(game.itemArray[index].title, for: .normal) 
                 buttons[index].alpha = 1 ///Мы прописали в updateUI, что тру у нас равно 0, 1 фолс. Если у кнопки фолс - она включена. Логично, что для первоначального отображения экрана игры - нам нужны все кнопки.
                 buttons[index].isEnabled = true /// Активны ли все кнопки? Да это так.
        //buttons[index].isHidden = false ///Прописываем свойство isHidden = false, что означает, что все созданные индексы должны отображаться на экране
@@ -97,22 +95,20 @@ class GameViewController: UIViewController {
     func globalStatus(status: StatusGame) {
         
         switch status {
-        
+        case .start:
+            StatusLabel.isHidden = true
         case .win:
             StatusLabel.text = "You win"
             StatusLabel.textColor = .green
+            StatusLabel.isHidden = false
             game.isNewRecord ? showAlert() : showAlertActionSheet()
-                
-           
         case .lose:
             StatusLabel.text = "You lose"
             StatusLabel.textColor = .red
+            StatusLabel.isHidden = false
             showAlertActionSheet()
-            
         default: break
-      
-        }
-   
+      }
     }
     
     //MARK: Func for new record
