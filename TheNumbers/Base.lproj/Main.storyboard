@@ -36,9 +36,9 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lt-uQ-pzQ">
-                                            <rect key="frame" x="43.5" y="50" width="41.5" height="20.5"/>
+                                            <rect key="frame" x="43.5" y="50" width="50.5" height="20.5"/>
                                             <color key="tintColor" systemColor="linkColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -50,9 +50,9 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZz-MG-pxt">
-                                            <rect key="frame" x="44" y="87" width="41.5" height="20.5"/>
+                                            <rect key="frame" x="44" y="83" width="48.5" height="28.5"/>
                                             <color key="tintColor" systemColor="systemMintColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -68,6 +68,7 @@
                                         <constraint firstItem="fOm-I0-4pq" firstAttribute="leading" secondItem="dDM-sa-c9X" secondAttribute="leading" constant="16" id="CHK-9y-GFT"/>
                                         <constraint firstItem="fOm-I0-4pq" firstAttribute="centerY" secondItem="9Lt-uQ-pzQ" secondAttribute="centerY" id="Cdc-oK-UFU"/>
                                         <constraint firstAttribute="trailing" secondItem="BI5-2v-621" secondAttribute="trailing" constant="30" id="CgN-1v-PSu"/>
+                                        <constraint firstItem="UZz-MG-pxt" firstAttribute="height" secondItem="dDM-sa-c9X" secondAttribute="height" multiplier="0.031808" id="DgW-Mn-Quv"/>
                                         <constraint firstItem="xHn-O4-eZJ" firstAttribute="top" secondItem="fOm-I0-4pq" secondAttribute="bottom" constant="16" id="H3q-CI-Zhz"/>
                                         <constraint firstItem="xHn-O4-eZJ" firstAttribute="height" secondItem="fOm-I0-4pq" secondAttribute="height" multiplier="1.1" id="I8J-q1-g4B"/>
                                         <constraint firstItem="9Lt-uQ-pzQ" firstAttribute="leading" secondItem="fOm-I0-4pq" secondAttribute="trailing" constant="7.5" id="R7F-X7-1OC"/>
@@ -78,6 +79,7 @@
                                         <constraint firstItem="xHn-O4-eZJ" firstAttribute="leading" secondItem="fOm-I0-4pq" secondAttribute="leading" id="kGd-xQ-m0V"/>
                                         <constraint firstItem="UZz-MG-pxt" firstAttribute="centerY" secondItem="xHn-O4-eZJ" secondAttribute="centerY" id="kgm-Ov-AGQ"/>
                                         <constraint firstItem="fOm-I0-4pq" firstAttribute="height" secondItem="dDM-sa-c9X" secondAttribute="height" multiplier="0.0223214" id="rqv-UH-TQz"/>
+                                        <constraint firstItem="xHn-O4-eZJ" firstAttribute="height" secondItem="UZz-MG-pxt" secondAttribute="height" multiplier="0.77193" id="vB1-cx-QXy"/>
                                         <constraint firstAttribute="bottom" secondItem="BI5-2v-621" secondAttribute="bottom" constant="50" id="w86-Hx-xY0"/>
                                         <constraint firstItem="9Lt-uQ-pzQ" firstAttribute="height" secondItem="dDM-sa-c9X" secondAttribute="height" multiplier="0.0228795" id="z62-pd-D9W"/>
                                     </constraints>
@@ -169,7 +171,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dsd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqu-CC-BWT">
-                                            <rect key="frame" x="186" y="171" width="208" height="28.5"/>
+                                            <rect key="frame" x="186" y="275" width="208" height="28.5"/>
                                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -200,20 +202,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cz5-QM-wZP">
-                                        <rect key="frame" x="0.0" y="52" width="143.5" height="50"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                        <color key="textColor" systemColor="systemBlueColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find digit:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL4-Ix-qgq">
-                                        <rect key="frame" x="0.0" y="104" width="143.5" height="50"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
-                                        <color key="textColor" systemColor="systemBlueColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1G5-0U-Bcl">
-                                        <rect key="frame" x="0.0" y="156" width="143.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="52" width="143.5" height="50"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal">
@@ -223,6 +213,18 @@
                                             <action selector="NewGameAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xAU-Oq-yhn"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find digit:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL4-Ix-qgq">
+                                        <rect key="frame" x="0.0" y="104" width="143.5" height="50"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cz5-QM-wZP">
+                                        <rect key="frame" x="0.0" y="156" width="143.5" height="50"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1G5-0U-Bcl" secondAttribute="trailing" id="CEh-Pn-7RV"/>
@@ -534,7 +536,7 @@
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
                                                         <action selector="textFieldActon:" destination="RUN-jf-hPB" eventType="editingChanged" id="ckp-Qv-NYz"/>
                                                     </connections>
@@ -801,11 +803,11 @@
             <objects>
                 <viewController id="57u-9t-dFE" customClass="RecordViewController" customModule="TheNumbers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZW3-bB-zyL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-App-76x76" translatesAutoresizingMaskIntoConstraints="NO" id="WrN-Ey-ej1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v6m-7g-wQm">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -880,7 +882,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QP9-4E-Yzu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9pS-1b-PoI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -897,7 +899,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8Ya-8F-sCt"/>
+        <segue reference="OZD-WU-O6H"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>
