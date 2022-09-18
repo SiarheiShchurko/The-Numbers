@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var NewGameOutlet: UIButton!
   
     
+    
     //MARK: VM var
     lazy private var game = Game(countItems: buttons.count) { [ weak self ] (status, seconds) in      /// Для того чтобы программа сама могла считать -во кнопок которое нужно выводить, создаем экзепляр класса игры и прописываем ему buttons.count (количество кнопок), timeForGame(время на раунд) + updateTime(обновление времени). Код будет сам брать кол-во buttons которое внесено в IBOutlet. Из-за того, что на момент написания кода IBOutlet уще не завершен, приходится ставить свойство Lazy для это экземпляра гейм т.к. икс код ругается на buttons)
         guard let self = self else { return } ///Используем "гард" для селф т.к. из-за weak self - self становится optional. Данная проверка избавляет от нужды ставить вопросы после self в коде ниже.
