@@ -10,10 +10,14 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    //MARK: Outlets
+    //MARK: Labels
     @IBOutlet private weak var NextDigit: UILabel!
     @IBOutlet private weak var StatusLabel: UILabel!
     @IBOutlet private weak var TimerLabel: UILabel!
+    
+    //MARK: ImageView
+    @IBOutlet private weak var glass: UIImageView!
+    
     
     //MARK: Buttons
     @IBOutlet var buttons: [UIButton]! {
@@ -46,6 +50,26 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpScreen()
+        glassAnimation()
+    }
+    
+    //MARK: GlassAnimation
+    private func glassAnimation() {
+       
+       
+        
+        UIView.animate(withDuration: 5.00, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.00, options: .repeat) {
+            let animate = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
+            animate.fromValue = glass.frame.origin.
+                    self.glass.layoutIfNeeded()
+                    self.glass.frame.origin.y -= 200.0
+                    self.glass.frame.origin.x += 200.0
+                    self.glass.tintColor = .clear
+            self.glass.frame.origin.y -= 200.0
+            self.glass.frame.origin.x += 200.0
+
+           
+        }
     }
               
   // MARK: Press button func
