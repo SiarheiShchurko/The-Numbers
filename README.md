@@ -34,6 +34,10 @@ If it is not new record, app showed only change menu:
 
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 11 44 44](https://user-images.githubusercontent.com/101253596/191211958-02abc204-a987-4c81-bd27-0eec536eac03.png)
 
+If user lose, app showed:
+
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 11 31 27](https://user-images.githubusercontent.com/101253596/191213093-bb1c6d0c-cd85-42be-bfdc-80d8c4f9ee9f.png)
+
 Start disp have button "Log out":
 
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 10 54 03](https://user-images.githubusercontent.com/101253596/191212114-ea7ccc54-ac33-4d2a-93e1-24c18944d968.png)
