@@ -69,6 +69,12 @@ final class StartPageVC: UIViewController {
             }
         }
     }
+    
+    @IBAction private func goToSet() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let nextVC = storyboard.instantiateViewController(withIdentifier: "\(SetDispBase.self)") as? SetDispBase else { return }
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
 
 //MARK: Delegate for showed name and e-mail user

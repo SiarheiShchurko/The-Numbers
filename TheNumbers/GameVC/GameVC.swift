@@ -15,10 +15,6 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var StatusLabel: UILabel!
     @IBOutlet private weak var TimerLabel: UILabel!
     
-    //MARK: ImageView
-    @IBOutlet private weak var glass: UIImageView!
-    
-    
     //MARK: Buttons
     @IBOutlet var buttons: [UIButton]! {
         didSet { buttons.forEach({ button in
@@ -50,27 +46,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpScreen()
-        glassAnimation()
     }
     
-    //MARK: GlassAnimation
-    private func glassAnimation() {
-       
-       
-        
-        UIView.animate(withDuration: 5.00, delay: 0.00, usingSpringWithDamping: 1.00, initialSpringVelocity: 1.00, options: .repeat) {
-            let animate = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
-            animate.fromValue = glass.frame.origin.
-                    self.glass.layoutIfNeeded()
-                    self.glass.frame.origin.y -= 200.0
-                    self.glass.frame.origin.x += 200.0
-                    self.glass.tintColor = .clear
-            self.glass.frame.origin.y -= 200.0
-            self.glass.frame.origin.x += 200.0
 
-           
-        }
-    }
               
   // MARK: Press button func
     @IBAction private func pressButton(_ sender: UIButton) {
@@ -79,15 +57,7 @@ class GameViewController: UIViewController {
         updateUI()
     }
     
-    //MARK: Func for button NewGame
-    @IBAction private func NewGameAction(_ sender: UIButton) {
-        game.newGame()
-        sender.isHidden = true
-        setUpScreen()
-    }
-    
-    //MARK: LogOut func
-   
+
     
     //MARK: SetUP screen func
     private func setUpScreen() {
@@ -131,7 +101,10 @@ class GameViewController: UIViewController {
             StatusLabel.text = "You win"
             StatusLabel.textColor = .green
             StatusLabel.isHidden = false
-            game.isNewRecord ? showAlert() : showAlertActionSheet()
+            if game.isNewRecord {
+                showAlert()
+            }
+            showAlertActionSheet()
         case .lose:
             StatusLabel.text = "You lose"
             StatusLabel.textColor = .red

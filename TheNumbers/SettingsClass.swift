@@ -7,10 +7,7 @@
 
 import Foundation
 
-enum KeysUserDefaults {
-    static var actualSettingsGame = "actualSettingsGame" ///Ключи по которым храненятся актуальные настройки
-    static let enumRecordKey = "RecordGame"
-}
+
 struct SettingsStruct: Codable { ///Структура свойств по которым юзер выбирает нужные параметры
     var timerOn: Bool  ///Включен или выключен таймер?
     var timeForGame: Int ///Сколько времени выбрано на раунд
