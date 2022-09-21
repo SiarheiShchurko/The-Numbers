@@ -79,15 +79,9 @@ class SetDispBase: UIViewController {
     
     //MARK: Tf action
     @IBAction private func nameTfAction(_ sender: UITextField) {
-        guard let text = sender.text else {
-            saveName.isEnabled = false
-            return }
-            saveName.isEnabled = true
-            nameTF.text = text
-        print(text)
-      
-            
-        
+        let isEmpty = sender.text?.isEmpty ?? true
+        saveName.isEnabled = !isEmpty
+        nameTF.text = sender.text
     }
     
     //MARK: Save name
@@ -96,6 +90,8 @@ class SetDispBase: UIViewController {
         let nameUser = nameTF.text
         UserDefaults.standard.set(nameUser, forKey: emailUser)
         delegate?.getInf(User(email: emailUser, name: nameUser))
+        saveName.isEnabled = false
+        nameTF.resignFirstResponder()
     }
     
     @IBAction private func sWitchIs(_ sender: UISwitch) {

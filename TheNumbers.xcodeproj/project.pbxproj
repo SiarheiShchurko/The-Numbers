@@ -32,9 +32,6 @@
 		EDA3B6A0275FB8D6008E17C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B69E275FB8D6008E17C7 /* Main.storyboard */; };
 		EDA3B6A2275FB8D7008E17C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B6A1275FB8D7008E17C7 /* Assets.xcassets */; };
 		EDA3B6A5275FB8D7008E17C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */; };
-		EDC1EC6027D0CB9300E957E8 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1EC5F27D0CB9300E957E8 /* SettingVC.swift */; };
-		EDC1EC6227D0CC6100E957E8 /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1EC6127D0CC6100E957E8 /* SettingsTableVC.swift */; };
-		EDE5FDEE27D76E55004FB3A2 /* SettingsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5FDED27D76E55004FB3A2 /* SettingsClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,9 +53,6 @@
 		EDA3B6A1275FB8D7008E17C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDA3B6A4275FB8D7008E17C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDA3B6A6275FB8D7008E17C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDC1EC5F27D0CB9300E957E8 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
-		EDC1EC6127D0CC6100E957E8 /* SettingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableVC.swift; sourceTree = "<group>"; };
-		EDE5FDED27D76E55004FB3A2 /* SettingsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,23 +91,6 @@
 				ED1812162762455200EC233D /* GameVM.swift */,
 			);
 			path = GameVC;
-			sourceTree = "<group>";
-		};
-		ED790E6528BFA75200772CE7 /* SettingVC */ = {
-			isa = PBXGroup;
-			children = (
-				ED790E6628BFA76500772CE7 /* TableVC */,
-				EDC1EC5F27D0CB9300E957E8 /* SettingVC.swift */,
-			);
-			path = SettingVC;
-			sourceTree = "<group>";
-		};
-		ED790E6628BFA76500772CE7 /* TableVC */ = {
-			isa = PBXGroup;
-			children = (
-				EDC1EC6127D0CC6100E957E8 /* SettingsTableVC.swift */,
-			);
-			path = TableVC;
 			sourceTree = "<group>";
 		};
 		ED790E6728BFA78600772CE7 /* RecordVC */ = {
@@ -164,10 +141,8 @@
 				ED99B43D28D9D9BD00A390F8 /* NewSettingsDisp */,
 				ED1C799028D47EEB00FEA36D /* RegistrationVC */,
 				ED790E6728BFA78600772CE7 /* RecordVC */,
-				ED790E6528BFA75200772CE7 /* SettingVC */,
 				ED790E6428BF9E1A00772CE7 /* GameVC */,
 				EDA3B69C275FB8D6008E17C7 /* StartPage.swift */,
-				EDE5FDED27D76E55004FB3A2 /* SettingsClass.swift */,
 				EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */,
 				EDA3B69E275FB8D6008E17C7 /* Main.storyboard */,
 				EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */,
@@ -270,7 +245,6 @@
 				ED99B44228D9DEA300A390F8 /* SetDispBase.swift in Sources */,
 				ED4028D428CF3449003EAF00 /* RegistrationVM.swift in Sources */,
 				ED251BF3275FE2C10000A1FE /* GameVC.swift in Sources */,
-				EDC1EC6027D0CB9300E957E8 /* SettingVC.swift in Sources */,
 				EDA3B699275FB8D6008E17C7 /* AppDelegate.swift in Sources */,
 				ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */,
 				ED35FCB128C10301009BFB78 /* RegistrationVC.swift in Sources */,
@@ -279,8 +253,6 @@
 				ED1812172762455200EC233D /* GameVM.swift in Sources */,
 				ED0A8BB428D215ED00231C77 /* User.swift in Sources */,
 				ED1D969127DF252100D24852 /* RecordVC.swift in Sources */,
-				EDC1EC6227D0CC6100E957E8 /* SettingsTableVC.swift in Sources */,
-				EDE5FDEE27D76E55004FB3A2 /* SettingsClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
