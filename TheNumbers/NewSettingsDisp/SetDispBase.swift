@@ -6,23 +6,32 @@
 //
 
 import UIKit
+import Firebase
 
+//MARK: Settings format
 struct SettingParametrs: Codable { ///Структура свойств по которым юзер выбирает нужные параметры
     var timerOn: Bool  ///Включен или выключен таймер?
     var timeForGame: Int ///Сколько времени выбрано на раунд
 }
 
+//MARK: Enum for stored actual settings
 enum KeysSettings {
     static var actualSettingsGame = "actualSettingsGame" ///Ключи по которым храненятся актуальные настройки
     static let enumRecordKey = "RecordGame"
 }
 
 class SetDispBase: UIViewController {
-
+    
+    //MARK: Singleton
     static var shared = SetDispBase()
     
+    //MARK: Default settings
     private let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30)
     
+    weak var delegate: UserLabelDelegate?
+    
+    
+    //MARK: Current settings
     var currentSettings: SettingParametrs {
         
         get {
@@ -43,7 +52,11 @@ class SetDispBase: UIViewController {
     }
     
     //MARK: TF nameSet
-    @IBOutlet private weak var nameTF: UITextField!
+    @IBOutlet private weak var nameTF: UITextField! {
+        didSet {  let defaults = UserDefaults.standard
+            guard let emailUser = Auth.auth().currentUser?.email else { return }
+            nameTF.text = defaults.string(forKey: emailUser) }
+    }
     
     //MARK: UISwitch timer
     @IBOutlet private weak var sWitch: UISwitch! {
@@ -52,17 +65,37 @@ class SetDispBase: UIViewController {
     
     //MARK: timeButton
     @IBOutlet private weak var timeButton: UIButton! {
-        didSet { timeButton.setTitle("\(currentSettings.timeForGame)", for: .normal)
+        didSet { timeButton.setTitle("\(currentSettings.timeForGame) sec.", for: .normal)
             timeButton.isEnabled = SetDispBase.shared.currentSettings.timerOn
         }
             }
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    @IBOutlet private weak var saveName: UIButton!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing( true )
     }
     
-    func defaultSettingsFunc() {
-        currentSettings = defaultSettings
+    
+    //MARK: Tf action
+    @IBAction private func nameTfAction(_ sender: UITextField) {
+        guard let text = sender.text else {
+            saveName.isEnabled = false
+            return }
+            saveName.isEnabled = true
+            nameTF.text = text
+        print(text)
+      
+            
+        
+    }
+    
+    //MARK: Save name
+    @IBAction private func changeName() {
+        guard let emailUser = Auth.auth().currentUser?.email else { return }
+        let nameUser = nameTF.text
+        UserDefaults.standard.set(nameUser, forKey: emailUser)
+        delegate?.getInf(User(email: emailUser, name: nameUser))
     }
     
     @IBAction private func sWitchIs(_ sender: UISwitch) {
@@ -71,8 +104,7 @@ class SetDispBase: UIViewController {
             SetDispBase.shared.currentSettings.timerOn = true
         } else {
             timeButton.isEnabled = false
-            SetDispBase.shared.currentSettings.timerOn = false
-        }
+            SetDispBase.shared.currentSettings.timerOn = false }
     }
     
     @IBAction private func changeTime() {
@@ -81,10 +113,20 @@ class SetDispBase: UIViewController {
         nextVC.delegate = self
         present(nextVC, animated: true)
     }
+    
+    @IBAction private func defaultSettingsReset() {
+        currentSettings = defaultSettings
+        sWitch.isOn = SetDispBase.shared.currentSettings.timerOn
+        timeButton.setTitle("\(currentSettings.timeForGame) sec.", for: .normal)
+        timeButton.isEnabled = SetDispBase.shared.currentSettings.timerOn
+    }
 }
 
 extension SetDispBase: DelegateTimeProtocol {
     func getTime(_ time: Int) {
         timeButton.setTitle("\(time) sec.", for: .normal)
+        
     }
 }
+
+
