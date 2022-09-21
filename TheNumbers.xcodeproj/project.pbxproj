@@ -25,7 +25,7 @@
 		ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35FCB228C1177A009BFB78 /* Utils.swift */; };
 		ED4028D428CF3449003EAF00 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4028D328CF3449003EAF00 /* RegistrationVM.swift */; };
 		ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */; };
-		ED99B44028D9DA0600A390F8 /* NewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43F28D9DA0600A390F8 /* NewSettings.swift */; };
+		ED99B44028D9DA0600A390F8 /* NewSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43F28D9DA0600A390F8 /* NewSettingsVC.swift */; };
 		ED99B44228D9DEA300A390F8 /* SetDispBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B44128D9DEA300A390F8 /* SetDispBase.swift */; };
 		EDA3B699275FB8D6008E17C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */; };
 		EDA3B69D275FB8D6008E17C7 /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA3B69C275FB8D6008E17C7 /* StartPage.swift */; };
@@ -47,7 +47,7 @@
 		ED35FCB228C1177A009BFB78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		ED4028D328CF3449003EAF00 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
 		ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVCell.swift; sourceTree = "<group>"; };
-		ED99B43F28D9DA0600A390F8 /* NewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettings.swift; sourceTree = "<group>"; };
+		ED99B43F28D9DA0600A390F8 /* NewSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettingsVC.swift; sourceTree = "<group>"; };
 		ED99B44128D9DEA300A390F8 /* SetDispBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDispBase.swift; sourceTree = "<group>"; };
 		EDA3B695275FB8D6008E17C7 /* TheNumbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNumbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				ED99B43E28D9D9D000A390F8 /* TableViewCell */,
-				ED99B43F28D9DA0600A390F8 /* NewSettings.swift */,
+				ED99B43F28D9DA0600A390F8 /* NewSettingsVC.swift */,
 				ED99B44128D9DEA300A390F8 /* SetDispBase.swift */,
 			);
 			path = NewSettingsDisp;
@@ -274,7 +274,7 @@
 				EDA3B699275FB8D6008E17C7 /* AppDelegate.swift in Sources */,
 				ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */,
 				ED35FCB128C10301009BFB78 /* RegistrationVC.swift in Sources */,
-				ED99B44028D9DA0600A390F8 /* NewSettings.swift in Sources */,
+				ED99B44028D9DA0600A390F8 /* NewSettingsVC.swift in Sources */,
 				ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */,
 				ED1812172762455200EC233D /* GameVM.swift in Sources */,
 				ED0A8BB428D215ED00231C77 /* User.swift in Sources */,

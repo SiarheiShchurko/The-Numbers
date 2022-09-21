@@ -33,9 +33,9 @@ class Game {
         didSet { if statusGame != .start {
             if statusGame == .win {
                 let newRecord = timeForGame - roundTimeForGame
-                let record = UserDefaults.standard.integer(forKey: KeysUserDefaults.enumRecordKey ) ///Хранение рекорда
+                let record = UserDefaults.standard.integer(forKey: KeysSettings.enumRecordKey ) ///Хранение рекорда
                 if record == 0 || newRecord < record {
-                    UserDefaults.standard.setValue(newRecord, forKey: KeysUserDefaults.enumRecordKey)
+                    UserDefaults.standard.setValue(newRecord, forKey: KeysSettings.enumRecordKey)
                     isNewRecord = true
                 }
             }
@@ -61,7 +61,7 @@ class Game {
     
     init( countItems: Int, updateTimer: @escaping (_ status: StatusGame, _ seconds: Int ) -> Void) { ///Через эскейпинг обновляется UI на VC
         self.countItems = countItems
-        self.roundTimeForGame = SettingsClass.shared.currentSettings.timeForGame
+        self.roundTimeForGame = SetDispBase.shared.currentSettings.timeForGame
         self.timeForGame = self.roundTimeForGame
         self.updateTimer = updateTimer
         setupGame() ///Чтобы создались кнопки, прописываем в инит функцию setupGame
@@ -76,9 +76,9 @@ class Game {
             itemArray.append(item) }
         updateTimer(statusGame,roundTimeForGame) ///Прописал обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
         
-        if SettingsClass.shared.currentSettings.timerOn {
-            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [ weak self ] (_) in
-                self?.roundTimeForGame -= 1})
+        if SetDispBase.shared.currentSettings.timerOn {
+            timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true, block: { [ weak self ] (_) in
+                self?.roundTimeForGame -= 1 })
         }
         nextDigits = itemArray.shuffled().first
     }

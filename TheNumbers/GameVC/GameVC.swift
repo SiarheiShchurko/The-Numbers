@@ -61,7 +61,7 @@ class GameViewController: UIViewController {
     
     //MARK: SetUP screen func
     private func setUpScreen() {
-        if SettingsClass.shared.currentSettings.timerOn != true {
+        if SetDispBase.shared.currentSettings.timerOn != true {
             TimerLabel.isHidden = true
         }
             for index in game.itemArray.indices {
