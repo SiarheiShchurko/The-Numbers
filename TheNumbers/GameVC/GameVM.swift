@@ -21,6 +21,7 @@ class Game {
         var isError: Bool = false ///Нажата не та кнопка
     }
     
+//    private var settingsVM: SettingsVMProtocol = SetDispBaseVM()
     private let data = Array(1...99) ///Массив который хранит весь объем возможных чисел
     var itemArray: [Item] = [] ///Массив в который закидываю отобранные числа из массива data.
 
@@ -61,7 +62,7 @@ class Game {
     
     init( countItems: Int, updateTimer: @escaping (_ status: StatusGame, _ seconds: Int ) -> Void) { ///Через эскейпинг обновляется UI на VC
         self.countItems = countItems
-        self.roundTimeForGame = SetDispBase.shared.currentSettings.timeForGame
+        self.roundTimeForGame = SetDispBase.shared.settingsVM.currentSettings.timeForGame
         self.timeForGame = self.roundTimeForGame
         self.updateTimer = updateTimer
         setupGame() ///Чтобы создались кнопки, прописываем в инит функцию setupGame
@@ -76,7 +77,7 @@ class Game {
             itemArray.append(item) }
         updateTimer(statusGame,roundTimeForGame) ///Прописал обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
         
-        if SetDispBase.shared.currentSettings.timerOn {
+        if SetDispBase.shared.settingsVM.currentSettings.timerOn {
             timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true, block: { [ weak self ] (_) in
                 self?.roundTimeForGame -= 1 })
         }

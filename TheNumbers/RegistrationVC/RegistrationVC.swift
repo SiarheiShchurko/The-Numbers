@@ -25,8 +25,6 @@ final class RegistrationVC: UIViewController {
         willSet { newValue ? registrationScreen() : loginInScreen() }
     }
     
-    //private var isSelected: Bool = false
-    
     
     @IBOutlet private weak var stackView: UIStackView!
     

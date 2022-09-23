@@ -13,6 +13,7 @@ protocol DelegateTimeProtocol: AnyObject {
 
 class NewSettings: UIViewController {
     
+    private var settingsVM: SettingsVMProtocol = SetDispBaseVM()
     
     weak var delegate: DelegateTimeProtocol?
     
@@ -42,7 +43,7 @@ extension NewSettings: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        SetDispBase.shared.currentSettings.timeForGame = changeTimeArray[indexPath.row]
+        settingsVM.currentSettings.timeForGame = changeTimeArray[indexPath.row]
         delegate?.getTime(changeTimeArray[indexPath.row])
         dismiss(animated: true)
         
