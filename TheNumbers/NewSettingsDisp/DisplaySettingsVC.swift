@@ -33,9 +33,11 @@ class SetDispBase: UIViewController {
     
     //MARK: TF nameSet
     @IBOutlet private weak var nameTF: UITextField! {
-        didSet {  let defaults = UserDefaults.standard
-            guard let emailUser = Auth.auth().currentUser?.email else { return }
-            nameTF.text = defaults.string(forKey: emailUser) }
+        didSet {
+            guard let eMailUser = Auth.auth().currentUser?.email else { return }
+            let defaults = UserDefaults.standard
+            nameTF.text = defaults.string(forKey: eMailUser)
+             }
     }
     
     //MARK: UISwitch timer
@@ -110,6 +112,13 @@ extension SetDispBase: DelegateTimeProtocol {
     func getTime(_ time: Int) {
         timeButton.setTitle("\(time) sec.", for: .normal)
         
+    }
+}
+extension SetDispBase: UserLabelDelegate {
+    func getInf(_ inf: User) {
+        guard let eMailUser = inf.email else { return }
+        let defaults = UserDefaults.standard
+        nameTF.text = defaults.string(forKey: eMailUser)
     }
 }
 
