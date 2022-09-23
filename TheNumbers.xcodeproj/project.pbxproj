@@ -23,7 +23,6 @@
 		ED35FCAF28C0E42D009BFB78 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ED35FCAE28C0E42D009BFB78 /* FirebaseStorageCombine-Community */; };
 		ED35FCB128C10301009BFB78 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35FCB028C10301009BFB78 /* RegistrationVC.swift */; };
 		ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35FCB228C1177A009BFB78 /* Utils.swift */; };
-		ED4028D428CF3449003EAF00 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4028D328CF3449003EAF00 /* RegistrationVM.swift */; };
 		ED51AAFF28DDA8D100A00157 /* DisplaySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED51AAFE28DDA8D100A00157 /* DisplaySettingsVM.swift */; };
 		ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */; };
 		ED99B44028D9DA0600A390F8 /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43F28D9DA0600A390F8 /* SettingsTableView.swift */; };
@@ -43,7 +42,6 @@
 		ED35FC9B28C0E143009BFB78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED35FCB028C10301009BFB78 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		ED35FCB228C1177A009BFB78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		ED4028D328CF3449003EAF00 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
 		ED51AAFE28DDA8D100A00157 /* DisplaySettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingsVM.swift; sourceTree = "<group>"; };
 		ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVCell.swift; sourceTree = "<group>"; };
 		ED99B43F28D9DA0600A390F8 /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 		ED1C799028D47EEB00FEA36D /* RegistrationVC */ = {
 			isa = PBXGroup;
 			children = (
-				ED4028D328CF3449003EAF00 /* RegistrationVM.swift */,
 				ED35FCB028C10301009BFB78 /* RegistrationVC.swift */,
 			);
 			path = RegistrationVC;
@@ -254,7 +251,6 @@
 			files = (
 				EDA3B69D275FB8D6008E17C7 /* StartPage.swift in Sources */,
 				ED99B44228D9DEA300A390F8 /* DisplaySettingsVC.swift in Sources */,
-				ED4028D428CF3449003EAF00 /* RegistrationVM.swift in Sources */,
 				ED251BF3275FE2C10000A1FE /* GameVC.swift in Sources */,
 				EDA3B699275FB8D6008E17C7 /* AppDelegate.swift in Sources */,
 				ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */,

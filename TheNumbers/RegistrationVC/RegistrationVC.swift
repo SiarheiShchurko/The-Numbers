@@ -16,7 +16,7 @@ protocol UserLabelDelegate: AnyObject {
 
 final class RegistrationVC: UIViewController {
     
-    private var registrationVM: RegistrationProtocol = RegistrationVM()
+    //private var registrationVM: RegistrationProtocol = RegistrationVM()
     
     weak var delegate: UserLabelDelegate?
     
