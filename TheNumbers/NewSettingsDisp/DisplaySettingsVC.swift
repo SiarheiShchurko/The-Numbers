@@ -29,11 +29,7 @@ class SetDispBase: UIViewController {
     
     //MARK: Default settings
     
-    
     weak var delegate: UserLabelDelegate?
-    
-    
-  
     
     //MARK: TF nameSet
     @IBOutlet private weak var nameTF: UITextField! {
@@ -57,6 +53,8 @@ class SetDispBase: UIViewController {
     //MARK: Save name buton
     @IBOutlet private weak var saveName: UIButton!
     
+    
+    //MARK: Hide keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing( true )
     }
@@ -79,6 +77,7 @@ class SetDispBase: UIViewController {
         nameTF.resignFirstResponder()
     }
     
+    //MARK: Switch on/off
     @IBAction private func sWitchIs(_ sender: UISwitch) {
         if sender.isOn {
             timeButton.isEnabled = true
@@ -88,6 +87,7 @@ class SetDispBase: UIViewController {
             settingsVM.currentSettings.timerOn = false }
     }
     
+    //MARK: Change time func
     @IBAction private func changeTime() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let nextVC = storyboard.instantiateViewController(withIdentifier: "\(NewSettings.self)") as? NewSettings else { return }
@@ -95,6 +95,7 @@ class SetDispBase: UIViewController {
         present(nextVC, animated: true)
     }
     
+    //MARK: Default set reset
     @IBAction private func defaultSettingsReset() {
         settingsVM.currentSettings = settingsVM.defaultSettings
         sWitch.isOn = settingsVM.currentSettings.timerOn
@@ -103,7 +104,9 @@ class SetDispBase: UIViewController {
     }
 }
 
+//MARK: For delegate func
 extension SetDispBase: DelegateTimeProtocol {
+    
     func getTime(_ time: Int) {
         timeButton.setTitle("\(time) sec.", for: .normal)
         

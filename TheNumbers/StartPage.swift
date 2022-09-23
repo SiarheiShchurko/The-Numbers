@@ -11,7 +11,7 @@ import Firebase
 
 final class StartPageVC: UIViewController {
     
-    var registrationVM: RegistrationProtocol = RegistrationVM()
+    private var registrationVM: RegistrationProtocol = RegistrationVM()
     
     //MARK: Labels outlet
     @IBOutlet private weak var nameUser: UILabel! {

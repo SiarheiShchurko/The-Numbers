@@ -14,11 +14,11 @@ protocol SettingsVMProtocol {
 
 class SetDispBaseVM: SettingsVMProtocol {
 
+    //MARK: Default set
 let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30)
 
     //MARK: Current settings
     var currentSettings: SettingParametrs {
-        
         get {
             if let data = UserDefaults.standard.object(forKey: KeysSettings.actualSettingsGame) as? Data {
                 return try! PropertyListDecoder().decode(SettingParametrs.self, from: data)
