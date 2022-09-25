@@ -198,7 +198,7 @@ final class RegistrationVC: UIViewController {
     
     //MARK: Miss allert
     private func alert() {
-        let alert = UIAlertController(title: "Miss", message: "Email or password do not conform to the rules ", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Email or password do not conform rules", message: "1. Check email(Сheck available symbal @)\n2. Check entered password" , preferredStyle: .alert)
         let button = UIAlertAction(title: "Ok", style: .default) { _ in
             alert.dismiss(animated: true)
         }
