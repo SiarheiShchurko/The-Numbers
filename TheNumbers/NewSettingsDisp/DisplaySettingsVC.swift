@@ -25,6 +25,7 @@ class SetDispBase: UIViewController {
     //MARK: Singleton
     static var shared = SetDispBase()
     
+    //MARK: Model var for self class
     var settingsVM: SettingsVMProtocol = SetDispBaseVM()
     
     //MARK: Default settings
@@ -106,7 +107,7 @@ class SetDispBase: UIViewController {
     }
 }
 
-//MARK: For delegate func
+//MARK: For time delegate func
 extension SetDispBase: DelegateTimeProtocol {
     
     func getTime(_ time: Int) {
@@ -114,6 +115,8 @@ extension SetDispBase: DelegateTimeProtocol {
         
     }
 }
+
+//MARK: Delegate for name and email user
 extension SetDispBase: UserLabelDelegate {
     func getInf(_ inf: User) {
         guard let eMailUser = inf.email else { return }

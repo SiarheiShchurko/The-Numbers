@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import Firebase
+//import Firebase
 
 //MARK: Delegate protocol
 protocol UserLabelDelegate: AnyObject {
@@ -16,7 +16,7 @@ protocol UserLabelDelegate: AnyObject {
 
 final class RegistrationVC: UIViewController {
     
-    //private var registrationVM: RegistrationProtocol = RegistrationVM()
+    private var registrationVM: RegistrationVMProtocol = RegistrationVM()
     
     weak var delegate: UserLabelDelegate?
     
@@ -107,42 +107,42 @@ final class RegistrationVC: UIViewController {
                            
                            
     //MARK: registration func
-    func registration() {
-        
-        //Optional delete
-        guard let name = enterName.text else { return }
-        guard let email = enterEmail.text else { return }
-        guard let pass = enterPassword.text else { return }
-        
-        //Registration
-      
-        Auth.auth().createUser(withEmail: email, password: pass) { result, error in
-            if error == nil {
-                UserDefaults.standard.set(name, forKey: email)
-                self.signIn()
-               
-                guard let result = result else { return }
-                let userStruct = Database.database().reference().child("users")
-                userStruct.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
-                print(result.user.uid)
-                }
-            print(error)
-        }
-    }
+//    func registration() {
+//
+//        //Optional delete
+//        guard let name = enterName.text else { return }
+//        guard let email = enterEmail.text else { return }
+//        guard let pass = enterPassword.text else { return }
+//
+//        //Registration
+//
+//        Auth.auth().createUser(withEmail: email, password: pass) { result, error in
+//            if error == nil {
+//                UserDefaults.standard.set(name, forKey: email)
+//                self.signIn()
+//
+//                guard let result = result else { return }
+//                let userStruct = Database.database().reference().child("users")
+//                userStruct.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
+//                print(result.user.uid)
+//                }
+//            print(error)
+//        }
+//    }
     
     //MARK: SignIn func
-        private func signIn() {
-                guard let email = enterEmail.text else { return }
-                guard let pass = enterPassword.text else { return }
-                
-                //Enter
-                Auth.auth().signIn(withEmail: email, password: pass) { result, error in
-                    if error == nil {
-                        self.delegate?.getInf(User(email: email))
-                        self.dismiss(animated: true)
-                    }
-                }
-            }
+//        private func signIn() {
+//                guard let email = enterEmail.text else { return }
+//                guard let pass = enterPassword.text else { return }
+//
+//                //Enter
+//                Auth.auth().signIn(withEmail: email, password: pass) { result, error in
+//                    if error == nil {
+//                        self.delegate?.getInf(User(email: email))
+//                        self.dismiss(animated: true)
+//                    }
+//                }
+//            }
     
     //MARK: Limit char for password
     private func charCountForPass() -> Bool {
@@ -177,7 +177,28 @@ final class RegistrationVC: UIViewController {
     
     //MARK: Registrated or enter in account func
     @IBAction private func registrationOrEnter() {
-        signUp ? registration() : signIn()
+        //signUp ? registration() : signIn()
+        guard let name = enterName.text else { return }
+        guard let email = enterEmail.text else { return }
+        guard let pass = enterPassword.text else { return }
+        signUp ? registrationVM.registration(name: name, email: email, pass: pass) : registrationVM.signIn(email: email, pass: pass)
+        registrationVM.update = {
+            self.delegate?.getInf(User(email: email))
+            self.dismiss(animated: true)
+        }
+        
+        registrationVM.upadateError = { 
+            self.alert()
+        }
+    }
+    
+    private func alert() {
+        let alert = UIAlertController(title: "Miss", message: "Email or password do not conform to the rules ", preferredStyle: .alert)
+        let button = UIAlertAction(title: "Ok", style: .default) { _ in
+            alert.dismiss(animated: true)
+        }
+        alert.addAction(button)
+        present(alert, animated: true)
     }
 }
 
