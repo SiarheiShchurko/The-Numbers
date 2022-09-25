@@ -181,17 +181,22 @@ final class RegistrationVC: UIViewController {
         guard let name = enterName.text else { return }
         guard let email = enterEmail.text else { return }
         guard let pass = enterPassword.text else { return }
-        signUp ? registrationVM.registration(name: name, email: email, pass: pass) : registrationVM.signIn(email: email, pass: pass)
+        
+        registrationVM.regOrEnter(name: name, email: email, pass: pass, signUp: signUp)
+        
+        //If result reg/sign succes - reg disp hide, in profile delegate actual user information
         registrationVM.update = {
             self.delegate?.getInf(User(email: email))
             self.dismiss(animated: true)
         }
         
+        //Else self.disp called miss alert
         registrationVM.upadateError = { 
             self.alert()
         }
     }
     
+    //MARK: Miss allert
     private func alert() {
         let alert = UIAlertController(title: "Miss", message: "Email or password do not conform to the rules ", preferredStyle: .alert)
         let button = UIAlertAction(title: "Ok", style: .default) { _ in

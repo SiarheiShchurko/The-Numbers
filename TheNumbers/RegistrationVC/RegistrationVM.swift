@@ -13,9 +13,8 @@ protocol RegistrationVMProtocol: AnyObject {
     
     var upadateError: (() -> Void)? { get set }
     
-    func registration(name: String, email: String, pass: String)
+    func regOrEnter(name: String, email: String, pass: String, signUp: Bool)
     
-    func signIn(email: String, pass: String)
     
 }
 
@@ -30,31 +29,44 @@ class RegistrationVM: RegistrationVMProtocol {
     //MARK: Service var
     let regService = RegServiceVC()
     
-    func registration(name: String, email: String, pass: String) {
-        regService.registration(name: name, email: email, pass: pass) { [ weak self ] ( complition ) in
-            switch complition {
-            case .success:
-                self?.update?()
-            case .failure:
-                self?.upadateError?()
-            case .none:
-                break
+    //MARK: Registration and signIn func
+    func regOrEnter(name: String, email: String, pass: String, signUp: Bool) {
+        if signUp {
+            regService.registration(name: name, email: email, pass: pass) { [ weak self ] ( complition ) in
+                self?.checkResult(complition)
+            }
+        } else {
+            regService.signIn(email: email, pass: pass) { [ weak self ] ( complition ) in
+                self?.checkResult(complition)
             }
         }
     }
     
-    func signIn(email: String, pass: String) {
-        regService.signIn(email: email, pass: pass) { [ weak self ] ( complition ) in
-            switch complition {
-            case .success:
-                self?.update?()
-            case .failure:
-                self?.upadateError?()
-            case .none:
-                break
-            }
-        }
+    //MARK: Check result for success/enter
+    private func checkResult(_ object: RegSignResult) {
+        switch object {
+        case .success:
+            self.update?()
+        case .failure:
+            self.upadateError?()
+        case .none:
+            break }
     }
 }
+
+    
+//    func signIn(email: String, pass: String) {
+//        regService.signIn(email: email, pass: pass) { [ weak self ] ( complition ) in
+//            switch complition {
+//            case .success:
+//                self?.update?()
+//            case .failure:
+//                self?.upadateError?()
+//            case .none:
+//                break
+//            }
+//        }
+//    }
+
  
 
