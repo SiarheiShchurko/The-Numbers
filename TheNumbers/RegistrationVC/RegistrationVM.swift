@@ -21,10 +21,13 @@ protocol RegistrationVMProtocol: AnyObject {
 
 class RegistrationVM: RegistrationVMProtocol {
     
+    //MARK: Update if success
     var update: (() -> Void)?
     
+    //MARK: Update if error
     var upadateError: (() -> Void)?
     
+    //MARK: Service var
     let regService = RegServiceVC()
     
     func registration(name: String, email: String, pass: String) {
