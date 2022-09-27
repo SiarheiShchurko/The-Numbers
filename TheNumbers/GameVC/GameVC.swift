@@ -116,7 +116,9 @@ class GameViewController: UIViewController {
     //MARK: Func for new record
     func showAlert() {
         let alert = UIAlertController(title: "Congratilate", message: "It's New Record", preferredStyle: .alert)
-        let alertButtonOk = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let alertButtonOk = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.showAlertActionSheet()
+        }
         alert.addAction(alertButtonOk)
         present(alert, animated: true, completion: nil)
     }
