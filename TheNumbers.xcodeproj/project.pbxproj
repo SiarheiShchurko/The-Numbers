@@ -26,6 +26,7 @@
 		ED51AAFF28DDA8D100A00157 /* DisplaySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED51AAFE28DDA8D100A00157 /* DisplaySettingsVM.swift */; };
 		ED68BFC028E2F99F00BAE8FB /* RecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED68BFBF28E2F99F00BAE8FB /* RecordVM.swift */; };
 		ED68BFC228E2FA0E00BAE8FB /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED68BFC128E2FA0E00BAE8FB /* RecordModel.swift */; };
+		ED68BFC528E2FF8800BAE8FB /* RecordTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED68BFC428E2FF8800BAE8FB /* RecordTableCell.swift */; };
 		ED84EBFF28E056B1009CA730 /* RegService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84EBFE28E056B1009CA730 /* RegService.swift */; };
 		ED84EC0128E05821009CA730 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84EC0028E05821009CA730 /* RegistrationVM.swift */; };
 		ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */; };
@@ -49,6 +50,7 @@
 		ED51AAFE28DDA8D100A00157 /* DisplaySettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingsVM.swift; sourceTree = "<group>"; };
 		ED68BFBF28E2F99F00BAE8FB /* RecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVM.swift; sourceTree = "<group>"; };
 		ED68BFC128E2FA0E00BAE8FB /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
+		ED68BFC428E2FF8800BAE8FB /* RecordTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableCell.swift; sourceTree = "<group>"; };
 		ED84EBFE28E056B1009CA730 /* RegService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegService.swift; sourceTree = "<group>"; };
 		ED84EC0028E05821009CA730 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
 		ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVCell.swift; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		ED68BFC628E2FF9A00BAE8FB /* RecordTableVCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED68BFC428E2FF8800BAE8FB /* RecordTableCell.swift */,
+			);
+			path = RecordTableVCell;
+			sourceTree = "<group>";
+		};
 		ED790E6428BF9E1A00772CE7 /* GameVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 		ED790E6728BFA78600772CE7 /* RecordVC */ = {
 			isa = PBXGroup;
 			children = (
+				ED68BFC628E2FF9A00BAE8FB /* RecordTableVCell */,
 				ED1D969027DF252100D24852 /* RecordVC.swift */,
 				ED68BFBF28E2F99F00BAE8FB /* RecordVM.swift */,
 			);
@@ -270,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED68BFC028E2F99F00BAE8FB /* RecordVM.swift in Sources */,
+				ED68BFC528E2FF8800BAE8FB /* RecordTableCell.swift in Sources */,
 				EDA3B69D275FB8D6008E17C7 /* StartPage.swift in Sources */,
 				ED99B44228D9DEA300A390F8 /* DisplaySettingsVC.swift in Sources */,
 				ED84EBFF28E056B1009CA730 /* RegService.swift in Sources */,

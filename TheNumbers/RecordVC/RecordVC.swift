@@ -45,7 +45,9 @@ extension RecordViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        .init()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordTableCell.self)", for: indexPath) as? RecordTableCell
+        cell?.setRecordCell(recordVM.recordObjects[indexPath.row])
+        return cell ?? UITableViewCell()
     }
     
     
