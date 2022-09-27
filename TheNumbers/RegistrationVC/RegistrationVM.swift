@@ -55,18 +55,6 @@ class RegistrationVM: RegistrationVMProtocol {
 }
 
     
-//    func signIn(email: String, pass: String) {
-//        regService.signIn(email: email, pass: pass) { [ weak self ] ( complition ) in
-//            switch complition {
-//            case .success:
-//                self?.update?()
-//            case .failure:
-//                self?.upadateError?()
-//            case .none:
-//                break
-//            }
-//        }
-//    }
 
  
 
