@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED0A8BB428D215ED00231C77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A8BB328D215ED00231C77 /* User.swift */; };
+		ED0A8BB428D215ED00231C77 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A8BB328D215ED00231C77 /* UserModel.swift */; };
 		ED1812172762455200EC233D /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1812162762455200EC233D /* GameVM.swift */; };
 		ED1D969127DF252100D24852 /* RecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1D969027DF252100D24852 /* RecordVC.swift */; };
 		ED251BF3275FE2C10000A1FE /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED251BF2275FE2C10000A1FE /* GameVC.swift */; };
@@ -24,6 +24,8 @@
 		ED35FCB128C10301009BFB78 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35FCB028C10301009BFB78 /* RegistrationVC.swift */; };
 		ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED35FCB228C1177A009BFB78 /* Utils.swift */; };
 		ED51AAFF28DDA8D100A00157 /* DisplaySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED51AAFE28DDA8D100A00157 /* DisplaySettingsVM.swift */; };
+		ED68BFC028E2F99F00BAE8FB /* RecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED68BFBF28E2F99F00BAE8FB /* RecordVM.swift */; };
+		ED68BFC228E2FA0E00BAE8FB /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED68BFC128E2FA0E00BAE8FB /* RecordModel.swift */; };
 		ED84EBFF28E056B1009CA730 /* RegService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84EBFE28E056B1009CA730 /* RegService.swift */; };
 		ED84EC0128E05821009CA730 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84EC0028E05821009CA730 /* RegistrationVM.swift */; };
 		ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */; };
@@ -37,7 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED0A8BB328D215ED00231C77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ED0A8BB328D215ED00231C77 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		ED1812162762455200EC233D /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
 		ED1D969027DF252100D24852 /* RecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVC.swift; sourceTree = "<group>"; };
 		ED251BF2275FE2C10000A1FE /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		ED35FCB028C10301009BFB78 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		ED35FCB228C1177A009BFB78 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		ED51AAFE28DDA8D100A00157 /* DisplaySettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingsVM.swift; sourceTree = "<group>"; };
+		ED68BFBF28E2F99F00BAE8FB /* RecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVM.swift; sourceTree = "<group>"; };
+		ED68BFC128E2FA0E00BAE8FB /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
 		ED84EBFE28E056B1009CA730 /* RegService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegService.swift; sourceTree = "<group>"; };
 		ED84EC0028E05821009CA730 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
 		ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVCell.swift; sourceTree = "<group>"; };
@@ -98,6 +102,15 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		ED68BFC328E2FA5D00BAE8FB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED0A8BB328D215ED00231C77 /* UserModel.swift */,
+				ED68BFC128E2FA0E00BAE8FB /* RecordModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		ED790E6428BF9E1A00772CE7 /* GameVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,18 +124,19 @@
 			isa = PBXGroup;
 			children = (
 				ED1D969027DF252100D24852 /* RecordVC.swift */,
+				ED68BFBF28E2F99F00BAE8FB /* RecordVM.swift */,
 			);
 			path = RecordVC;
 			sourceTree = "<group>";
 		};
-		ED99B43D28D9D9BD00A390F8 /* NewSettingsDisp */ = {
+		ED99B43D28D9D9BD00A390F8 /* SettingsDisp */ = {
 			isa = PBXGroup;
 			children = (
 				ED51AAFD28DDA84F00A00157 /* TableView */,
 				ED99B44128D9DEA300A390F8 /* DisplaySettingsVC.swift */,
 				ED51AAFE28DDA8D100A00157 /* DisplaySettingsVM.swift */,
 			);
-			path = NewSettingsDisp;
+			path = SettingsDisp;
 			sourceTree = "<group>";
 		};
 		ED99B43E28D9D9D000A390F8 /* TableViewCell */ = {
@@ -152,7 +166,8 @@
 		EDA3B697275FB8D6008E17C7 /* TheNumbers */ = {
 			isa = PBXGroup;
 			children = (
-				ED99B43D28D9D9BD00A390F8 /* NewSettingsDisp */,
+				ED68BFC328E2FA5D00BAE8FB /* Models */,
+				ED99B43D28D9D9BD00A390F8 /* SettingsDisp */,
 				ED1C799028D47EEB00FEA36D /* RegistrationVC */,
 				ED790E6728BFA78600772CE7 /* RecordVC */,
 				ED790E6428BF9E1A00772CE7 /* GameVC */,
@@ -164,7 +179,6 @@
 				EDA3B6A6275FB8D7008E17C7 /* Info.plist */,
 				ED35FC9B28C0E143009BFB78 /* GoogleService-Info.plist */,
 				ED35FCB228C1177A009BFB78 /* Utils.swift */,
-				ED0A8BB328D215ED00231C77 /* User.swift */,
 			);
 			path = TheNumbers;
 			sourceTree = "<group>";
@@ -255,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED68BFC028E2F99F00BAE8FB /* RecordVM.swift in Sources */,
 				EDA3B69D275FB8D6008E17C7 /* StartPage.swift in Sources */,
 				ED99B44228D9DEA300A390F8 /* DisplaySettingsVC.swift in Sources */,
 				ED84EBFF28E056B1009CA730 /* RegService.swift in Sources */,
@@ -266,7 +281,8 @@
 				ED99B44028D9DA0600A390F8 /* SettingsTableView.swift in Sources */,
 				ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */,
 				ED1812172762455200EC233D /* GameVM.swift in Sources */,
-				ED0A8BB428D215ED00231C77 /* User.swift in Sources */,
+				ED68BFC228E2FA0E00BAE8FB /* RecordModel.swift in Sources */,
+				ED0A8BB428D215ED00231C77 /* UserModel.swift in Sources */,
 				ED51AAFF28DDA8D100A00157 /* DisplaySettingsVM.swift in Sources */,
 				ED1D969127DF252100D24852 /* RecordVC.swift in Sources */,
 			);

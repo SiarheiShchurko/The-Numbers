@@ -8,7 +8,18 @@
 import UIKit
 
 class RecordViewController: UIViewController {
-    @IBOutlet weak var RecordLabelOut: UILabel!
+    
+    private var recordVM: RecordProtocolVM = RecordVM()
+    
+    //MARK: TableView
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+            tableView.delegate = self }
+    }
+    
+    //MARK: Label
+    @IBOutlet private weak var RecordLabelOut: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,5 +35,21 @@ class RecordViewController: UIViewController {
     @IBAction func CancelButtonAct(_ sender: Any) {
         dismiss(animated: true) ///Для того чтобы скрыть модальный VC используется метод dismiss
     }
+    
+}
+
+extension RecordViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        recordVM.recordObjects.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        .init()
+    }
+    
+    
+    
+    
     
 }
