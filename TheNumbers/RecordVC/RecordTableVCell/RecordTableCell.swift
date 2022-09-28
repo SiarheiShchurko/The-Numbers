@@ -16,6 +16,6 @@ class RecordTableCell: UITableViewCell {
     //MARK: Set cell func
     func setRecordCell(_ record: RecordModel) {
         nameOut.text = record.name
-        time.text = record.time
+        time.text = ("\(record.time)")
     }
 }

@@ -17,10 +17,10 @@ struct SettingParametrs: Codable { ///Структура свойств по к�
 //MARK: Enum for stored actual settings
 enum KeysSettings {
     static var actualSettingsGame = "actualSettingsGame" ///Ключи по которым храненятся актуальные настройки
-    static let enumRecordKey = "RecordGame"
+    //static let enumRecordKey: [RecordModel] = []
 }
 
-class SetDispBase: UIViewController {
+final class SetDispBase: UIViewController {
     
     //MARK: Singleton
     static var shared = SetDispBase()
@@ -112,7 +112,6 @@ extension SetDispBase: DelegateTimeProtocol {
     
     func getTime(_ time: Int) {
         timeButton.setTitle("\(time) sec.", for: .normal)
-        
     }
 }
 

@@ -11,7 +11,9 @@ import UIKit
 
 //MARK: Delegate protocol
 protocol UserLabelDelegate: AnyObject {
+    
     func getInf(_ inf: User)
+    
 }
 
 final class RegistrationVC: UIViewController {

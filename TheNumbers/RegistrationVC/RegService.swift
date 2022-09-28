@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 
+//MARK: Enum for return complition
 enum RegSignResult {
     case success
     case failure

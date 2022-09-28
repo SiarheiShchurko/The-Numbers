@@ -48,7 +48,6 @@ class GameViewController: UIViewController {
         setUpScreen()
     }
     
-
               
   // MARK: Press button func
     @IBAction private func pressButton(_ sender: UIButton) {
@@ -58,7 +57,6 @@ class GameViewController: UIViewController {
     }
     
 
-    
     //MARK: SetUP screen func
     private func setUpScreen() {
         if SetDispBase.shared.settingsVM.currentSettings.timerOn != true {
