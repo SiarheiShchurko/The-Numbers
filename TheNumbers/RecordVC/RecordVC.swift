@@ -7,6 +7,10 @@
 
 import UIKit
 
+//enum KeyRecords: CodingKey {
+//    static var record = "Record"
+//}
+
 class RecordViewController: UIViewController {
     
     private var recordVM: RecordProtocolVM = RecordVM()
@@ -23,19 +27,24 @@ class RecordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let record = UserDefaults.standard.integer(forKey: KeysSettings.enumRecordKey)  /// Вносим в рекорд записанный рекорд в UserDefaults
-        if record != 0 {  ///Если рекорд не равен 0
-            RecordLabelOut.text = "Your record - \(record) seconds" ///Показываем рекорд на рекорд лейбле.
-        } else { ///Если рекорд ничего не взял из UserDefaults (рекорд не установлен)
-            RecordLabelOut.text = "No record now" ///Говорим, что рекорда нет.
+        recordVM.loadInfo()
+        recordVM.update = {
+            self.tableView.reloadData()
         }
+        
     }
+        
+//        let record = UserDefaults.standard.integer(forKey: KeysSettings.enumRecordKey)  /// Вносим в рекорд записанный рекорд в UserDefaults
+//        if record != 0 {  ///Если рекорд не равен 0
+//         RecordLabelOut.text = "Your record - \(record) seconds" ///Показываем рекорд на рекорд лейбле.
+//        } else { ///Если рекорд ничего не взял из UserDefaults (рекорд не установлен)
+//        RecordLabelOut.text = "No record now" ///Говорим, что рекорда нет.
+    
+
     
     @IBAction func CancelButtonAct(_ sender: Any) {
         dismiss(animated: true) ///Для того чтобы скрыть модальный VC используется метод dismiss
     }
-    
 }
 
 extension RecordViewController: UITableViewDataSource, UITableViewDelegate {
@@ -49,9 +58,4 @@ extension RecordViewController: UITableViewDataSource, UITableViewDelegate {
         cell?.setRecordCell(recordVM.recordObjects[indexPath.row])
         return cell ?? UITableViewCell()
     }
-    
-    
-    
-    
-    
 }

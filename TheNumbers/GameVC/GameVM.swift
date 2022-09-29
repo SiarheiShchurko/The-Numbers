@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 enum StatusGame {
     case start
@@ -32,18 +33,76 @@ class Game {
     var isNewRecord = false
     var statusGame: StatusGame = .start {
         didSet { if statusGame != .start {
+    
             if statusGame == .win {
-                let newRecord = timeForGame - roundTimeForGame
-                let record = UserDefaults.standard.integer(forKey: KeysSettings.enumRecordKey ) ///Хранение рекорда
-                if record == 0 || newRecord < record {
-                    UserDefaults.standard.setValue(newRecord, forKey: KeysSettings.enumRecordKey)
-                    isNewRecord = true
+                stopGame()
+                let timeUser = timeForGame - roundTimeForGame
+                let name = UserDefaults.standard.string(forKey: Auth.auth().currentUser?.email ?? "")
+                let user = RecordModel(name: name ?? "-", time: timeUser)
+                
+                var firstRecord: RecordModel {
+                    if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {
+                        return try! PropertyListDecoder().decode(RecordModel.self, from: data)
+                    } else {
+                        return .init(name: "", time: 0)
+                    }
+                }
+                
+                var secondRecord: RecordModel {
+                    if let data = UserDefaults.standard.object(forKey: RecordList.two) as? Data {
+                        return try! PropertyListDecoder().decode(RecordModel.self, from: data)
+                    } else {
+                        return .init(name: "", time: 0)
+                    }
+                }
+                
+                var threeRecord: RecordModel {
+                    if let data = UserDefaults.standard.object(forKey: RecordList.three) as? Data {
+                        return try! PropertyListDecoder().decode(RecordModel.self, from: data)
+                    } else {
+                        return .init(name: "", time: 0)
+                    }
+                }
+                
+                if user.time < firstRecord.time || firstRecord.time == 0 {
+                    
+                    if let data = try? PropertyListEncoder().encode(secondRecord) {
+                        UserDefaults.standard.set(data, forKey: RecordList.three)
+                    }
+                    
+                    if let data = try? PropertyListEncoder().encode(firstRecord) {
+                        UserDefaults.standard.set(data, forKey: RecordList.two)
+                    }
+                    if let data = try? PropertyListEncoder().encode(user) {
+                        UserDefaults.standard.set(data, forKey: RecordList.one)
+                        isNewRecord = true
+                    }
+                    
+                } else if user.time < secondRecord.time || secondRecord.time == 0 {
+                    
+                    if let data = try? PropertyListEncoder().encode(secondRecord) {
+                        UserDefaults.standard.set(data, forKey: RecordList.three)
+                    }
+                    
+                    if let data = try? PropertyListEncoder().encode(user) {
+                        UserDefaults.standard.set(data, forKey: RecordList.two)
+                        isNewRecord = true
+                    }
+                
+                        
+                    
+                    } else if user.time < threeRecord.time || threeRecord.time == 0 {
+                        if let data = try? PropertyListEncoder().encode(user) {
+                            UserDefaults.standard.set(data, forKey: RecordList.three)
+                            isNewRecord = true
+                        }
+                    }
                 }
             }
             stopGame() ///Стоп таймер
         }
-        }
     }
+    
     
     var timeForGame: Int                   ///Свойство timeForGame - статично. Содержит в себе полный объем времени который выбран для прохождения раунда в настройках
     
