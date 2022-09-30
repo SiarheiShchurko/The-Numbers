@@ -27,10 +27,16 @@ class Game {
     var itemArray: [Item] = [] ///Массив в который закидываю отобранные числа из массива data.
 
     private var countItems: Int ///Кол-во кнопок
+    private var user: RecordModel = RecordModel(name: "No Name", time: 0)
     
     var nextDigits: Item? ///Оptional т.к. вконце игры чисел не будет и код не должен возвращать какое-то число для поска/ Должен вернуться nil.
     var isTimerOff = false
+    
+    //MARK: Records
     var isNewRecord = false
+    var isSecondRecord = false
+    var isThirdRecord = false
+    
     var statusGame: StatusGame = .start {
         didSet { if statusGame != .start {
     
@@ -38,13 +44,14 @@ class Game {
                 stopGame()
                 let timeUser = timeForGame - roundTimeForGame
                 let name = UserDefaults.standard.string(forKey: Auth.auth().currentUser?.email ?? "")
-                let user = RecordModel(name: name ?? "-", time: timeUser)
+                self.user = RecordModel(name: name ?? "-", time: timeUser)
                 
+                //MARK: func check record strored in UserDefaults and setup new record
                 var firstRecord: RecordModel {
                     if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "", time: 0)
+                        return .init(name: "No Name", time: 0)
                     }
                 }
                 
@@ -52,7 +59,7 @@ class Game {
                     if let data = UserDefaults.standard.object(forKey: RecordList.two) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "", time: 0)
+                        return .init(name: "No Name", time: 0)
                     }
                 }
                 
@@ -60,7 +67,7 @@ class Game {
                     if let data = UserDefaults.standard.object(forKey: RecordList.three) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "", time: 0)
+                        return .init(name: "No Name", time: 0)
                     }
                 }
                 
@@ -86,15 +93,13 @@ class Game {
                     
                     if let data = try? PropertyListEncoder().encode(user) {
                         UserDefaults.standard.set(data, forKey: RecordList.two)
-                        isNewRecord = true
+                        isSecondRecord = true
                     }
                 
-                        
-                    
                     } else if user.time < threeRecord.time || threeRecord.time == 0 {
                         if let data = try? PropertyListEncoder().encode(user) {
                             UserDefaults.standard.set(data, forKey: RecordList.three)
-                            isNewRecord = true
+                            isThirdRecord = true
                         }
                     }
                 }
@@ -106,7 +111,7 @@ class Game {
     
     var timeForGame: Int                   ///Свойство timeForGame - статично. Содержит в себе полный объем времени который выбран для прохождения раунда в настройках
     
-    //MARK: Compu
+    //MARK: Computed property for update timer and check remaining time
     private var roundTimeForGame: Int {
         didSet { if roundTimeForGame == 0 {     /// Если timeForGame = 0
             statusGame = .lose   /// Проигрыш
@@ -124,11 +129,16 @@ class Game {
         self.roundTimeForGame = SetDispBase.shared.settingsVM.currentSettings.timeForGame
         self.timeForGame = self.roundTimeForGame
         self.updateTimer = updateTimer
-        setupGame() ///Чтобы создались кнопки, прописываем в инит функцию setupGame
+        self.setupGame() ///Чтобы создались кнопки, прописываем в инит функцию setupGame
     }
     
     func setupGame() {
+        //Status remove
         isNewRecord = false
+        isSecondRecord = false
+        isThirdRecord = false
+        
+        //Clean itemArray
         itemArray.removeAll()
         var digits = data.shuffled()
         while itemArray.count < countItems {

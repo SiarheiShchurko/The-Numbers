@@ -99,9 +99,17 @@ class GameViewController: UIViewController {
             StatusLabel.text = "You win"
             StatusLabel.textColor = .green
             StatusLabel.isHidden = false
+            
             if game.isNewRecord {
-                showAlert()
+                recordAlert()
             }
+            if game.isSecondRecord {
+                secondPlaceAlert()
+            }
+            if game.isThirdRecord {
+                thirdPlaceAlert()
+            }
+            
             showAlertActionSheet()
         case .lose:
             StatusLabel.text = "You lose"
@@ -111,9 +119,30 @@ class GameViewController: UIViewController {
       }
     }
     
+  
+    
     //MARK: Func for new record
-    func showAlert() {
-        let alert = UIAlertController(title: "Congratilate", message: "It's New Record", preferredStyle: .alert)
+    func recordAlert() {
+        
+        let alert = UIAlertController(title: "Congratilate", message: "It is NEW RECORD", preferredStyle: .alert)
+        let alertButtonOk = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.showAlertActionSheet()
+        }
+        alert.addAction(alertButtonOk)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func secondPlaceAlert() {
+        let alert = UIAlertController(title: "Congratilate", message: "It is SECOND PLACE", preferredStyle: .alert)
+        let alertButtonOk = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.showAlertActionSheet()
+        }
+        alert.addAction(alertButtonOk)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func thirdPlaceAlert() {
+        let alert = UIAlertController(title: "Congratilate", message: "It is THIRD PLACE", preferredStyle: .alert)
         let alertButtonOk = UIAlertAction(title: "Ok", style: .default) { _ in
             self.showAlertActionSheet()
         }
