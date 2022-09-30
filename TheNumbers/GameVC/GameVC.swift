@@ -72,6 +72,7 @@ class GameViewController: UIViewController {
     
     //MARK: Func update UI when user press true button
     private func updateUI() {
+        
     for indexUI in game.itemArray.indices { // Заносим все индексы массива itemArray в index
     buttons[indexUI].alpha = game.itemArray[indexUI].isFound ? 0 : 1
         buttons[indexUI].isEnabled = !game.itemArray[indexUI].isFound

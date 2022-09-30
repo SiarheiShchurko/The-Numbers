@@ -22,7 +22,6 @@ class RegServiceVC: UIViewController {
     func registration(name: String, email: String, pass: String, complition: @escaping (RegSignResult) -> Void) {
         
         //Registration
-      
         Auth.auth().createUser(withEmail: email, password: pass) { result, error in
             if error == nil {
                 //Saved user
@@ -37,15 +36,12 @@ class RegServiceVC: UIViewController {
                     print(complition)
                 }
             } else {
-                
                 self.resultt = .failure
                 complition(self.resultt)
             }
                 }
             }
         
-    
-    
     func signIn(email: String, pass: String, complition: @escaping (RegSignResult) -> Void ) {
             
         //Enter
@@ -59,5 +55,4 @@ class RegServiceVC: UIViewController {
                 }
             }
         }
-
 }

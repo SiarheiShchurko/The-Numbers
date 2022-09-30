@@ -54,7 +54,7 @@ class RecordVM: RecordProtocolVM {
         recordObjects.append(firstRecord)
         recordObjects.append(secondRecord)
         recordObjects.append(threeRecord)
-        print("FIIIRST \(secondRecord)")
+        
     }
     
 }

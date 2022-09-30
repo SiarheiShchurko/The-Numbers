@@ -26,9 +26,9 @@ let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30)
                 if ( try? PropertyListEncoder().encode(defaultSettings) ) != nil {
                     UserDefaults.standard.object(forKey: KeysSettings.actualSettingsGame)
                 }
-                return defaultSettings
-            }
+                return defaultSettings }
         }
+        
         set {
             if let data = try? PropertyListEncoder().encode(newValue) {
                 UserDefaults.standard.set(data, forKey: KeysSettings.actualSettingsGame)

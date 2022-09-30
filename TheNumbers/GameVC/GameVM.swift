@@ -113,6 +113,7 @@ class Game {
     
     //MARK: Computed property for update timer and check remaining time
     private var roundTimeForGame: Int {
+        
         didSet { if roundTimeForGame == 0 {     /// Если timeForGame = 0
             statusGame = .lose   /// Проигрыш
         }

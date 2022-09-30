@@ -50,7 +50,6 @@ final class RegistrationVC: UIViewController {
     
     @IBOutlet private weak var registerButton: UIButton! {
         didSet { cornerRadius(registerButton)
-            
         }
     }
     
@@ -96,8 +95,6 @@ final class RegistrationVC: UIViewController {
     private func checkTextField() {
         if signUp {
             let isEmpty = (enterName.text?.isEmpty ?? true || enterEmail.text?.isEmpty ?? true || enterPassword.text?.isEmpty ?? true || charCountForPass())
-                           
-                           
             registerButton.isEnabled = !isEmpty
         
         } else {
@@ -105,46 +102,7 @@ final class RegistrationVC: UIViewController {
             registerButton.isEnabled = !isEmpty
         }
     }
-    
-                           
-                           
-    //MARK: registration func
-//    func registration() {
-//
-//        //Optional delete
-//        guard let name = enterName.text else { return }
-//        guard let email = enterEmail.text else { return }
-//        guard let pass = enterPassword.text else { return }
-//
-//        //Registration
-//
-//        Auth.auth().createUser(withEmail: email, password: pass) { result, error in
-//            if error == nil {
-//                UserDefaults.standard.set(name, forKey: email)
-//                self.signIn()
-//
-//                guard let result = result else { return }
-//                let userStruct = Database.database().reference().child("users")
-//                userStruct.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
-//                print(result.user.uid)
-//                }
-//            print(error)
-//        }
-//    }
-    
-    //MARK: SignIn func
-//        private func signIn() {
-//                guard let email = enterEmail.text else { return }
-//                guard let pass = enterPassword.text else { return }
-//
-//                //Enter
-//                Auth.auth().signIn(withEmail: email, password: pass) { result, error in
-//                    if error == nil {
-//                        self.delegate?.getInf(User(email: email))
-//                        self.dismiss(animated: true)
-//                    }
-//                }
-//            }
+
     
     //MARK: Limit char for password
     private func charCountForPass() -> Bool {
@@ -171,6 +129,7 @@ final class RegistrationVC: UIViewController {
         checkTextField()
        
         }
+    
     //MARK: Reg disp or sign disp
     @IBAction private func SignInAction() {
         signUp = !signUp
