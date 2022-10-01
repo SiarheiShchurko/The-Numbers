@@ -29,6 +29,7 @@
 		ED68BFC528E2FF8800BAE8FB /* RecordTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED68BFC428E2FF8800BAE8FB /* RecordTableCell.swift */; };
 		ED84EBFF28E056B1009CA730 /* RegService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84EBFE28E056B1009CA730 /* RegService.swift */; };
 		ED84EC0128E05821009CA730 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84EC0028E05821009CA730 /* RegistrationVM.swift */; };
+		ED922A7928E877E00009D278 /* SettingParametrs.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED922A7828E877E00009D278 /* SettingParametrs.swift */; };
 		ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */; };
 		ED99B44028D9DA0600A390F8 /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43F28D9DA0600A390F8 /* SettingsTableView.swift */; };
 		ED99B44228D9DEA300A390F8 /* DisplaySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B44128D9DEA300A390F8 /* DisplaySettingsVC.swift */; };
@@ -53,6 +54,7 @@
 		ED68BFC428E2FF8800BAE8FB /* RecordTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableCell.swift; sourceTree = "<group>"; };
 		ED84EBFE28E056B1009CA730 /* RegService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegService.swift; sourceTree = "<group>"; };
 		ED84EC0028E05821009CA730 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
+		ED922A7828E877E00009D278 /* SettingParametrs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingParametrs.swift; sourceTree = "<group>"; };
 		ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVCell.swift; sourceTree = "<group>"; };
 		ED99B43F28D9DA0600A390F8 /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 		ED99B44128D9DEA300A390F8 /* DisplaySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingsVC.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				ED0A8BB328D215ED00231C77 /* UserModel.swift */,
 				ED68BFC128E2FA0E00BAE8FB /* RecordModel.swift */,
+				ED922A7828E877E00009D278 /* SettingParametrs.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */,
 				ED1812172762455200EC233D /* GameVM.swift in Sources */,
 				ED68BFC228E2FA0E00BAE8FB /* RecordModel.swift in Sources */,
+				ED922A7928E877E00009D278 /* SettingParametrs.swift in Sources */,
 				ED0A8BB428D215ED00231C77 /* UserModel.swift in Sources */,
 				ED51AAFF28DDA8D100A00157 /* DisplaySettingsVM.swift in Sources */,
 				ED1D969127DF252100D24852 /* RecordVC.swift in Sources */,

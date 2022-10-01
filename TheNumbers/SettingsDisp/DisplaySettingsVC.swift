@@ -8,16 +8,11 @@
 import UIKit
 import Firebase
 
-//MARK: Settings format
-struct SettingParametrs: Codable { ///Структура свойств по которым юзер выбирает нужные параметры
-    var timerOn: Bool  ///Включен или выключен таймер?
-    var timeForGame: Int ///Сколько времени выбрано на раунд
-}
+
 
 //MARK: Enum for stored actual settings
 enum KeysSettings {
     static var actualSettingsGame = "actualSettingsGame" ///Ключи по которым храненятся актуальные настройки
-    //static let enumRecordKey: [RecordModel] = []
 }
 
 final class SetDispBase: UIViewController {

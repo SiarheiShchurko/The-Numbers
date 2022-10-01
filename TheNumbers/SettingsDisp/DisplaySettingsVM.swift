@@ -12,7 +12,7 @@ protocol SettingsVMProtocol {
     var currentSettings: SettingParametrs { get set }
 }
 
-class SetDispBaseVM: SettingsVMProtocol {
+final class SetDispBaseVM: SettingsVMProtocol {
 
     //MARK: Default set
 let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30)

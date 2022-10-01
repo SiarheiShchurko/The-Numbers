@@ -58,7 +58,7 @@ class Game {
                     if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "No Name", time: 0)
+                        return .init(name: "No Name", time: 0, place: "")
                     }
                 }
                 
@@ -66,7 +66,7 @@ class Game {
                     if let data = UserDefaults.standard.object(forKey: RecordList.two) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "No Name", time: 0)
+                        return .init(name: "No Name", time: 0, place: "")
                     }
                 }
                 
@@ -74,12 +74,12 @@ class Game {
                     if let data = UserDefaults.standard.object(forKey: RecordList.three) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "No Name", time: 0)
+                        return .init(name: "No Name", time: 0, place: "")
                     }
                 }
                 
                 if user.time < firstRecord.time || firstRecord.time == 0 {
-                    
+                    user.place = "#1"
                     if let data = try? PropertyListEncoder().encode(secondRecord) {
                         UserDefaults.standard.set(data, forKey: RecordList.three)
                     }
@@ -93,7 +93,7 @@ class Game {
                     }
                     
                 } else if user.time < secondRecord.time || secondRecord.time == 0 {
-                    
+                    user.place = "#2"
                     if let data = try? PropertyListEncoder().encode(secondRecord) {
                         UserDefaults.standard.set(data, forKey: RecordList.three)
                     }
@@ -104,6 +104,7 @@ class Game {
                     }
                 
                     } else if user.time < threeRecord.time || threeRecord.time == 0 {
+                        user.place = "#3"
                         if let data = try? PropertyListEncoder().encode(user) {
                             UserDefaults.standard.set(data, forKey: RecordList.three)
                             RecordPlaces.isThirdPlace = true

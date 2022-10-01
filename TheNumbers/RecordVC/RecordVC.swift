@@ -7,13 +7,11 @@
 
 import UIKit
 
-//enum KeyRecords: CodingKey {
-//    static var record = "Record"
-//}
 
 class RecordViewController: UIViewController {
     
-    private var recordVM: RecordProtocolVM = RecordVM()
+     var recordVM: RecordProtocolVM = RecordVM()
+    
     
     //MARK: TableView
     @IBOutlet private weak var tableView: UITableView! {
@@ -47,7 +45,9 @@ extension RecordViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordTableCell.self)", for: indexPath) as? RecordTableCell
+        
         cell?.setRecordCell(recordVM.recordObjects[indexPath.row])
+        
         return cell ?? UITableViewCell()
     }
 }

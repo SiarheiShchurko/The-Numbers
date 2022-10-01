@@ -8,5 +8,5 @@
 struct RecordModel: Codable {
     var name: String
     var time: Int
-    
+    var place: String?
 }

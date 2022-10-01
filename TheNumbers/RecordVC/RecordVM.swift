@@ -17,6 +17,7 @@ protocol RecordProtocolVM: AnyObject {
     var update: (() -> Void)? { get set }
     var recordObjects: [ RecordModel ] { get set }
     func loadInfo()
+  
     
 }
 
@@ -33,7 +34,7 @@ class RecordVM: RecordProtocolVM {
             if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {
                 return try! PropertyListDecoder().decode(RecordModel.self, from: data)
             } else {
-                return .init(name: "No Name", time: 0)
+                return .init(name: "No Name", time: 0, place: "#1")
             }
         }
         
@@ -41,14 +42,14 @@ class RecordVM: RecordProtocolVM {
             if let data = UserDefaults.standard.object(forKey: RecordList.two) as? Data {
                 return try! PropertyListDecoder().decode(RecordModel.self, from: data)
             }
-            return .init(name: "No Name", time: 0)
+            return .init(name: "No Name", time: 0, place: "#2")
         }
         
         var threeRecord: RecordModel {
             if let data = UserDefaults.standard.object(forKey: RecordList.three) as? Data {
                 return try! PropertyListDecoder().decode(RecordModel.self, from: data)
             }
-            return .init(name: "No Name", time: 0)
+            return .init(name: "No Name", time: 0, place: "#3")
         }
 
         recordObjects.append(firstRecord)
