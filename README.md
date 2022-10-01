@@ -13,11 +13,6 @@ After registration user located on start pade app.
 
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 10 53 50](https://user-images.githubusercontent.com/101253596/191201981-5ff1bf86-9e30-48c2-8e5f-2a6a73fbbb5e.png)
 
-Now he can go to settings and changed settings.
-Defaults set "Timer on". Time 30 sec. 
-
-![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 10 53 55](https://user-images.githubusercontent.com/101253596/191202071-9f0566fe-0ea5-4e3d-a70e-9132add147ee.png)
-
 If user press start game, process game is started
 
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 11 08 07](https://user-images.githubusercontent.com/101253596/191203513-d358361e-35ff-4b3d-8e46-44f8cbb3933d.png)
