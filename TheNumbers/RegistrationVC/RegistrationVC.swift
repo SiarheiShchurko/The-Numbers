@@ -53,7 +53,6 @@ final class RegistrationVC: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkTextField()
@@ -138,6 +137,7 @@ final class RegistrationVC: UIViewController {
     
     //MARK: Registrated or enter in account func
     @IBAction private func registrationOrEnter() {
+        
         //signUp ? registration() : signIn()
         guard let name = enterName.text else { return }
         guard let email = enterEmail.text else { return }

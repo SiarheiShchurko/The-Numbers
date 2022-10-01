@@ -33,7 +33,7 @@ class RecordViewController: UIViewController {
     }
     
     @IBAction func CancelButtonAct(_ sender: Any) {
-        dismiss(animated: true) ///Для того чтобы скрыть модальный VC используется метод dismiss
+        dismiss(animated: true) 
     }
 }
 
@@ -45,9 +45,7 @@ extension RecordViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(RecordTableCell.self)", for: indexPath) as? RecordTableCell
-        
         cell?.setRecordCell(recordVM.recordObjects[indexPath.row])
-        
         return cell ?? UITableViewCell()
     }
 }

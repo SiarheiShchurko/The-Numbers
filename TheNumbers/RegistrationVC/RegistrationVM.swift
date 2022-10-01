@@ -42,7 +42,7 @@ class RegistrationVM: RegistrationVMProtocol {
         }
     }
     
-    //MARK: Check result for success/enter
+    //MARK: Check result for success/enter. Used only self class.
     private func checkResult(_ object: RegSignResult) {
         switch object {
         case .success:

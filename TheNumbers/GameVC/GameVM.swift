@@ -28,7 +28,6 @@ class Game {
         var isError: Bool = false ///Нажата не та кнопка
     }
     
-//    private var settingsVM: SettingsVMProtocol = SetDispBaseVM()
     private let data = Array(1...99) ///Массив который хранит весь объем возможных чисел
     var itemArray: [Item] = [] ///Массив в который закидываю отобранные числа из массива data.
 
@@ -37,12 +36,8 @@ class Game {
     
     var nextDigits: Item? ///Оptional т.к. вконце игры чисел не будет и код не должен возвращать какое-то число для поска/ Должен вернуться nil.
     var isTimerOff = false
-    
-    //MARK: Records
-//    var recordArray: [ Bool ] = [isNewRecord, isSecondRecord, isThirdRecord]
-//    var isNewRecord = false
-//    var isSecondRecord = false
-//    var isThirdRecord = false
+    var isMusikOff = false 
+    var audioPlayer: AudioPlayer? = AudioPlayer()
     
     var statusGame: StatusGame = .start {
         didSet { if statusGame != .start {
@@ -159,6 +154,10 @@ class Game {
             timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true, block: { [ weak self ] (_) in
                 self?.roundTimeForGame -= 1 })
         }
+        
+        if SetDispBase.shared.settingsVM.currentSettings.musicOn {
+            audioPlayer?.track.play()
+        }
         nextDigits = itemArray.shuffled().first
     }
     
@@ -182,6 +181,7 @@ class Game {
     //MARK: Func stopGame if timer out.
     func stopGame() {
         timer?.invalidate()
+        
     }
     
     //MARK: Func newGame

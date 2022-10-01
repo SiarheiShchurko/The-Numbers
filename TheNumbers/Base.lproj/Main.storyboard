@@ -952,13 +952,13 @@
                                             </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLT-Zr-JkA">
-                                            <rect key="frame" x="8" y="280" width="104" height="29"/>
+                                            <rect key="frame" x="8" y="339" width="104" height="29"/>
                                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-Ox-Cgp">
-                                            <rect key="frame" x="352" y="274" width="42" height="41"/>
+                                            <rect key="frame" x="352" y="333" width="42" height="41"/>
                                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Time">
@@ -972,7 +972,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-uB-sYC">
-                                            <rect key="frame" x="134.5" y="329" width="145" height="41"/>
+                                            <rect key="frame" x="134.5" y="388" width="145" height="41"/>
                                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
                                             <color key="tintColor" systemColor="linkColor"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -997,24 +997,40 @@
                                                 <action selector="changeName" destination="7YV-t8-Ubl" eventType="touchUpInside" id="0QI-hn-uwe"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ea-vS-Ugf">
+                                            <rect key="frame" x="8" y="280" width="57" height="29"/>
+                                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdl-4c-7vv">
+                                            <rect key="frame" x="345" y="279" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="musicON:" destination="7YV-t8-Ubl" eventType="touchUpInside" id="iEf-wO-naT"/>
+                                            </connections>
+                                        </switch>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="8Vx-uB-sYC" firstAttribute="top" secondItem="XLT-Zr-JkA" secondAttribute="bottom" constant="20" id="222-98-3Df"/>
-                                        <constraint firstItem="XLT-Zr-JkA" firstAttribute="top" secondItem="RZX-1b-xz2" secondAttribute="bottom" constant="30" id="4Jp-ix-HRE"/>
+                                        <constraint firstItem="XLT-Zr-JkA" firstAttribute="top" secondItem="1Ea-vS-Ugf" secondAttribute="bottom" constant="30" id="4Jp-ix-HRE"/>
                                         <constraint firstAttribute="trailing" secondItem="col-sS-mKP" secondAttribute="trailing" constant="8" id="5nx-iZ-Q8J"/>
                                         <constraint firstAttribute="trailing" secondItem="eti-5Y-GSO" secondAttribute="trailing" constant="20" id="7xY-oZ-dKL"/>
+                                        <constraint firstItem="1Ea-vS-Ugf" firstAttribute="leading" secondItem="RZX-1b-xz2" secondAttribute="leading" id="B6i-KC-MZ3"/>
                                         <constraint firstItem="eCJ-Ox-Cgp" firstAttribute="trailing" secondItem="ghM-as-814" secondAttribute="trailing" id="CJG-i1-gkz"/>
                                         <constraint firstItem="col-sS-mKP" firstAttribute="leading" secondItem="FJ3-Gy-SHq" secondAttribute="leading" constant="8" id="HoW-AM-xzU"/>
                                         <constraint firstItem="RZX-1b-xz2" firstAttribute="leading" secondItem="FJ3-Gy-SHq" secondAttribute="leading" constant="8" id="HzD-we-gK6"/>
                                         <constraint firstItem="eti-5Y-GSO" firstAttribute="leading" secondItem="FJ3-Gy-SHq" secondAttribute="leading" constant="8" id="Mem-fe-mY9"/>
                                         <constraint firstItem="XLT-Zr-JkA" firstAttribute="leading" secondItem="FJ3-Gy-SHq" secondAttribute="leading" constant="8" id="Nla-s4-cg6"/>
+                                        <constraint firstItem="wdl-4c-7vv" firstAttribute="centerY" secondItem="1Ea-vS-Ugf" secondAttribute="centerY" id="PNC-Pf-Pvj"/>
                                         <constraint firstItem="col-sS-mKP" firstAttribute="top" secondItem="FJ3-Gy-SHq" secondAttribute="top" constant="100" id="VwW-gC-eTd"/>
                                         <constraint firstItem="ghM-as-814" firstAttribute="trailing" secondItem="eti-5Y-GSO" secondAttribute="trailing" id="XRT-8e-fYr"/>
                                         <constraint firstItem="RZX-1b-xz2" firstAttribute="top" secondItem="eti-5Y-GSO" secondAttribute="bottom" constant="50" id="csU-kx-bMZ"/>
                                         <constraint firstItem="8Vx-uB-sYC" firstAttribute="centerX" secondItem="FJ3-Gy-SHq" secondAttribute="centerX" id="elk-7O-fDP"/>
                                         <constraint firstItem="eti-5Y-GSO" firstAttribute="top" secondItem="col-sS-mKP" secondAttribute="bottom" constant="4" id="hyO-E8-xkg"/>
+                                        <constraint firstItem="1Ea-vS-Ugf" firstAttribute="top" secondItem="RZX-1b-xz2" secondAttribute="bottom" constant="30" id="nLg-jv-ruC"/>
                                         <constraint firstItem="ghM-as-814" firstAttribute="centerY" secondItem="RZX-1b-xz2" secondAttribute="centerY" id="nZv-vp-QA3"/>
                                         <constraint firstItem="eCJ-Ox-Cgp" firstAttribute="centerY" secondItem="XLT-Zr-JkA" secondAttribute="centerY" id="ux3-3n-ctB"/>
+                                        <constraint firstItem="wdl-4c-7vv" firstAttribute="leading" secondItem="ghM-as-814" secondAttribute="leading" id="zXy-nM-aSQ"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -1036,6 +1052,7 @@
                     <connections>
                         <outlet property="nameTF" destination="eti-5Y-GSO" id="jRz-8U-b4i"/>
                         <outlet property="sWitch" destination="ghM-as-814" id="wWp-Cv-c6c"/>
+                        <outlet property="sWitchMusik" destination="wdl-4c-7vv" id="DB5-20-RpG"/>
                         <outlet property="saveName" destination="vs5-ED-VOD" id="oCb-9W-Jpg"/>
                         <outlet property="timeButton" destination="eCJ-Ox-Cgp" id="KNj-4V-2em"/>
                     </connections>

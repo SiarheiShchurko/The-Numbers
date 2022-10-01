@@ -11,11 +11,10 @@ protocol SettingsVMProtocol {
     var defaultSettings: SettingParametrs { get }
     var currentSettings: SettingParametrs { get set }
 }
-
 final class SetDispBaseVM: SettingsVMProtocol {
 
     //MARK: Default set
-let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30)
+let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30, musicOn: false)
 
     //MARK: Current settings
     var currentSettings: SettingParametrs {
@@ -28,7 +27,6 @@ let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30)
                 }
                 return defaultSettings }
         }
-        
         set {
             if let data = try? PropertyListEncoder().encode(newValue) {
                 UserDefaults.standard.set(data, forKey: KeysSettings.actualSettingsGame)

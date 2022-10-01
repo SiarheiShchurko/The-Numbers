@@ -30,6 +30,8 @@
 		ED84EBFF28E056B1009CA730 /* RegService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84EBFE28E056B1009CA730 /* RegService.swift */; };
 		ED84EC0128E05821009CA730 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED84EC0028E05821009CA730 /* RegistrationVM.swift */; };
 		ED922A7928E877E00009D278 /* SettingParametrs.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED922A7828E877E00009D278 /* SettingParametrs.swift */; };
+		ED922A7C28E88C670009D278 /* FeelingGood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ED922A7B28E88C670009D278 /* FeelingGood.mp3 */; };
+		ED922A7E28E88E880009D278 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED922A7D28E88E880009D278 /* AudioPlayer.swift */; };
 		ED99B43C28D9D55500A390F8 /* TimeTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */; };
 		ED99B44028D9DA0600A390F8 /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B43F28D9DA0600A390F8 /* SettingsTableView.swift */; };
 		ED99B44228D9DEA300A390F8 /* DisplaySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED99B44128D9DEA300A390F8 /* DisplaySettingsVC.swift */; };
@@ -55,6 +57,8 @@
 		ED84EBFE28E056B1009CA730 /* RegService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegService.swift; sourceTree = "<group>"; };
 		ED84EC0028E05821009CA730 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
 		ED922A7828E877E00009D278 /* SettingParametrs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingParametrs.swift; sourceTree = "<group>"; };
+		ED922A7B28E88C670009D278 /* FeelingGood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FeelingGood.mp3; sourceTree = "<group>"; };
+		ED922A7D28E88E880009D278 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		ED99B43B28D9D55500A390F8 /* TimeTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVCell.swift; sourceTree = "<group>"; };
 		ED99B43F28D9DA0600A390F8 /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 		ED99B44128D9DEA300A390F8 /* DisplaySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingsVC.swift; sourceTree = "<group>"; };
@@ -92,7 +96,6 @@
 			children = (
 				ED35FCB028C10301009BFB78 /* RegistrationVC.swift */,
 				ED84EC0028E05821009CA730 /* RegistrationVM.swift */,
-				ED84EBFE28E056B1009CA730 /* RegService.swift */,
 			);
 			path = RegistrationVC;
 			sourceTree = "<group>";
@@ -143,6 +146,15 @@
 			path = RecordVC;
 			sourceTree = "<group>";
 		};
+		ED922A7A28E887DA0009D278 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED84EBFE28E056B1009CA730 /* RegService.swift */,
+				ED922A7D28E88E880009D278 /* AudioPlayer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		ED99B43D28D9D9BD00A390F8 /* SettingsDisp */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,19 +192,21 @@
 		EDA3B697275FB8D6008E17C7 /* TheNumbers */ = {
 			isa = PBXGroup;
 			children = (
+				ED922A7A28E887DA0009D278 /* Services */,
 				ED68BFC328E2FA5D00BAE8FB /* Models */,
 				ED99B43D28D9D9BD00A390F8 /* SettingsDisp */,
 				ED1C799028D47EEB00FEA36D /* RegistrationVC */,
 				ED790E6728BFA78600772CE7 /* RecordVC */,
 				ED790E6428BF9E1A00772CE7 /* GameVC */,
+				ED35FCB228C1177A009BFB78 /* Utils.swift */,
 				EDA3B69C275FB8D6008E17C7 /* StartPage.swift */,
 				EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */,
 				EDA3B69E275FB8D6008E17C7 /* Main.storyboard */,
 				EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */,
+				ED922A7B28E88C670009D278 /* FeelingGood.mp3 */,
 				EDA3B6A1275FB8D7008E17C7 /* Assets.xcassets */,
 				EDA3B6A6275FB8D7008E17C7 /* Info.plist */,
 				ED35FC9B28C0E143009BFB78 /* GoogleService-Info.plist */,
-				ED35FCB228C1177A009BFB78 /* Utils.swift */,
 			);
 			path = TheNumbers;
 			sourceTree = "<group>";
@@ -269,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED922A7C28E88C670009D278 /* FeelingGood.mp3 in Resources */,
 				EDA3B6A5275FB8D7008E17C7 /* LaunchScreen.storyboard in Resources */,
 				ED35FC9C28C0E143009BFB78 /* GoogleService-Info.plist in Resources */,
 				EDA3B6A2275FB8D7008E17C7 /* Assets.xcassets in Resources */,
@@ -295,6 +310,7 @@
 				ED84EC0128E05821009CA730 /* RegistrationVM.swift in Sources */,
 				ED99B44028D9DA0600A390F8 /* SettingsTableView.swift in Sources */,
 				ED35FCB328C1177A009BFB78 /* Utils.swift in Sources */,
+				ED922A7E28E88E880009D278 /* AudioPlayer.swift in Sources */,
 				ED1812172762455200EC233D /* GameVM.swift in Sources */,
 				ED68BFC228E2FA0E00BAE8FB /* RecordModel.swift in Sources */,
 				ED922A7928E877E00009D278 /* SettingParametrs.swift in Sources */,

@@ -8,6 +8,7 @@
 import UIKit
 
 
+
 class GameViewController: UIViewController {
     
     //MARK: Labels
@@ -45,6 +46,7 @@ class GameViewController: UIViewController {
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpScreen()
     }
     

@@ -21,7 +21,7 @@ final class SetDispBase: UIViewController {
     static var shared = SetDispBase()
     
     //MARK: Model var for self class
-    var settingsVM: SettingsVMProtocol = SetDispBaseVM()
+     var settingsVM: SettingsVMProtocol = SetDispBaseVM()
     
     //MARK: Default settings
     
@@ -36,9 +36,13 @@ final class SetDispBase: UIViewController {
              }
     }
     
-    //MARK: UISwitch timer
+    //MARK: UISwitch
+    //timer
     @IBOutlet private weak var sWitch: UISwitch! {
         didSet { sWitch.isOn = settingsVM.currentSettings.timerOn }
+    }
+    @IBOutlet private weak var sWitchMusik: UISwitch! {
+        didSet { sWitch.isOn = settingsVM.currentSettings.musicOn }
     }
     
     //MARK: timeButton
@@ -83,6 +87,14 @@ final class SetDispBase: UIViewController {
         } else {
             timeButton.isEnabled = false
             settingsVM.currentSettings.timerOn = false }
+    }
+    
+    @IBAction private func musicON(_ sender: UISwitch) {
+        if sender.isOn {
+            settingsVM.currentSettings.musicOn = true
+        } else {
+            settingsVM.currentSettings.musicOn = false
+        }
     }
     
     //MARK: Change time func
