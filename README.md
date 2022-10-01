@@ -50,3 +50,7 @@ User can change name, off timer or change time for round
 
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 43 20](https://user-images.githubusercontent.com/101253596/193412453-d80abfbf-820d-41bd-83e3-0cc50d78e8cc.png)
 
+Record table contain top 3 results:
+
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 52 39](https://user-images.githubusercontent.com/101253596/193412874-cdf2c3d6-59d6-4ee0-82dd-1744f7e10a5d.png)
+
