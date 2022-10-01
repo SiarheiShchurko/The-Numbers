@@ -11,7 +11,8 @@ If user not auth, app will present disp with registration or SignIn page if user
 
 After registration user located on start pade app. 
 
-![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 10 53 50](https://user-images.githubusercontent.com/101253596/191201981-5ff1bf86-9e30-48c2-8e5f-2a6a73fbbb5e.png)
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 46 40](https://user-images.githubusercontent.com/101253596/193412597-0466c41f-4768-4a7f-b69c-929190285393.png)
+
 
 If user press start game, process game is started
 
