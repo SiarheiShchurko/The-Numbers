@@ -44,4 +44,13 @@ Start disp have button "Log out":
 
 If user change "yes" - app move to registration/auth disp
 
-Now I work record table and profile disp
+Settings disp:
+
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 36 05](https://user-images.githubusercontent.com/101253596/193412372-8b45688b-4323-40df-969b-27bdf2bcfbce.png)
+
+User can change name, off timer or change time for round
+
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 43 30](https://user-images.githubusercontent.com/101253596/193412443-534ca872-68c2-4e22-99ae-89a9ace5cae5.png)
+
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 43 20](https://user-images.githubusercontent.com/101253596/193412453-d80abfbf-820d-41bd-83e3-0cc50d78e8cc.png)
+
