@@ -36,7 +36,7 @@ If user lose, app showed:
 
 Start disp have button "Log out":
 
-![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 10 54 03](https://user-images.githubusercontent.com/101253596/191212114-ea7ccc54-ac33-4d2a-93e1-24c18944d968.png)
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 49 29](https://user-images.githubusercontent.com/101253596/193412726-0a5fc8ad-eb60-445a-b06d-cd2854490b0f.png)
 
 If user change "yes" - app move to registration/auth disp
 
