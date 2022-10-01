@@ -14,6 +14,12 @@ enum StatusGame {
     case lose
 }
 
+enum RecordPlaces {
+    static var isNewRecord = false
+    static var isSecondPlace = false
+    static var isThirdPlace = false
+}
+
 class Game {
     
     struct Item {
@@ -33,9 +39,10 @@ class Game {
     var isTimerOff = false
     
     //MARK: Records
-    var isNewRecord = false
-    var isSecondRecord = false
-    var isThirdRecord = false
+//    var recordArray: [ Bool ] = [isNewRecord, isSecondRecord, isThirdRecord]
+//    var isNewRecord = false
+//    var isSecondRecord = false
+//    var isThirdRecord = false
     
     var statusGame: StatusGame = .start {
         didSet { if statusGame != .start {
@@ -82,7 +89,7 @@ class Game {
                     }
                     if let data = try? PropertyListEncoder().encode(user) {
                         UserDefaults.standard.set(data, forKey: RecordList.one)
-                        isNewRecord = true
+                        RecordPlaces.isNewRecord = true
                     }
                     
                 } else if user.time < secondRecord.time || secondRecord.time == 0 {
@@ -93,13 +100,13 @@ class Game {
                     
                     if let data = try? PropertyListEncoder().encode(user) {
                         UserDefaults.standard.set(data, forKey: RecordList.two)
-                        isSecondRecord = true
+                        RecordPlaces.isSecondPlace = true
                     }
                 
                     } else if user.time < threeRecord.time || threeRecord.time == 0 {
                         if let data = try? PropertyListEncoder().encode(user) {
                             UserDefaults.standard.set(data, forKey: RecordList.three)
-                            isThirdRecord = true
+                            RecordPlaces.isThirdPlace = true
                         }
                     }
                 }
@@ -135,9 +142,9 @@ class Game {
     
     func setupGame() {
         //Status remove
-        isNewRecord = false
-        isSecondRecord = false
-        isThirdRecord = false
+        RecordPlaces.isNewRecord = false
+        RecordPlaces.isSecondPlace = false
+        RecordPlaces.isThirdPlace = false
         
         //Clean itemArray
         itemArray.removeAll()

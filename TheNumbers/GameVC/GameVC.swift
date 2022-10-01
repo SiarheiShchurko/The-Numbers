@@ -91,27 +91,28 @@ class GameViewController: UIViewController {
             }
     
     //MARK: Check StatusGame
-    func globalStatus(status: StatusGame) {
+    private func globalStatus(status: StatusGame) {
         
         switch status {
         case .start:
             StatusLabel.isHidden = true
+            
         case .win:
             StatusLabel.text = "You win"
             StatusLabel.textColor = .green
             StatusLabel.isHidden = false
             
-            if game.isNewRecord {
+            if RecordPlaces.isNewRecord {
                 recordAlert()
             }
-            if game.isSecondRecord {
+            if RecordPlaces.isSecondPlace {
                 secondPlaceAlert()
             }
-            if game.isThirdRecord {
+            if RecordPlaces.isThirdPlace {
                 thirdPlaceAlert()
             }
-            
             showAlertActionSheet()
+            
         case .lose:
             StatusLabel.text = "You lose"
             StatusLabel.textColor = .red
@@ -123,7 +124,7 @@ class GameViewController: UIViewController {
   
     
     //MARK: Func for new record
-    func recordAlert() {
+    private func recordAlert() {
         
         let alert = UIAlertController(title: "Congratilate", message: "It is NEW RECORD", preferredStyle: .alert)
         let alertButtonOk = UIAlertAction(title: "Ok", style: .default) { _ in
@@ -133,8 +134,9 @@ class GameViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func secondPlaceAlert() {
-        let alert = UIAlertController(title: "Congratilate", message: "It is SECOND PLACE", preferredStyle: .alert)
+    //SecondPlace
+    private func secondPlaceAlert() {
+        let alert = UIAlertController(title: "Congratilate", message: "It is 2 PLACE", preferredStyle: .alert)
         let alertButtonOk = UIAlertAction(title: "Ok", style: .default) { _ in
             self.showAlertActionSheet()
         }
@@ -142,8 +144,9 @@ class GameViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func thirdPlaceAlert() {
-        let alert = UIAlertController(title: "Congratilate", message: "It is THIRD PLACE", preferredStyle: .alert)
+    //ThirdPlace
+   private func thirdPlaceAlert() {
+        let alert = UIAlertController(title: "Congratilate", message: "It is 3 PLACE", preferredStyle: .alert)
         let alertButtonOk = UIAlertAction(title: "Ok", style: .default) { _ in
             self.showAlertActionSheet()
         }
@@ -152,7 +155,7 @@ class GameViewController: UIViewController {
     }
     
     //MARK: Alert for when game is over
-    func showAlertActionSheet() {
+   private func showAlertActionSheet() {
         let alert = UIAlertController(title: "What you want do?", message: nil, preferredStyle: .actionSheet)
         
         let newGameAction = UIAlertAction(title: "Start New Game", style: .default) { [ weak self ] (_) in

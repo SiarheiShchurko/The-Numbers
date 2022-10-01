@@ -43,7 +43,6 @@ class RegServiceVC: UIViewController {
             }
         
     func signIn(email: String, pass: String, complition: @escaping (RegSignResult) -> Void ) {
-            
         //Enter
             Auth.auth().signIn(withEmail: email, password: pass) { result, error in
                 if error == nil {
