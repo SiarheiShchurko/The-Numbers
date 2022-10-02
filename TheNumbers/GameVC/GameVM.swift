@@ -53,7 +53,7 @@ class Game {
                     if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "No Name", time: 0, place: "")
+                        return .init(name: "No Name", time: 0, place: "#1")
                     }
                 }
                 
@@ -61,7 +61,7 @@ class Game {
                     if let data = UserDefaults.standard.object(forKey: RecordList.two) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "No Name", time: 0, place: "")
+                        return .init(name: "No Name", time: 0, place: "#2")
                     }
                 }
                 
@@ -69,7 +69,7 @@ class Game {
                     if let data = UserDefaults.standard.object(forKey: RecordList.three) as? Data {
                         return try! PropertyListDecoder().decode(RecordModel.self, from: data)
                     } else {
-                        return .init(name: "No Name", time: 0, place: "")
+                        return .init(name: "No Name", time: 0, place: "#3")
                     }
                 }
                 
@@ -156,7 +156,9 @@ class Game {
         }
         
         if SetDispBase.shared.settingsVM.currentSettings.musicOn {
+            audioPlayer?.track.
             audioPlayer?.track.play()
+            
         }
         nextDigits = itemArray.shuffled().first
     }

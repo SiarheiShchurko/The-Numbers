@@ -7,11 +7,12 @@
 
 import UIKit
 
+
 protocol SettingsVMProtocol {
     var defaultSettings: SettingParametrs { get }
     var currentSettings: SettingParametrs { get set }
 }
-final class SetDispBaseVM: SettingsVMProtocol {
+class SetDispBaseVM: SettingsVMProtocol {
 
     //MARK: Default set
 let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30, musicOn: false)

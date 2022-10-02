@@ -10,8 +10,6 @@ import MediaPlayer
 
 class AudioPlayer {
     var track = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))
-    
-//    let firstTrack = ModelTrack(name: "FeelingGood", path: Bundle.main.path(forResource: name, ofType: <#T##String?#>))
 }
 
 

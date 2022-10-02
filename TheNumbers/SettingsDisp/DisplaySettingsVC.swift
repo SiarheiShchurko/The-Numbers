@@ -12,7 +12,9 @@ import Firebase
 
 //MARK: Enum for stored actual settings
 enum KeysSettings {
+    
     static var actualSettingsGame = "actualSettingsGame" ///Ключи по которым храненятся актуальные настройки
+    
 }
 
 final class SetDispBase: UIViewController {
@@ -21,7 +23,7 @@ final class SetDispBase: UIViewController {
     static var shared = SetDispBase()
     
     //MARK: Model var for self class
-     var settingsVM: SettingsVMProtocol = SetDispBaseVM()
+    var settingsVM: SettingsVMProtocol = SetDispBaseVM()
     
     //MARK: Default settings
     
@@ -33,7 +35,7 @@ final class SetDispBase: UIViewController {
             guard let eMailUser = Auth.auth().currentUser?.email else { return }
             let defaults = UserDefaults.standard
             nameTF.text = defaults.string(forKey: eMailUser)
-             }
+        }
     }
     
     //MARK: UISwitch
@@ -42,8 +44,8 @@ final class SetDispBase: UIViewController {
         didSet { sWitch.isOn = settingsVM.currentSettings.timerOn }
     }
     @IBOutlet private weak var sWitchMusik: UISwitch! {
-        didSet { sWitch.isOn = settingsVM.currentSettings.musicOn }
-    }
+        didSet { sWitchMusik.isOn = settingsVM.currentSettings.musicOn  }
+}
     
     //MARK: timeButton
     @IBOutlet private weak var timeButton: UIButton! {
@@ -108,7 +110,8 @@ final class SetDispBase: UIViewController {
     //MARK: Default set reset
     @IBAction private func defaultSettingsReset() {
         settingsVM.currentSettings = settingsVM.defaultSettings
-        sWitch.isOn = settingsVM.currentSettings.timerOn
+        sWitch.isOn = settingsVM.defaultSettings.timerOn
+        sWitchMusik.isOn = settingsVM.defaultSettings.musicOn
         timeButton.setTitle("\(settingsVM.currentSettings.timeForGame) sec.", for: .normal)
         timeButton.isEnabled = settingsVM.currentSettings.timerOn
     }
