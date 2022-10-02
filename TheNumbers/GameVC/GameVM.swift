@@ -4,7 +4,8 @@
 //
 //  Created by Alinser Shchurko on 9.12.21.
 //
-
+import AVKit
+import AVFAudio
 import Foundation
 import Firebase
 
@@ -36,7 +37,7 @@ class Game {
     
     var nextDigits: Item? ///Оptional т.к. вконце игры чисел не будет и код не должен возвращать какое-то число для поска/ Должен вернуться nil.
     var isTimerOff = false
-    var isMusikOff = false 
+
     var audioPlayer: AudioPlayer? = AudioPlayer()
     
     var statusGame: StatusGame = .start {
@@ -147,21 +148,33 @@ class Game {
         var digits = data.shuffled()
         while itemArray.count < countItems {
             let item = Item(title: String(digits.removeFirst()))
-            itemArray.append(item) }
-        updateTimer(statusGame,roundTimeForGame) ///Прописал обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
+            itemArray.append(item)
+            
+        }
         
+        updateTimer(statusGame,roundTimeForGame) ///Прописал обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
         if SetDispBase.shared.settingsVM.currentSettings.timerOn {
             timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true, block: { [ weak self ] (_) in
                 self?.roundTimeForGame -= 1 })
         }
         
         if SetDispBase.shared.settingsVM.currentSettings.musicOn {
-            audioPlayer?.track.
-            audioPlayer?.track.play()
-            
+            self.audioPlayer?.track.play()
         }
+        
         nextDigits = itemArray.shuffled().first
     }
+    
+     func musicTrackObserved() {
+        audioPlayer?.track.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1.00, preferredTimescale: 1000), queue: DispatchQueue.global(qos: .utility),
+    using: { _ in
+        if self.audioPlayer?.track.timeControlStatus != .playing {
+            self.audioPlayer?.track.play()
+        }
+    })
+    }
+    
+    
     
     //MARK: Func CheckStatusGame
     func check(index: Int) {

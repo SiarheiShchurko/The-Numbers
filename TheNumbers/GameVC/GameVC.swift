@@ -46,8 +46,8 @@ class GameViewController: UIViewController {
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpScreen()
+       
     }
     
               
