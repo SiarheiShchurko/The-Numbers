@@ -4,8 +4,8 @@
 //
 //  Created by Alinser Shchurko on 9.12.21.
 //
-import AVKit
-import AVFAudio
+//import AVKit
+//import AVFAudio
 import Foundation
 import Firebase
 
@@ -38,7 +38,7 @@ class Game {
     var nextDigits: Item? ///Оptional т.к. вконце игры чисел не будет и код не должен возвращать какое-то число для поска/ Должен вернуться nil.
     var isTimerOff = false
 
-    var audioPlayer: AudioPlayer? = AudioPlayer()
+    var audioPlayer: AudioPlayerVM? = AudioPlayerVM()
     
     var statusGame: StatusGame = .start {
         didSet { if statusGame != .start {
@@ -159,21 +159,15 @@ class Game {
         }
         
         if SetDispBase.shared.settingsVM.currentSettings.musicOn {
-            self.audioPlayer?.track.play()
+        
+                self.audioPlayer?.createPlayerQueue()
+                self.audioPlayer?.audioPlayerService.playTrack()
+            
+               
         }
         
         nextDigits = itemArray.shuffled().first
     }
-    
-     func musicTrackObserved() {
-        audioPlayer?.track.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1.00, preferredTimescale: 1000), queue: DispatchQueue.global(qos: .utility),
-    using: { _ in
-        if self.audioPlayer?.track.timeControlStatus != .playing {
-            self.audioPlayer?.track.play()
-        }
-    })
-    }
-    
     
     
     //MARK: Func CheckStatusGame
@@ -186,8 +180,7 @@ class Game {
         }
         nextDigits = itemArray.shuffled().first(where: { ( itemNext ) -> Bool in
             itemNext.isFound == false /// Следующее число == первому числу перемешанного массива, с условием того, что оно проверяется с найденными числами. Если .isFound == false - этот item еще не уавствовал в игре и будет предложен к поиску
-        }
-        )
+        })
         if nextDigits == nil {
             statusGame = .win
         }
