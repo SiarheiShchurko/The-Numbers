@@ -159,9 +159,10 @@ class Game {
         }
         
         if SetDispBase.shared.settingsVM.currentSettings.musicOn {
-        
+               
                 self.audioPlayer?.createPlayerQueue()
                 self.audioPlayer?.audioPlayerService.playTrack()
+                self.audioPlayer?.repeatPlaylistFunc()
             
                
         }

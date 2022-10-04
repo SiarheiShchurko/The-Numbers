@@ -10,13 +10,14 @@ import MediaPlayer
 
 //MARK: Protocol
 protocol AudioPlayerProtocol {
-    var trackListArray: [TrackModel] { get set }
+    var  trackListArray: [TrackModel] { get set }
     func createPlayerQueue()
-    func loadTracksFunc()
+    func repeatPlaylistFunc()
 }
 
 //MARK: ClassVM
 class AudioPlayerVM: AudioPlayerProtocol {
+    
     //Service var
     let audioPlayerService = AudioPlayerService()
     //Track array
@@ -25,8 +26,11 @@ class AudioPlayerVM: AudioPlayerProtocol {
     func loadTracksFunc() {
         trackListArray.append(trackFirst)
     }
+    
+    
     //Create audio queue and play that list
     func createPlayerQueue() {
+         trackListArray.removeAll()
          loadTracksFunc()
          trackListArray.forEach { track in
             let asset = AVURLAsset(url: track.url)
@@ -34,6 +38,17 @@ class AudioPlayerVM: AudioPlayerProtocol {
             audioPlayerService.queuePlayer.insert(item, after: audioPlayerService.queuePlayer.items().last)
         }
     }
+    
+    func repeatPlaylistFunc() {
+        audioPlayerService.token = audioPlayerService.queuePlayer.observe(\.currentItem, changeHandler: {
+             (player, _) in
+           
+            if self.audioPlayerService.queuePlayer.items().count == 1 {
+                self.createPlayerQueue()
+            }
+        })
+    }
+    
     //TracksList
     var trackFirst = TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))
     
@@ -42,11 +57,19 @@ class AudioPlayerVM: AudioPlayerProtocol {
 //MARK: Service
 final class AudioPlayerService {
     //queue player
-    var queuePlayer = AVQueuePlayer()
+   @objc var queuePlayer = AVQueuePlayer()
+   var token: NSKeyValueObservation?
+    
     
     //func play track
     func playTrack() {
+        queuePlayer.volume = 0.28
         queuePlayer.play()
+    }
+    
+    //func play track
+    func pauseTrack() {
+        queuePlayer.pause()
     }
 }
 
