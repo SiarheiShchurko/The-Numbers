@@ -16,9 +16,11 @@ enum StatusGame {
 }
 
 enum RecordPlaces {
+    
     static var isNewRecord = false
     static var isSecondPlace = false
     static var isThirdPlace = false
+    
 }
 
 class Game {

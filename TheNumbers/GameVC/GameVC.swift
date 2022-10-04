@@ -41,14 +41,16 @@ class GameViewController: UIViewController {
     //MARK: - LIFECYCLE
     override func viewWillDisappear(_ animated: Bool) {
         game.stopGame()
+        game.audioPlayer?.audioPlayerService.queuePlayer.pause()
     }
+
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        game.newGame()
         setUpScreen()
         
-       
     }
     
               
