@@ -19,9 +19,14 @@ let defaultSettings = SettingParametrs(timerOn: true, timeForGame: 30, musicOn: 
 
     //MARK: Current settings
     var currentSettings: SettingParametrs {
+        
         get {
+            
             if let data = UserDefaults.standard.object(forKey: KeysSettings.actualSettingsGame) as? Data {
-                return try! PropertyListDecoder().decode(SettingParametrs.self, from: data)
+              
+                    return try! PropertyListDecoder().decode(SettingParametrs.self, from: data)
+                
+                
             } else {
                 if ( try? PropertyListEncoder().encode(defaultSettings) ) != nil {
                     UserDefaults.standard.object(forKey: KeysSettings.actualSettingsGame)

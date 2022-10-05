@@ -140,37 +140,38 @@ class Game {
     }
     
     func setupGame() {
-        //Status remove
-        RecordPlaces.isNewRecord = false
-        RecordPlaces.isSecondPlace = false
-        RecordPlaces.isThirdPlace = false
-        
-        //Clean itemArray
-        itemArray.removeAll()
-        var digits = data.shuffled()
-        while itemArray.count < countItems {
-            let item = Item(title: String(digits.removeFirst()))
-            itemArray.append(item)
+//        DispatchQueue.main.async { [ weak self ] in
+            //guard let self = self else { return }
+            //Status remove
+            RecordPlaces.isNewRecord = false
+            RecordPlaces.isSecondPlace = false
+            RecordPlaces.isThirdPlace = false
             
-        }
-        
-        updateTimer(statusGame,roundTimeForGame) ///Прописал обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
-        if SetDispBase.shared.settingsVM.currentSettings.timerOn {
-            timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true, block: { [ weak self ] (_) in
-                self?.roundTimeForGame -= 1 })
-        }
-        
-        if SetDispBase.shared.settingsVM.currentSettings.musicOn {
-               
-                self.audioPlayer?.createPlayerQueue()
-                self.audioPlayer?.audioPlayerService.playTrack()
-                self.audioPlayer?.repeatPlaylistFunc()
+            //Clean itemArray
+            self.itemArray.removeAll()
+            var digits = self.data.shuffled()
+            while self.itemArray.count < self.countItems {
+                    let item = Item(title: String(digits.removeFirst()))
+                    self.itemArray.append(item)
+            }
             
-               
+            self.updateTimer(self.statusGame, self.roundTimeForGame) ///Прописал обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
+            if SetDispBase.shared.settingsVM.currentSettings.timerOn {
+                self.timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true, block: {
+                    [ weak self ] (_) in
+                    self?.roundTimeForGame -= 1 })
+            }
+            
+            if SetDispBase.shared.settingsVM.currentSettings.musicOn {
+                    self.audioPlayer?.createPlayerQueue()
+                    self.audioPlayer?.audioPlayerService.playTrack()
+                    self.audioPlayer?.repeatPlaylistFunc()
+            }
+            
+            self.nextDigits = self.itemArray.shuffled().first
         }
         
-        nextDigits = itemArray.shuffled().first
-    }
+//    }
     
     
     //MARK: Func CheckStatusGame

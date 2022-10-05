@@ -30,13 +30,18 @@ class AudioPlayerVM: AudioPlayerProtocol {
     
     //Create audio queue and play that list
     func createPlayerQueue() {
-         trackListArray.removeAll()
-         loadTracksFunc()
-         trackListArray.forEach { track in
-            let asset = AVURLAsset(url: track.url)
-            let item = AVPlayerItem(asset: asset)
-            audioPlayerService.queuePlayer.insert(item, after: audioPlayerService.queuePlayer.items().last)
+        DispatchQueue.global(qos: .userInitiated).async {
+            [ weak self ] in
+            guard let self = self else { return }
+            self.trackListArray.removeAll()
+            self.loadTracksFunc()
+            self.trackListArray.forEach { track in
+               let asset = AVURLAsset(url: track.url)
+               let item = AVPlayerItem(asset: asset)
+                self.audioPlayerService.queuePlayer.insert(item, after: self.audioPlayerService.queuePlayer.items().last)
+           }
         }
+         
     }
     
     func repeatPlaylistFunc() {
