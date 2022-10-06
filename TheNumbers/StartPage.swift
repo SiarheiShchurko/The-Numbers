@@ -62,18 +62,25 @@ final class StartPageVC: UIViewController {
     }
     //MARK: Check auth() func
     private func checkAutorization() {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user == nil {
-                self.transitionBetweenDisp()
+        
+      
+            Auth.auth().addStateDidChangeListener { [ weak self ] (auth, user) in
+                if user == nil {
+                    self?.transitionBetweenDisp()
+                
             }
         }
+       
     }
     
     @IBAction private func goToSet() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let nextVC = storyboard.instantiateViewController(withIdentifier: "\(SetDispBase.self)") as? SetDispBase else { return }
-        nextVC.delegate = self
-        navigationController?.pushViewController(nextVC, animated: true)
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let nextVC = storyboard.instantiateViewController(withIdentifier: "\(SetDispBase.self)") as? SetDispBase else { return }
+            nextVC.delegate = self
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+      
     }
 }
 

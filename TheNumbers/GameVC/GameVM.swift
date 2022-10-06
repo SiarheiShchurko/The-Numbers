@@ -24,7 +24,7 @@ enum RecordPlaces {
 }
 
 class Game {
-    
+    let queue = DispatchQueue(label: "GameQueueVM")
     struct Item {
         var title: String     ///Тайтл кнопки
         var isFound: Bool = false  ///Найдена ?
@@ -33,6 +33,7 @@ class Game {
     
     private let data = Array(1...99) ///Массив который хранит весь объем возможных чисел
     var itemArray: [Item] = [] ///Массив в который закидываю отобранные числа из массива data.
+    
 
     private var countItems: Int ///Кол-во кнопок
     private var user: RecordModel = RecordModel(name: "No Name", time: 0)
@@ -41,6 +42,30 @@ class Game {
     var isTimerOff = false
 
     var audioPlayer: AudioPlayerVM? = AudioPlayerVM()
+    
+    var firstRecord: RecordModel {
+//        if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {
+//            return try! PropertyListDecoder().decode(RecordModel.self, from: data)
+//        } else {
+            return .init(name: "No Name", time: 0, place: "#1")
+        }
+    //}
+    
+    var secondRecord: RecordModel {
+        if let data = UserDefaults.standard.object(forKey: RecordList.two) as? Data {
+            return try! PropertyListDecoder().decode(RecordModel.self, from: data)
+        } else {
+            return .init(name: "No Name", time: 0, place: "#2")
+        }
+    }
+    
+    var threeRecord: RecordModel {
+        if let data = UserDefaults.standard.object(forKey: RecordList.three) as? Data {
+            return try! PropertyListDecoder().decode(RecordModel.self, from: data)
+        } else {
+            return .init(name: "No Name", time: 0, place: "#3")
+        }
+    }
     
     var statusGame: StatusGame = .start {
         didSet { if statusGame != .start {
@@ -52,63 +77,8 @@ class Game {
                 self.user = RecordModel(name: name ?? "-", time: timeUser)
                 
                 //MARK: func check record strored in UserDefaults and setup new record
-                var firstRecord: RecordModel {
-                    if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {
-                        return try! PropertyListDecoder().decode(RecordModel.self, from: data)
-                    } else {
-                        return .init(name: "No Name", time: 0, place: "#1")
-                    }
-                }
-                
-                var secondRecord: RecordModel {
-                    if let data = UserDefaults.standard.object(forKey: RecordList.two) as? Data {
-                        return try! PropertyListDecoder().decode(RecordModel.self, from: data)
-                    } else {
-                        return .init(name: "No Name", time: 0, place: "#2")
-                    }
-                }
-                
-                var threeRecord: RecordModel {
-                    if let data = UserDefaults.standard.object(forKey: RecordList.three) as? Data {
-                        return try! PropertyListDecoder().decode(RecordModel.self, from: data)
-                    } else {
-                        return .init(name: "No Name", time: 0, place: "#3")
-                    }
-                }
-                
-                if user.time < firstRecord.time || firstRecord.time == 0 {
-                    user.place = "#1"
-                    if let data = try? PropertyListEncoder().encode(secondRecord) {
-                        UserDefaults.standard.set(data, forKey: RecordList.three)
-                    }
-                    
-                    if let data = try? PropertyListEncoder().encode(firstRecord) {
-                        UserDefaults.standard.set(data, forKey: RecordList.two)
-                    }
-                    if let data = try? PropertyListEncoder().encode(user) {
-                        UserDefaults.standard.set(data, forKey: RecordList.one)
-                        RecordPlaces.isNewRecord = true
-                    }
-                    
-                } else if user.time < secondRecord.time || secondRecord.time == 0 {
-                    user.place = "#2"
-                    if let data = try? PropertyListEncoder().encode(secondRecord) {
-                        UserDefaults.standard.set(data, forKey: RecordList.three)
-                    }
-                    
-                    if let data = try? PropertyListEncoder().encode(user) {
-                        UserDefaults.standard.set(data, forKey: RecordList.two)
-                        RecordPlaces.isSecondPlace = true
-                    }
-                
-                    } else if user.time < threeRecord.time || threeRecord.time == 0 {
-                        user.place = "#3"
-                        if let data = try? PropertyListEncoder().encode(user) {
-                            UserDefaults.standard.set(data, forKey: RecordList.three)
-                            RecordPlaces.isThirdPlace = true
-                        }
-                    }
-                }
+                numberPlaceCheck()
+            }
             }
             stopGame() ///Стоп таймер
         }
@@ -140,8 +110,7 @@ class Game {
     }
     
     func setupGame() {
-//        DispatchQueue.main.async { [ weak self ] in
-            //guard let self = self else { return }
+
             //Status remove
             RecordPlaces.isNewRecord = false
             RecordPlaces.isSecondPlace = false
@@ -190,6 +159,54 @@ class Game {
         }
     }
     
+    ///No show Record alerts
+        private func numberPlaceCheck() {
+            DispatchQueue.global(qos: .utility).async {
+                if self.user.time < self.firstRecord.time || self.firstRecord.time == 0 {
+                    self.user.place = "#1"
+                    if let data = try? PropertyListEncoder().encode(self.secondRecord) {
+                    UserDefaults.standard.set(data, forKey: RecordList.three)
+                }
+                
+                    if let data = try? PropertyListEncoder().encode(self.firstRecord) {
+                    UserDefaults.standard.set(data, forKey: RecordList.two)
+                }
+                    if let data = try? PropertyListEncoder().encode(self.user) {
+                    UserDefaults.standard.set(data, forKey: RecordList.one)
+                        DispatchQueue.main.async {
+                            RecordPlaces.isNewRecord = true
+                        }
+                 
+                }
+                
+                } else if self.user.time < self.secondRecord.time || self.secondRecord.time == 0 {
+                    self.user.place = "#2"
+                    if let data = try? PropertyListEncoder().encode(self.secondRecord) {
+                    UserDefaults.standard.set(data, forKey: RecordList.three)
+                }
+                
+                    if let data = try? PropertyListEncoder().encode(self.user) {
+                    UserDefaults.standard.set(data, forKey: RecordList.two)
+                    RecordPlaces.isSecondPlace = true
+                }
+            
+                } else if self.user.time < self.threeRecord.time || self.threeRecord.time == 0 {
+                    self.user.place = "#3"
+                    if let data = try? PropertyListEncoder().encode(self.user) {
+                        UserDefaults.standard.set(data, forKey: RecordList.three)
+                        DispatchQueue.main.async {
+                            RecordPlaces.isThirdPlace = true
+                        }
+                        
+                    
+                }
+            }
+            }
+        
+        }
+            
+        
+        
     //MARK: Func stopGame if timer out.
     func stopGame() {
         timer?.invalidate()

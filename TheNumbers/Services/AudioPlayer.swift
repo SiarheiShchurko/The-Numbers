@@ -31,8 +31,7 @@ class AudioPlayerVM: AudioPlayerProtocol {
     //Create audio queue and play that list
     func createPlayerQueue() {
         DispatchQueue.global(qos: .userInitiated).async {
-            [ weak self ] in
-            guard let self = self else { return }
+           
             self.trackListArray.removeAll()
             self.loadTracksFunc()
             self.trackListArray.forEach { track in
@@ -41,16 +40,15 @@ class AudioPlayerVM: AudioPlayerProtocol {
                 self.audioPlayerService.queuePlayer.insert(item, after: self.audioPlayerService.queuePlayer.items().last)
            }
         }
-         
     }
     
     func repeatPlaylistFunc() {
+        
         audioPlayerService.token = audioPlayerService.queuePlayer.observe(\.currentItem, changeHandler: {
              (player, _) in
            
             if self.audioPlayerService.queuePlayer.items().count == 1 {
-                self.createPlayerQueue()
-            }
+                self.createPlayerQueue() }
         })
     }
     
@@ -68,8 +66,11 @@ final class AudioPlayerService {
     
     //func play track
     func playTrack() {
-        queuePlayer.volume = 0.28
-        queuePlayer.play()
+      
+            queuePlayer.volume = 0.28
+            queuePlayer.play()
+       
+      
     }
     
     //func play track

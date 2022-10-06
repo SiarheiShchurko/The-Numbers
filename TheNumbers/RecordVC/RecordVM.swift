@@ -30,6 +30,7 @@ class RecordVM: RecordProtocolVM {
     }
      
     func loadInfo() {
+        
         var firstRecord: RecordModel {
             if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {
                 return try! PropertyListDecoder().decode(RecordModel.self, from: data)
