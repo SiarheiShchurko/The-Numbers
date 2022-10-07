@@ -11,19 +11,6 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    //MARK: Labels
-    @IBOutlet private weak var NextDigit: UILabel!
-    @IBOutlet private weak var StatusLabel: UILabel!
-    @IBOutlet private weak var TimerLabel: UILabel!
-    
-    //MARK: Buttons
-    @IBOutlet var buttons: [UIButton]! {
-        didSet { buttons.forEach({ button in
-            cornerRadius(button)
-        })}
-    }
-    @IBOutlet private weak var NewGameOutlet: UIButton!
-  
     //MARK: VM var
      lazy private var game = Game(countItems: buttons.count) { [ weak self ] ( status, seconds ) in
         guard let self = self else { return }
@@ -37,6 +24,21 @@ class GameViewController: UIViewController {
              self.globalStatus(status: status)  ///Закидываю статус из функции globalStatus (в ней выполняю чек свитчем)
          }
      }
+    
+    //MARK: Labels
+    @IBOutlet private weak var NextDigit: UILabel!
+    @IBOutlet private weak var StatusLabel: UILabel!
+    @IBOutlet private weak var TimerLabel: UILabel!
+    
+    //MARK: Buttons
+    @IBOutlet var buttons: [UIButton]! {
+        didSet { buttons.forEach({ button in
+            cornerRadius(button)
+        })}
+    }
+    @IBOutlet private weak var NewGameOutlet: UIButton!
+    
+   
     
     //MARK: - LIFECYCLE
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,6 +61,11 @@ class GameViewController: UIViewController {
         guard let buttonIndex = buttons.firstIndex(of: sender) else { return }
         game.check(index: buttonIndex) ///Сверка индекса
         updateUI()
+    }
+    
+    @IBAction private func NewGameAction() {
+        game.newGame()
+        setUpScreen()
     }
     
 
@@ -101,12 +108,13 @@ class GameViewController: UIViewController {
         switch status {
         case .start:
             StatusLabel.isHidden = true
+            NewGameOutlet.isHidden = true
             
         case .win:
             StatusLabel.text = "You win"
             StatusLabel.textColor = .green
             StatusLabel.isHidden = false
-            
+            NewGameOutlet.isHidden = false
             if RecordPlaces.isNewRecord {
                 recordAlert()
             }
@@ -122,6 +130,7 @@ class GameViewController: UIViewController {
             StatusLabel.text = "You lose"
             StatusLabel.textColor = .red
             StatusLabel.isHidden = false
+            NewGameOutlet.isHidden = false
             showAlertActionSheet()
       }
     }
