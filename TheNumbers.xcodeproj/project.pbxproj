@@ -41,6 +41,11 @@
 		EDA3B6A0275FB8D6008E17C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B69E275FB8D6008E17C7 /* Main.storyboard */; };
 		EDA3B6A2275FB8D7008E17C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B6A1275FB8D7008E17C7 /* Assets.xcassets */; };
 		EDA3B6A5275FB8D7008E17C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA3B6A3275FB8D7008E17C7 /* LaunchScreen.storyboard */; };
+		EDBA3D3328F0294900D00F82 /* ButtonStructItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA3D3228F0294900D00F82 /* ButtonStructItem.swift */; };
+		EDBA3D3828F068C100D00F82 /* TheGoodLife.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EDBA3D3428F068C100D00F82 /* TheGoodLife.mp3 */; };
+		EDBA3D3928F068C100D00F82 /* UpsandDowns.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EDBA3D3528F068C100D00F82 /* UpsandDowns.mp3 */; };
+		EDBA3D3A28F068C100D00F82 /* SummerHouse.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EDBA3D3628F068C100D00F82 /* SummerHouse.mp3 */; };
+		EDBA3D3B28F068C100D00F82 /* LittlePrankster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EDBA3D3728F068C100D00F82 /* LittlePrankster.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +76,11 @@
 		EDA3B6A1275FB8D7008E17C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDA3B6A4275FB8D7008E17C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDA3B6A6275FB8D7008E17C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDBA3D3228F0294900D00F82 /* ButtonStructItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStructItem.swift; sourceTree = "<group>"; };
+		EDBA3D3428F068C100D00F82 /* TheGoodLife.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TheGoodLife.mp3; sourceTree = "<group>"; };
+		EDBA3D3528F068C100D00F82 /* UpsandDowns.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = UpsandDowns.mp3; sourceTree = "<group>"; };
+		EDBA3D3628F068C100D00F82 /* SummerHouse.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SummerHouse.mp3; sourceTree = "<group>"; };
+		EDBA3D3728F068C100D00F82 /* LittlePrankster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LittlePrankster.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +128,7 @@
 				ED68BFC128E2FA0E00BAE8FB /* RecordModel.swift */,
 				ED922A7828E877E00009D278 /* SettingParametrs.swift */,
 				ED6A28E228EB01A700D601B0 /* TrackModel.swift */,
+				EDBA3D3228F0294900D00F82 /* ButtonStructItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +218,10 @@
 				EDA3B69E275FB8D6008E17C7 /* Main.storyboard */,
 				EDA3B698275FB8D6008E17C7 /* AppDelegate.swift */,
 				ED922A7B28E88C670009D278 /* FeelingGood.mp3 */,
+				EDBA3D3728F068C100D00F82 /* LittlePrankster.mp3 */,
+				EDBA3D3628F068C100D00F82 /* SummerHouse.mp3 */,
+				EDBA3D3428F068C100D00F82 /* TheGoodLife.mp3 */,
+				EDBA3D3528F068C100D00F82 /* UpsandDowns.mp3 */,
 				EDA3B6A1275FB8D7008E17C7 /* Assets.xcassets */,
 				EDA3B6A6275FB8D7008E17C7 /* Info.plist */,
 				ED35FC9B28C0E143009BFB78 /* GoogleService-Info.plist */,
@@ -286,11 +301,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDBA3D3A28F068C100D00F82 /* SummerHouse.mp3 in Resources */,
+				EDBA3D3B28F068C100D00F82 /* LittlePrankster.mp3 in Resources */,
 				ED922A7C28E88C670009D278 /* FeelingGood.mp3 in Resources */,
 				EDA3B6A5275FB8D7008E17C7 /* LaunchScreen.storyboard in Resources */,
+				EDBA3D3928F068C100D00F82 /* UpsandDowns.mp3 in Resources */,
 				ED35FC9C28C0E143009BFB78 /* GoogleService-Info.plist in Resources */,
 				EDA3B6A2275FB8D7008E17C7 /* Assets.xcassets in Resources */,
 				EDA3B6A0275FB8D6008E17C7 /* Main.storyboard in Resources */,
+				EDBA3D3828F068C100D00F82 /* TheGoodLife.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +337,7 @@
 				ED1812172762455200EC233D /* GameVM.swift in Sources */,
 				ED68BFC228E2FA0E00BAE8FB /* RecordModel.swift in Sources */,
 				ED922A7928E877E00009D278 /* SettingParametrs.swift in Sources */,
+				EDBA3D3328F0294900D00F82 /* ButtonStructItem.swift in Sources */,
 				ED0A8BB428D215ED00231C77 /* UserModel.swift in Sources */,
 				ED51AAFF28DDA8D100A00157 /* DisplaySettingsVM.swift in Sources */,
 				ED1D969127DF252100D24852 /* RecordVC.swift in Sources */,

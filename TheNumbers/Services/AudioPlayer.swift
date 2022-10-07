@@ -5,6 +5,9 @@
 //  Created by Alinser Shchurko on 1.10.22.
 //
 
+//вы предоставите ссылку на AudioTrimmer в титрах вашего проекта. Пример:
+//Музыка: https://audiotrimmer.com/ru/royalty-free-music/
+
 import Foundation
 import MediaPlayer
 
@@ -17,14 +20,19 @@ protocol AudioPlayerProtocol {
 
 //MARK: ClassVM
 class AudioPlayerVM: AudioPlayerProtocol {
-    
+    let queue = DispatchQueue.global(qos: .utility)
     //Service var
     let audioPlayerService = AudioPlayerService()
     //Track array
     var trackListArray: [TrackModel] = []
     //Load track
     func loadTracksFunc() {
+        
         trackListArray.append(trackFirst)
+        trackListArray.append(trackSecond)
+        trackListArray.append(trackThird)
+        trackListArray.append(trackFour)
+        trackListArray.append(trackFive)
     }
     
     
@@ -54,6 +62,10 @@ class AudioPlayerVM: AudioPlayerProtocol {
     
     //TracksList
     var trackFirst = TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))
+    var trackSecond = TrackModel(name: "LittlePrankster", url: URL(fileURLWithPath: Bundle.main.path(forResource: "LittlePrankster", ofType: "mp3") ?? ""))
+    var trackThird = TrackModel(name: "SummerHouse", url: URL(fileURLWithPath: Bundle.main.path(forResource: "SummerHouse", ofType: "mp3") ?? ""))
+    var trackFour = TrackModel(name: "TheGoodLife", url: URL(fileURLWithPath: Bundle.main.path(forResource: "TheGoodLife", ofType: "mp3") ?? ""))
+    var trackFive = TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))
     
 }
 
