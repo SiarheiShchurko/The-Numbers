@@ -115,6 +115,7 @@ class GameViewController: UIViewController {
             StatusLabel.textColor = .green
             StatusLabel.isHidden = false
             NewGameOutlet.isHidden = false
+            
             if RecordPlaces.isNewRecord {
                 recordAlert()
             }
@@ -131,11 +132,18 @@ class GameViewController: UIViewController {
             StatusLabel.textColor = .red
             StatusLabel.isHidden = false
             NewGameOutlet.isHidden = false
+            animateNewGameButton()
             showAlertActionSheet()
       }
     }
     
-  
+    private func animateNewGameButton() {
+        UIView.animate(withDuration: 10.0, animations: {
+            self.NewGameOutlet.setTitleColor(.clear, for: .normal)
+        })
+           
+        
+    }
     
     //MARK: Func for new record
     private func recordAlert() {
@@ -168,7 +176,8 @@ class GameViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    //MARK: Alert for when game is over
+    
+    //MARK: AlertSheet style for when game is over
    private func showAlertActionSheet() {
         let alert = UIAlertController(title: "What you want do?", message: nil, preferredStyle: .actionSheet)
         

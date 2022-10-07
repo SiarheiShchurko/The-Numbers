@@ -14,8 +14,12 @@ class RecordTableCell: UITableViewCell {
     @IBOutlet private weak var time: UILabel!
     @IBOutlet private weak var numberPlace: UILabel!
     
+    private var recordVC: RecordViewController?
+    
     //MARK: Set cell func
     func setRecordCell(_ record: RecordModel) {
+        
+        
         
         numberPlace.text = record.place
         
@@ -23,5 +27,6 @@ class RecordTableCell: UITableViewCell {
         
         time.text = ("\(record.time) sec.")
         
+      
     }
 }
