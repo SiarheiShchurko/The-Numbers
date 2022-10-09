@@ -132,18 +132,20 @@ class GameViewController: UIViewController {
             StatusLabel.textColor = .red
             StatusLabel.isHidden = false
             NewGameOutlet.isHidden = false
-            animateNewGameButton()
             showAlertActionSheet()
       }
+        animateNewGameButton()
     }
     
     private func animateNewGameButton() {
-        UIView.animate(withDuration: 10.0, animations: {
-            self.NewGameOutlet.setTitleColor(.clear, for: .normal)
-        })
-           
         
-    }
+        UIView.animate(withDuration: 1.00, delay: 0.0, options: [.repeat]) {
+            self.NewGameOutlet.layoutIfNeeded()
+            self.NewGameOutlet.setTitleColor(.clear, for: .normal)
+//            self.NewGameOutlet.setImage(, for: .normal)
+           
+        }
+        }
     
     //MARK: Func for new record
     private func recordAlert() {
