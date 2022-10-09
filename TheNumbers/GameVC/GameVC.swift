@@ -37,7 +37,7 @@ class GameViewController: UIViewController {
         })}
     }
     
-    @IBOutlet private weak var NewGameOutlet: UIButton!
+    @IBOutlet private weak var NewGameOutlet: UIButton! 
     
    
     
@@ -115,7 +115,7 @@ class GameViewController: UIViewController {
             StatusLabel.text = "You win"
             StatusLabel.textColor = .green
             StatusLabel.isHidden = false
-            NewGameOutlet.isHidden = false
+            
             
             if RecordPlaces.isNewRecord {
                 recordAlert()
@@ -127,6 +127,9 @@ class GameViewController: UIViewController {
                 thirdPlaceAlert()
             }
             showAlertActionSheet()
+            NewGameOutlet.isHidden = false
+            animateNewGameButton()
+            
             
         case .lose:
             StatusLabel.text = "You lose"
@@ -134,17 +137,19 @@ class GameViewController: UIViewController {
             StatusLabel.isHidden = false
             NewGameOutlet.isHidden = false
             showAlertActionSheet()
+            NewGameOutlet.isHidden = false
+            animateNewGameButton()
       }
-        animateNewGameButton()
+        
     }
     
     private func animateNewGameButton() {
 
-        UIView.animate(withDuration: 1.00, delay: 0.0, options: [.repeat]) {
-            self.NewGameOutlet.layoutIfNeeded()
-            self.NewGameOutlet.setTitleColor(.systemBlue, for: .normal)
-
-
+        UIView.animate(withDuration: 2.00, delay: 2.0, options: [.allowUserInteraction]) {
+        
+                self.NewGameOutlet.layoutIfNeeded()
+                
+            self.NewGameOutlet.setTitleColor(.systemBlue, for: .application)
         }
         }
     
