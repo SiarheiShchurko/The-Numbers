@@ -29,13 +29,14 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var NextDigit: UILabel!
     @IBOutlet private weak var StatusLabel: UILabel!
     @IBOutlet private weak var TimerLabel: UILabel!
-    
+  
     //MARK: Buttons
     @IBOutlet var buttons: [UIButton]! {
         didSet { buttons.forEach({ button in
             cornerRadius(button)
         })}
     }
+    
     @IBOutlet private weak var NewGameOutlet: UIButton!
     
    
@@ -138,12 +139,12 @@ class GameViewController: UIViewController {
     }
     
     private func animateNewGameButton() {
-        
+
         UIView.animate(withDuration: 1.00, delay: 0.0, options: [.repeat]) {
             self.NewGameOutlet.layoutIfNeeded()
-            self.NewGameOutlet.setTitleColor(.clear, for: .normal)
-//            self.NewGameOutlet.setImage(, for: .normal)
-           
+            self.NewGameOutlet.setTitleColor(.systemBlue, for: .normal)
+
+
         }
         }
     
