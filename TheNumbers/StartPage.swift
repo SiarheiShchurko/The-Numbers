@@ -28,6 +28,7 @@ final class StartPageVC: UIViewController {
     //MARK: Buttons outlet
     @IBOutlet private weak var logOutButton: UIButton!
     
+    //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         checkAutorization()
@@ -58,23 +59,20 @@ final class StartPageVC: UIViewController {
         nextVC.delegate = self
         nextVC.modalPresentationStyle = .overFullScreen
         present(nextVC, animated: true)
-        
     }
+    
     //MARK: Check auth() func
     private func checkAutorization() {
-         
         DispatchQueue.global(qos: .background).async {
             Auth.auth().addStateDidChangeListener { [ weak self ] (auth, user) in
                 if user == nil {
                     self?.transitionBetweenDisp()
-        }
-            
-                
+                }
             }
         }
-       
     }
     
+    //MARK: Prepare to settings display
     @IBAction private func goToSet() {
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -9,20 +9,21 @@
 import Foundation
 import Firebase
 
+//MARK: All status game
 enum StatusGame {
     case start
     case win
     case lose
 }
 
+//MARK: Keys for stored user places
 enum RecordPlaces {
-    
     static var isNewRecord = false
     static var isSecondPlace = false
     static var isThirdPlace = false
-    
 }
 
+//MARK: VMClass
 class Game {
     
     var audioPlayer: AudioPlayerVM? = AudioPlayerVM()
@@ -39,9 +40,9 @@ class Game {
     private var user: RecordModel = RecordModel(name: "No Name", time: 0)
     
     var nextDigits: Item? ///Оptional т.к. вконце игры чисел не будет и код не должен возвращать какое-то число для поска/ Должен вернуться nil.
+    
     var isTimerOff = false
-
-
+    
     var firstRecord: RecordModel {
         
         if let data = UserDefaults.standard.object(forKey: RecordList.one) as? Data {

@@ -27,7 +27,7 @@ class RecordViewController: UIViewController {
         super.viewDidLoad()
         recordVM.loadInfo()
         recordVM.update = {
-            self.tableView.reloadData()
+        self.tableView.reloadData()
         }
         
     }

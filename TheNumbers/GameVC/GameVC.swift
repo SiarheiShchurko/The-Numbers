@@ -27,7 +27,9 @@ class GameViewController: UIViewController {
     
     //MARK: Labels
     @IBOutlet private weak var NextDigit: UILabel!
-    @IBOutlet private weak var StatusLabel: UILabel!
+    @IBOutlet private weak var StatusLabel: UILabel! {
+        didSet { }
+    }
     @IBOutlet private weak var TimerLabel: UILabel!
   
     //MARK: Buttons
@@ -112,16 +114,12 @@ class GameViewController: UIViewController {
         
         switch status {
         case .start:
-            StatusLabel.isHidden = true
+            StatusLabel.alpha = 0.0
             NewGameOutlet.alpha = 0.0
             NewGameOutlet.isEnabled = false
             
         case .win:
-            StatusLabel.text = "You win"
-            StatusLabel.textColor = .green
-            StatusLabel.isHidden = false
-            NewGameOutlet.isEnabled = true
-            
+        
             if RecordPlaces.isNewRecord {
                 recordAlert()
             }
@@ -131,35 +129,38 @@ class GameViewController: UIViewController {
             if RecordPlaces.isThirdPlace {
                 thirdPlaceAlert()
             }
+            StatusLabel.text = "You win"
+            StatusLabel.textColor = .green
+            StatusLabel.alpha = 1.0
+            NewGameOutlet.isEnabled = true
+            
             showAlertActionSheet()
             
         case .lose:
             StatusLabel.text = "You lose"
             StatusLabel.textColor = .red
-            StatusLabel.isHidden = false
+            self.StatusLabel.alpha = 1.0
             NewGameOutlet.isEnabled = true
+            
             showAlertActionSheet()
       }
+        
     }
     
     //MARK: Animate start new game button
     private func animateNewGameButton() {
-       
         self.NewGameOutlet.layoutIfNeeded()
-        
         UIView.animate(withDuration: 0.20, delay: 1.0) {
-          
-                self.NewGameOutlet.alpha = 0.0
-                self.NewGameOutlet.alpha = 1.0
-            
-                self.NewGameOutlet.layoutIfNeeded()
-            
+            self.NewGameOutlet.alpha = 0.0
+            self.NewGameOutlet.alpha = 1.0
+            self.NewGameOutlet.layoutIfNeeded()
         }
-        }
+    }
     
     //MARK: Func for new record
+    
+    //FirstPlace
     private func recordAlert() {
-        
         let alert = UIAlertController(title: "Congratilate", message: "It is NEW RECORD", preferredStyle: .alert)
         let alertButtonOk = UIAlertAction(title: "Ok", style: .default) { _ in
             self.showAlertActionSheet()
