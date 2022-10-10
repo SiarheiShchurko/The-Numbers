@@ -190,14 +190,20 @@
                                             <state key="normal" title="Start New Game">
                                                 <imageReference key="image" image="hand.tap" catalog="system" symbolScale="large"/>
                                             </state>
-                                            <buttonConfiguration key="configuration" style="plain" imagePlacement="top" title="Start New Game" imagePadding="8">
+                                            <buttonConfiguration key="configuration" style="plain" imagePlacement="top" imagePadding="8">
                                                 <imageReference key="image" image="hand.tap" catalog="system" symbolScale="large"/>
-                                                <fontDescription key="titleFontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="18"/>
+                                                <attributedString key="attributedTitle">
+                                                    <fragment content="Start New Game">
+                                                        <attributes>
+                                                            <font key="NSFont" size="18" name="ChalkboardSE-Light"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                                 <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                             </buttonConfiguration>
                                             <connections>
-                                                <action selector="NewGameAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="CzH-Qx-0mE"/>
+                                                <action selector="NewGameAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VBy-AV-2jC"/>
                                             </connections>
                                         </button>
                                     </subviews>

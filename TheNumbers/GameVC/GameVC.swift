@@ -37,9 +37,7 @@ class GameViewController: UIViewController {
         })}
     }
     
-    @IBOutlet private weak var NewGameOutlet: UIButton! {
-        didSet { self.NewGameOutlet.alpha = 0.0 }
-    }
+    @IBOutlet private weak var NewGameOutlet: UIButton!
     
    
     
@@ -57,6 +55,10 @@ class GameViewController: UIViewController {
         setUpScreen()
         
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        animateNewGameButton()
+    }
     
               
   // MARK: Press button func
@@ -66,7 +68,7 @@ class GameViewController: UIViewController {
         updateUI()
     }
     
-    @IBAction private func NewGameAction() {
+    @IBAction func NewGameAction(_ sender: UIButton!) {
         game.newGame()
         setUpScreen()
     }
@@ -112,12 +114,13 @@ class GameViewController: UIViewController {
         case .start:
             StatusLabel.isHidden = true
             NewGameOutlet.alpha = 0.0
+            NewGameOutlet.isEnabled = false
             
         case .win:
             StatusLabel.text = "You win"
             StatusLabel.textColor = .green
             StatusLabel.isHidden = false
-            
+            NewGameOutlet.isEnabled = true
             
             if RecordPlaces.isNewRecord {
                 recordAlert()
@@ -129,27 +132,28 @@ class GameViewController: UIViewController {
                 thirdPlaceAlert()
             }
             showAlertActionSheet()
-            //NewGameOutlet.isHidden = false
-            animateNewGameButton()
-            
             
         case .lose:
             StatusLabel.text = "You lose"
             StatusLabel.textColor = .red
             StatusLabel.isHidden = false
-            //NewGameOutlet.isHidden = false
+            NewGameOutlet.isEnabled = true
             showAlertActionSheet()
-            NewGameOutlet.isHidden = false
-            animateNewGameButton()
       }
-        
     }
     
+    //MARK: Animate start new game button
     private func animateNewGameButton() {
-
-        UIView.animate(withDuration: 1.00, delay: 2.0, options:  .allowUserInteraction) {
+       
+        self.NewGameOutlet.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.20, delay: 1.0) {
+          
+                self.NewGameOutlet.alpha = 0.0
+                self.NewGameOutlet.alpha = 1.0
+            
                 self.NewGameOutlet.layoutIfNeeded()
-            self.NewGameOutlet.alpha = 1.0
+            
         }
         }
     
