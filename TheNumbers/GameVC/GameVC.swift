@@ -37,7 +37,9 @@ class GameViewController: UIViewController {
         })}
     }
     
-    @IBOutlet private weak var NewGameOutlet: UIButton! 
+    @IBOutlet private weak var NewGameOutlet: UIButton! {
+        didSet { self.NewGameOutlet.alpha = 0.0 }
+    }
     
    
     
@@ -109,7 +111,7 @@ class GameViewController: UIViewController {
         switch status {
         case .start:
             StatusLabel.isHidden = true
-            NewGameOutlet.isHidden = true
+            NewGameOutlet.alpha = 0.0
             
         case .win:
             StatusLabel.text = "You win"
@@ -127,7 +129,7 @@ class GameViewController: UIViewController {
                 thirdPlaceAlert()
             }
             showAlertActionSheet()
-            NewGameOutlet.isHidden = false
+            //NewGameOutlet.isHidden = false
             animateNewGameButton()
             
             
@@ -135,7 +137,7 @@ class GameViewController: UIViewController {
             StatusLabel.text = "You lose"
             StatusLabel.textColor = .red
             StatusLabel.isHidden = false
-            NewGameOutlet.isHidden = false
+            //NewGameOutlet.isHidden = false
             showAlertActionSheet()
             NewGameOutlet.isHidden = false
             animateNewGameButton()
@@ -145,11 +147,9 @@ class GameViewController: UIViewController {
     
     private func animateNewGameButton() {
 
-        UIView.animate(withDuration: 2.00, delay: 2.0, options: [.allowUserInteraction]) {
-        
+        UIView.animate(withDuration: 1.00, delay: 2.0, options: [.repeat, .autoreverse]) {
                 self.NewGameOutlet.layoutIfNeeded()
-                
-            self.NewGameOutlet.setTitleColor(.systemBlue, for: .application)
+            self.NewGameOutlet.alpha = 1.0
         }
         }
     
@@ -201,7 +201,9 @@ class GameViewController: UIViewController {
         let returnMenu = UIAlertAction(title: "Back to Menu", style: .destructive) { [ weak self ] (_) in
             self?.navigationController?.popToRootViewController(animated: true)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+       let cancel = UIAlertAction(title: "Cancel", style: .cancel) { [ weak self ] (_) in
+           self?.animateNewGameButton()
+       }
         alert.addAction(newGameAction)
         alert.addAction(showRecord)
         alert.addAction(returnMenu)
