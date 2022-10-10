@@ -62,11 +62,13 @@ final class StartPageVC: UIViewController {
     }
     //MARK: Check auth() func
     private func checkAutorization() {
-        
-      
+         
+        DispatchQueue.global(qos: .background).async {
             Auth.auth().addStateDidChangeListener { [ weak self ] (auth, user) in
                 if user == nil {
                     self?.transitionBetweenDisp()
+        }
+            
                 
             }
         }

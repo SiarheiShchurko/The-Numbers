@@ -27,12 +27,14 @@ class AudioPlayerVM: AudioPlayerProtocol {
     var trackListArray: [TrackModel] = []
     //Load track
     func loadTracksFunc() {
-        
-        trackListArray.append(trackFirst)
-        trackListArray.append(trackSecond)
-        trackListArray.append(trackThird)
-        trackListArray.append(trackFour)
-        trackListArray.append(trackFive)
+//        DispatchQueue.global(qos: .utility).async {
+            self.trackListArray.append(self.trackFirst)
+            self.trackListArray.append(self.trackSecond)
+            self.trackListArray.append(self.trackThird)
+            self.trackListArray.append(self.trackFour)
+            self.trackListArray.append(self.trackFive)
+//        }
+       
     }
     
     
