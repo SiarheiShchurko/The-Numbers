@@ -147,7 +147,7 @@ class GameViewController: UIViewController {
     
     private func animateNewGameButton() {
 
-        UIView.animate(withDuration: 1.00, delay: 2.0, options: [.repeat, .autoreverse]) {
+        UIView.animate(withDuration: 1.00, delay: 2.0, options:  .allowUserInteraction) {
                 self.NewGameOutlet.layoutIfNeeded()
             self.NewGameOutlet.alpha = 1.0
         }
