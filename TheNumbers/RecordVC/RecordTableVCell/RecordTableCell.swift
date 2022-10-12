@@ -19,8 +19,6 @@ class RecordTableCell: UITableViewCell {
     //MARK: Set cell func
     func setRecordCell(_ record: RecordModel) {
         
-        
-        
         numberPlace.text = record.place
         
         nameOut.text = record.name

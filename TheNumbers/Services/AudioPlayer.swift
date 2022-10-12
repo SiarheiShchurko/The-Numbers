@@ -23,49 +23,52 @@ class AudioPlayerVM: AudioPlayerProtocol {
     let queue = DispatchQueue.global(qos: .utility)
     //Service var
     let audioPlayerService = AudioPlayerService()
+    
     //Track array
-    var trackListArray: [TrackModel] = []
+    var trackListArray: [TrackModel] = [ TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? "")), TrackModel(name: "LittlePrankster", url: URL(fileURLWithPath: Bundle.main.path(forResource: "LittlePrankster", ofType: "mp3") ?? "")), TrackModel(name: "SummerHouse", url: URL(fileURLWithPath: Bundle.main.path(forResource: "SummerHouse", ofType: "mp3") ?? "")), TrackModel(name: "TheGoodLife", url: URL(fileURLWithPath: Bundle.main.path(forResource: "TheGoodLife", ofType: "mp3") ?? "")), TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))]
+  
+    
     //Load track
-    func loadTracksFunc() {
+//    func loadTracksFunc() {
 //        DispatchQueue.global(qos: .utility).async {
-            self.trackListArray.append(self.trackFirst)
-            self.trackListArray.append(self.trackSecond)
-            self.trackListArray.append(self.trackThird)
-            self.trackListArray.append(self.trackFour)
-            self.trackListArray.append(self.trackFive)
+//            self.trackListArray.append(self.trackFirst)
+//            self.trackListArray.append(self.trackSecond)
+//            self.trackListArray.append(self.trackThird)
+//            self.trackListArray.append(self.trackFour)
+//            self.trackListArray.append(self.trackFive)
 //        }
        
-    }
+//    }
     
     
-    //Create audio queue and play that list
+    //Create audio queue
     func createPlayerQueue() {
-            self.trackListArray.removeAll()
-            self.loadTracksFunc()
+            //self.trackListArray.removeAll()
+            //self.loadTracksFunc()
             trackListArray.shuffle()
             self.trackListArray.forEach { track in
                let asset = AVURLAsset(url: track.url)
                let item = AVPlayerItem(asset: asset)
                 self.audioPlayerService.queuePlayer.insert(item, after: self.audioPlayerService.queuePlayer.items().last)
+                print(trackListArray.count)
            }
     }
     
     func repeatPlaylistFunc() {
         
         audioPlayerService.token = audioPlayerService.queuePlayer.observe(\.currentItem, changeHandler: {
-             (player, _) in
-           
-            if self.audioPlayerService.queuePlayer.items().count == 1 {
-                self.createPlayerQueue() }
+            [ weak self ] (player, _) in
+            if self?.audioPlayerService.queuePlayer.items().count == 1 {
+                self?.createPlayerQueue() }
         })
     }
     
     //TracksList
-    var trackFirst = TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))
-    var trackSecond = TrackModel(name: "LittlePrankster", url: URL(fileURLWithPath: Bundle.main.path(forResource: "LittlePrankster", ofType: "mp3") ?? ""))
-    var trackThird = TrackModel(name: "SummerHouse", url: URL(fileURLWithPath: Bundle.main.path(forResource: "SummerHouse", ofType: "mp3") ?? ""))
-    var trackFour = TrackModel(name: "TheGoodLife", url: URL(fileURLWithPath: Bundle.main.path(forResource: "TheGoodLife", ofType: "mp3") ?? ""))
-    var trackFive = TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))
+//    var trackFirst = TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))
+//    var trackSecond = TrackModel(name: "LittlePrankster", url: URL(fileURLWithPath: Bundle.main.path(forResource: "LittlePrankster", ofType: "mp3") ?? ""))
+//    var trackThird = TrackModel(name: "SummerHouse", url: URL(fileURLWithPath: Bundle.main.path(forResource: "SummerHouse", ofType: "mp3") ?? ""))
+//    var trackFour = TrackModel(name: "TheGoodLife", url: URL(fileURLWithPath: Bundle.main.path(forResource: "TheGoodLife", ofType: "mp3") ?? ""))
+//    var trackFive = TrackModel(name: "FeelingGood", url: URL(fileURLWithPath: Bundle.main.path(forResource: "FeelingGood", ofType: "mp3") ?? ""))
     
 }
 

@@ -32,11 +32,13 @@ class RecordViewController: UIViewController {
         
     }
     
+    //MARK: Button cancel action (hide display)
     @IBAction func CancelButtonAct(_ sender: Any) {
         dismiss(animated: true) 
     }
 }
 
+//MARK: Cell methods
 extension RecordViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
