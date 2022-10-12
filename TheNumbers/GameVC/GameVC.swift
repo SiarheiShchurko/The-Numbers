@@ -13,6 +13,7 @@ class GameViewController: UIViewController {
     
     //MARK: VM var
      lazy private var game = Game(countItems: buttons.count) { [ weak self ] ( status, seconds ) in
+         
         guard let self = self else { return }
          if seconds <= 10 {
              self.TimerLabel.textColor = .systemRed
@@ -27,13 +28,14 @@ class GameViewController: UIViewController {
     
     //MARK: Labels
     @IBOutlet private weak var NextDigit: UILabel!
+    
     @IBOutlet private weak var StatusLabel: UILabel! {
         didSet { }
     }
     @IBOutlet private weak var TimerLabel: UILabel!
   
     //MARK: Buttons
-    @IBOutlet var buttons: [UIButton]! {
+    @IBOutlet var buttons: [ UIButton ]! {
         didSet { buttons.forEach({ button in
             cornerRadius(button)
         })}

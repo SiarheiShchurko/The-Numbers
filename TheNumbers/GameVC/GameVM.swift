@@ -163,40 +163,41 @@ class Game {
     
     ///No show Record alerts
         private func numberPlaceCheck() {
-            
-                if self.user.time < self.firstRecord.time || self.firstRecord.time == 0 {
-                 
-                        self.user.place = "#1"
+    
+            if self.user.time < self.firstRecord.time || self.firstRecord.time == 0 {
+               
+   
+                self.user.place = "#1"
                         if let data = try? PropertyListEncoder().encode(self.secondRecord) {
                             UserDefaults.standard.set(data, forKey: RecordList.three)
                         }
-                        
+
                         if let data = try? PropertyListEncoder().encode(self.firstRecord) {
                             UserDefaults.standard.set(data, forKey: RecordList.two)
                         }
                         if let data = try? PropertyListEncoder().encode(self.user) {
                             UserDefaults.standard.set(data, forKey: RecordList.one)
-                         
+
                                 RecordPlaces.isNewRecord = true  }
-                 
+
                 } else if self.user.time < self.secondRecord.time || self.secondRecord.time == 0 {
-                    
+
                         self.user.place = "#2"
                         if let data = try? PropertyListEncoder().encode(self.secondRecord) {
                             UserDefaults.standard.set(data, forKey: RecordList.three)
                         }
-                        
+
                         if let data = try? PropertyListEncoder().encode(self.user) {
                             UserDefaults.standard.set(data, forKey: RecordList.two)
-                           
+
                                 RecordPlaces.isSecondPlace = true  }
-                    
+
                 } else if self.user.time < self.threeRecord.time || self.threeRecord.time == 0 {
-                  
+
                         self.user.place = "#3"
                         if let data = try? PropertyListEncoder().encode(self.user) {
                             UserDefaults.standard.set(data, forKey: RecordList.three)
-                           
+
                             RecordPlaces.isThirdPlace = true  }
                 }
             }

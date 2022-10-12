@@ -8,7 +8,7 @@
 import UIKit
 
 
-class RecordViewController: UIViewController {
+final class RecordViewController: UIViewController {
     
      var recordVM: RecordProtocolVM = RecordVM()
     
