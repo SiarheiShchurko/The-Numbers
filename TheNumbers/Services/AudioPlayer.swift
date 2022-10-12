@@ -42,11 +42,13 @@ class AudioPlayerVM: AudioPlayerProtocol {
     }
     
     func repeatPlaylistFunc() {
-        audioPlayerService.token = audioPlayerService.queuePlayer.observe(\.currentItem, changeHandler: {
-            [ weak self ] ( player, _ ) in
-            if self?.audioPlayerService.queuePlayer.items().count == 1 {
-                self?.createPlayerQueue() }
-        })
+        queue.async { [ weak self ] in
+            self?.audioPlayerService.token = self?.audioPlayerService.queuePlayer.observe(\.currentItem, changeHandler: {
+                ( player, _ ) in
+                if self?.audioPlayerService.queuePlayer.items().count == 1 {
+                    self?.createPlayerQueue() }
+            })
+        }
     }
 }
 

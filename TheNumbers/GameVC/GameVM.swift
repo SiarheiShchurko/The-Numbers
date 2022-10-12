@@ -126,6 +126,7 @@ class Game {
             }
             
             self.updateTimer(self.statusGame, self.roundTimeForGame) ///Прописал обновление таймера до момента создания таймера, чтобы отсчет начинался не так: "0,30,29,28...", а вот так: "30,29,28,27..."
+        
             if SetDispBase.shared.settingsVM.currentSettings.timerOn {
                 self.timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true, block: {
                     [ weak self ] (_) in
@@ -162,6 +163,7 @@ class Game {
     
     ///No show Record alerts
         private func numberPlaceCheck() {
+            
                 if self.user.time < self.firstRecord.time || self.firstRecord.time == 0 {
                  
                         self.user.place = "#1"

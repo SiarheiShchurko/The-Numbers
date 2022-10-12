@@ -22,7 +22,6 @@ class SetDispBaseVM: SettingsVMProtocol {
     var currentSettings: SettingParametrs {
         
         get {
-            
             if let data = UserDefaults.standard.object(forKey: KeysSettings.actualSettingsGame) as? Data {
                 return try! PropertyListDecoder().decode(SettingParametrs.self, from: data)
                 
@@ -34,7 +33,6 @@ class SetDispBaseVM: SettingsVMProtocol {
                 return defaultSettings }
         }
         set {
-            
             DispatchQueue.main.async {
                 if let data = try? PropertyListEncoder().encode(newValue) {
                     UserDefaults.standard.set(data, forKey: KeysSettings.actualSettingsGame)
