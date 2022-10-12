@@ -112,8 +112,8 @@ final class SetDispBase: UIViewController {
         settingsVM.currentSettings = settingsVM.defaultSettings
         sWitch.isOn = settingsVM.defaultSettings.timerOn
         sWitchMusik.isOn = settingsVM.defaultSettings.musicOn
-        timeButton.setTitle("\(settingsVM.currentSettings.timeForGame) sec.", for: .normal)
-        timeButton.isEnabled = settingsVM.currentSettings.timerOn
+        timeButton.setTitle("\(settingsVM.defaultSettings.timeForGame) sec.", for: .normal)
+        timeButton.isEnabled = settingsVM.defaultSettings.timerOn
     }
 }
 
