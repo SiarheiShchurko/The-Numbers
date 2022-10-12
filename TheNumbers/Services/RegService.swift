@@ -24,8 +24,6 @@ final class RegServiceVC: UIViewController {
         //Registration
         Auth.auth().createUser(withEmail: email, password: pass) { result, error in
             if error == nil {
-                //Saved user
-                UserDefaults.standard.set(name, forKey: email)
                 
                 //Give result:
                 self.resultt = .success
@@ -33,7 +31,10 @@ final class RegServiceVC: UIViewController {
                 
                 //Enter in account
                 self.signIn(email: email, pass: pass) { (complition) in
-                    print(complition)
+                    if complition == .success {
+                        //Saved user
+                        UserDefaults.standard.set(name, forKey: email)
+                    }
                 }
             } else {
                 self.resultt = .failure

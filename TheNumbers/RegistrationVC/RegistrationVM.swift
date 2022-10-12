@@ -37,6 +37,7 @@ class RegistrationVM: RegistrationVMProtocol {
             }
         } else {
             regService.signIn(email: email, pass: pass) { [ weak self ] ( complition ) in
+                
                 self?.checkResult(complition)
             }
         }

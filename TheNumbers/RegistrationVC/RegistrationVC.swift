@@ -138,16 +138,17 @@ final class RegistrationVC: UIViewController {
     //MARK: Registrated or enter in account func
     @IBAction private func registrationOrEnter() {
         
+        
         //signUp ? registration() : signIn()
         guard let name = enterName.text else { return }
-        guard let email = enterEmail.text else { return }
-        guard let pass = enterPassword.text else { return }
+        guard let email = enterEmail.text?.replacingOccurrences(of: " ", with: "") else { return }
+        guard let pass = enterPassword.text?.replacingOccurrences(of: " ", with: "") else { return }
         
         registrationVM.regOrEnter(name: name, email: email, pass: pass, signUp: signUp)
         
         //If result reg/sign succes - reg disp hide, in profile delegate actual user information
         registrationVM.update = {
-            self.delegate?.getInf(User(email: email))
+            self.delegate?.getInf(User(email: email, name: name))
             self.dismiss(animated: true)
         }
         

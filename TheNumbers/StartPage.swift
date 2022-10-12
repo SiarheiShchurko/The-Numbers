@@ -89,7 +89,7 @@ extension StartPageVC: UserLabelDelegate {
     func getInf(_ inf: User ) {
         guard let email = inf.email else { return }
         let defaults = UserDefaults.standard
-        nameUser.text = defaults.string(forKey: email)
+        nameUser.text =  defaults.string(forKey: email)
         eMailUser.text = inf.email
             }
         }
