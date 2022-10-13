@@ -46,7 +46,7 @@ Settings disp:
 
 User can change name, off timer, change time for round or on/off music accompaniment in game
 
-![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 43 30](https://user-images.githubusercontent.com/101253596/193412443-534ca872-68c2-4e22-99ae-89a9ace5cae5.png)
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-13 at 12 52 22](https://user-images.githubusercontent.com/101253596/195566195-b36483a6-f46b-4649-8594-2a2db89557f9.png)
 
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 43 20](https://user-images.githubusercontent.com/101253596/193412453-d80abfbf-820d-41bd-83e3-0cc50d78e8cc.png)
 
