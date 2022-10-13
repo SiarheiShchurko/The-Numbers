@@ -40,11 +40,7 @@ Start disp have button "Log out":
 
 If user change "yes" - app move to registration/auth disp
 
-Settings disp:
-
-![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-01 at 16 36 05](https://user-images.githubusercontent.com/101253596/193412372-8b45688b-4323-40df-969b-27bdf2bcfbce.png)
-
-User can change name, off timer, change time for round or on/off music accompaniment in game
+Settings disp. User can change name, off timer, change time for round or on/off music accompaniment in game
 
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-13 at 12 52 22](https://user-images.githubusercontent.com/101253596/195566195-b36483a6-f46b-4649-8594-2a2db89557f9.png)
 
