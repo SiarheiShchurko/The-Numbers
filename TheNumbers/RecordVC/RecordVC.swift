@@ -11,7 +11,7 @@ import UIKit
 final class RecordViewController: UIViewController {
     
      var recordVM: RecordProtocolVM = RecordVM()
-    
+     //var recordShared = RecordViewController()
     
     //MARK: TableView
     @IBOutlet private weak var tableView: UITableView! {

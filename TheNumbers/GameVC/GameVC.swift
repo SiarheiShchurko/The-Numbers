@@ -16,22 +16,25 @@ class GameViewController: UIViewController {
          
         guard let self = self else { return }
          if seconds <= 10 {
+             
              self.TimerLabel.textColor = .systemRed
              self.TimerLabel.text = seconds.newFormatTime() ///Настройка отображения времени в лейбле
              self.globalStatus(status: status)
+             
          } else {
+             
              self.TimerLabel.textColor = .white
              self.TimerLabel.text = seconds.newFormatTime() ///Настройка отображения времени в лейбле
              self.globalStatus(status: status)  ///Закидываю статус из функции globalStatus (в ней выполняю чек свитчем)
+             
          }
      }
     
     //MARK: Labels
     @IBOutlet private weak var NextDigit: UILabel!
     
-    @IBOutlet private weak var StatusLabel: UILabel! {
-        didSet { }
-    }
+    @IBOutlet private weak var StatusLabel: UILabel!
+    
     @IBOutlet private weak var TimerLabel: UILabel!
   
     //MARK: Buttons

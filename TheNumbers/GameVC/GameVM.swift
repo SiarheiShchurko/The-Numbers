@@ -142,7 +142,6 @@ class Game {
             self.nextDigits = self.itemArray.shuffled().first
         }
         
-//    }
     
     
     //MARK: Func CheckStatusGame
@@ -161,9 +160,9 @@ class Game {
         }
     }
     
-    ///No show Record alerts
-        private func numberPlaceCheck() {
-    
+    //MARK: Number of place control
+    private func numberPlaceCheck() {
+         
             if self.user.time < self.firstRecord.time || self.firstRecord.time == 0 {
                
    
@@ -202,9 +201,6 @@ class Game {
                 }
             }
                 
-        
-
-            
     //MARK: Func stopGame if timer out.
     func stopGame() {
         timer?.invalidate()
