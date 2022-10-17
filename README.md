@@ -16,7 +16,8 @@ After registration user located on start pade app.
 
 If user press start game, process game is started
 
-![Simulator Screen Shot - iPhone 14 Pro Max - 2022-09-20 at 11 08 07](https://user-images.githubusercontent.com/101253596/191203513-d358361e-35ff-4b3d-8e46-44f8cbb3933d.png)
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-10-17 at 09 34 34](https://user-images.githubusercontent.com/101253596/196105428-f9abacca-20e2-4c45-8091-9b290a21c1c5.png)
+
 
 When timer showed 10 seconds or less, time highlight red color
 
